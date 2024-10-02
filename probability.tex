@@ -27,6 +27,7 @@
 \newtheorem{remark}{Remark}[chapter]
 \newtheorem{lemma}{Lemma}[chapter]
 \newtheorem{definition}{Definition}[chapter]
+\newtheorem{example}{Example}[chapter]
 
 % \makeatletter
 % \def\thanks#1{
@@ -59,13 +60,42 @@ Currently, most of the material in this book comes from the lecture notes of \hr
 
 \chapter{Axioms of Probability}
 
+\section{A brief history of probability theory}
+
+\begin{itemize}
+  \item $\sim$ 3500 B.C.: ancient Egyptians, astragali (a four-sided dice-shaped bone), ``Hounds and Jackals" - a game of chance.
+  \item $\sim$ 1600 B.C.: ordinary six-sided dice.
+  \item 15th century: study of the chances of events began. Italy: Luca Paccioli (1445-1514), Niccol\`o Tartaglia (1499-1557), Girolamo Cardano (1501-1576), Galileo Galilei (1564-1642).
+  \item 1654: real progress of theoretical study.
+  Fance: Blaise Pascal (1623-1662), Pierre de Fermat (1601-1665).
+  \item 1657: Huygens (1629-1695, Dutch scholar) published the first book on probability ``On Calculations in Games of Chance", the birth of probability.
+  \item 17th and 18th century: James Bernoulli (1654-1705), Abraham de Moivre (1667-1754)
+  Pierre-Simon Laplace (1749-1827), Sim\'eon Denis Poisson (1781-1840), Karl Friedrich Gauss (1777- 1855).
+  \item 19th century (Russian): Pafnuty Chebyshev (1821-1894), Andrei Markov (1856-1922), Aleksandr Lyapunov (1857-1918).
+  \item 1900: David Hilbert (1862-1943) proposed 23 ploblems at the International Congress of Mathematician in Paris. Axiomatic treatment of the theory of probability is needed to serve as the foundation of the theory of probability.
+  \item 20th century: \'Emile Borel (1871-1956), Serge Bernstein (1880-1968), Richard von Mises (1883-1953).
+  \item 1933: Andrei Kolmogorov (1903-1987) axiomatized the theory of probability.
+\end{itemize}
+
+\section{Probability spaces: sample spaces, \texorpdfstring{$\sigma$}{sigma}-algebras, and probability measures}
+
+In general, the outcome of an experiment is uncertain to an observer before the experiment is actually performed no matter how many times the same experiment has been performed in the past or how knowledgeable the observer is. As such, there is an uncertainty as to whether an event will occur of not in any experiment, and it is highly desirable to have a quantitative measure of the chance of occurrence of an event. We will treat probability theory in an axiomatic way as a branch of applied mathematics and develop the theory purely through logical reasoning ond inference. ``No uncertainty or randomness" is involved in such developmert.
+
 \begin{definition}[Sample Space]
   The sample space $\Omega$ of an experiment is the set of all possible outcomes of the experiment.
 \end{definition}
 
+\begin{example}
+  In the game of throwing a dice, $\Omega=\{1,2,3,4,5,6\}$.
+\end{example}
+
 \begin{definition}[Event]
   An event of an experiment is a subset of the sample space $\Omega$ of the experiment. We call $\Omega$ the certain event and $\varnothing$ the impossible event of the experiment. We say that an event $A$ occurs if the outcome of the experiment belongs to $A$.
 \end{definition}
+
+\begin{example}
+  Let $\Omega=\{1,2,3,4,5,6\}$. Then $\varnothing$, $\{1\},\{2\},\dots,\{6\}$, $\{1,2\},\{1,3\},\dots,\{5,6\}$, \dots, $\Omega$ are events.
+\end{example}
 
 \begin{definition}[$\sigma$-algebra]
   A $\sigma$-algebra $\ma$ of subsets of a sample space $\Omega$ is a collection of subsets of $\Omega$ such that
@@ -75,6 +105,14 @@ Currently, most of the material in this book comes from the lecture notes of \hr
     \item $\ma$ is closed under countable union, i.e., if $A_n\in\ma$ for $n=1,2,\dots$, then $\cup_{n=1}^\infty A_n \in\ma$.
   \end{enumerate}
 \end{definition}
+
+\begin{example}
+  Let $\Omega=\{1,2,3,4,5,6\}$. Then $\mathcal{A}_1=\{\varnothing,\Omega\}$, $\mathcal{A}_2=\{\varnothing,\{1,3,5\},\{2,4,6\},\Omega\}$, $\mathcal{A}_3=\{\varnothing,\{1,2\},\{3,4,5,6\},\Omega\}$, $\mathcal{A}_4=\{\varnothing,\{1\},\{2\},\dots,\{6\},\{1,2\},\{1,3\},\dots,\{5,6\},\dots,\Omega\}$ are $\sigma$-algebras of subsets of $\Omega$.
+\end{example}
+
+\begin{example}
+  The power set $\mathcal{P}(\Omega)$ of a sample space $\Omega$ is the set of all subsets of $\Omega$, i.e., $\mathcal{P}(\Omega)=\{A:A\subseteq\Omega\}$.
+\end{example}
 
 \begin{theorem}[Properties of $\sigma$-algebra]
   Suppose $\ma$ is a $\sigma$-algebra of subsets of a sample space $\Omega$.
