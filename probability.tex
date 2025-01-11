@@ -10,7 +10,7 @@
 \setlist[enumerate,1]{label=(\roman*), ref=(\roman*)}
 
 \usepackage{titlesec}
-\titleformat{\chapter}[display]{\normalfont\huge\bfseries\centering}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries\centering}{\chaptertitlename~\thechapter}{20pt}{\Huge}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -27,7 +27,6 @@
 \newtheorem{remark}{Remark}[chapter]
 \newtheorem{lemma}{Lemma}[chapter]
 \newtheorem{definition}{Definition}[chapter]
-\newtheorem{example}{Example}[chapter]
 
 % \makeatletter
 % \def\thanks#1{
@@ -42,7 +41,6 @@
 \title{\Huge\textbf{Probability}}
 \author{\href{https://www.jingxuanyang.com/}{Jingxuan Yang}}
 \date{\today}
-
 
 \begin{document}
 
@@ -60,42 +58,13 @@ Currently, most of the material in this book comes from the lecture notes of \hr
 
 \chapter{Axioms of Probability}
 
-\section{A brief history of probability theory}
-
-\begin{itemize}
-  \item $\sim$ 3500 B.C.: ancient Egyptians, astragali (a four-sided dice-shaped bone), ``Hounds and Jackals" - a game of chance.
-  \item $\sim$ 1600 B.C.: ordinary six-sided dice.
-  \item 15th century: study of the chances of events began. Italy: Luca Paccioli (1445-1514), Niccol\`o Tartaglia (1499-1557), Girolamo Cardano (1501-1576), Galileo Galilei (1564-1642).
-  \item 1654: real progress of theoretical study.
-  Fance: Blaise Pascal (1623-1662), Pierre de Fermat (1601-1665).
-  \item 1657: Huygens (1629-1695, Dutch scholar) published the first book on probability ``On Calculations in Games of Chance", the birth of probability.
-  \item 17th and 18th century: James Bernoulli (1654-1705), Abraham de Moivre (1667-1754)
-  Pierre-Simon Laplace (1749-1827), Sim\'eon Denis Poisson (1781-1840), Karl Friedrich Gauss (1777- 1855).
-  \item 19th century (Russian): Pafnuty Chebyshev (1821-1894), Andrei Markov (1856-1922), Aleksandr Lyapunov (1857-1918).
-  \item 1900: David Hilbert (1862-1943) proposed 23 ploblems at the International Congress of Mathematician in Paris. Axiomatic treatment of the theory of probability is needed to serve as the foundation of the theory of probability.
-  \item 20th century: \'Emile Borel (1871-1956), Serge Bernstein (1880-1968), Richard von Mises (1883-1953).
-  \item 1933: Andrei Kolmogorov (1903-1987) axiomatized the theory of probability.
-\end{itemize}
-
-\section{Probability spaces: sample spaces, \texorpdfstring{$\sigma$}{sigma}-algebras, and probability measures}
-
-In general, the outcome of an experiment is uncertain to an observer before the experiment is actually performed no matter how many times the same experiment has been performed in the past or how knowledgeable the observer is. As such, there is an uncertainty as to whether an event will occur of not in any experiment, and it is highly desirable to have a quantitative measure of the chance of occurrence of an event. We will treat probability theory in an axiomatic way as a branch of applied mathematics and develop the theory purely through logical reasoning ond inference. ``No uncertainty or randomness" is involved in such developmert.
-
 \begin{definition}[Sample Space]
   The sample space $\Omega$ of an experiment is the set of all possible outcomes of the experiment.
 \end{definition}
 
-\begin{example}
-  In the game of throwing a dice, $\Omega=\{1,2,3,4,5,6\}$.
-\end{example}
-
 \begin{definition}[Event]
   An event of an experiment is a subset of the sample space $\Omega$ of the experiment. We call $\Omega$ the certain event and $\varnothing$ the impossible event of the experiment. We say that an event $A$ occurs if the outcome of the experiment belongs to $A$.
 \end{definition}
-
-\begin{example}
-  Let $\Omega=\{1,2,3,4,5,6\}$. Then $\varnothing$, $\{1\},\{2\},\dots,\{6\}$, $\{1,2\},\{1,3\},\dots,\{5,6\}$, \dots, $\Omega$ are events.
-\end{example}
 
 \begin{definition}[$\sigma$-algebra]
   A $\sigma$-algebra $\ma$ of subsets of a sample space $\Omega$ is a collection of subsets of $\Omega$ such that
@@ -105,14 +74,6 @@ In general, the outcome of an experiment is uncertain to an observer before the 
     \item $\ma$ is closed under countable union, i.e., if $A_n\in\ma$ for $n=1,2,\dots$, then $\cup_{n=1}^\infty A_n \in\ma$.
   \end{enumerate}
 \end{definition}
-
-\begin{example}
-  Let $\Omega=\{1,2,3,4,5,6\}$. Then $\mathcal{A}_1=\{\varnothing,\Omega\}$, $\mathcal{A}_2=\{\varnothing,\{1,3,5\},\{2,4,6\},\Omega\}$, $\mathcal{A}_3=\{\varnothing,\{1,2\},\{3,4,5,6\},\Omega\}$, $\mathcal{A}_4=\{\varnothing,\{1\},\{2\},\dots,\{6\},\{1,2\},\{1,3\},\dots,\{5,6\},\dots,\Omega\}$ are $\sigma$-algebras of subsets of $\Omega$.
-\end{example}
-
-\begin{example}
-  The power set $\mathcal{P}(\Omega)$ of a sample space $\Omega$ is the set of all subsets of $\Omega$, i.e., $\mathcal{P}(\Omega)=\{A:A\subseteq\Omega\}$.
-\end{example}
 
 \begin{theorem}[Properties of $\sigma$-algebra]
   Suppose $\ma$ is a $\sigma$-algebra of subsets of a sample space $\Omega$.
@@ -170,7 +131,7 @@ In general, the outcome of an experiment is uncertain to an observer before the 
 \end{proof}
 
 \begin{corollary}[A Kind of Probability Measure (special)]
-  Suppose $\Omega=\{\omega_1,\omega_2,\ \cdots,\omega_N\}$, $\ma=\mathcal{P}(\Omega)$, and $\mathbb{P}(A)=\frac{|A|}{N}$ for all $A\in\mathcal{P}(\Omega)$, then $\mathbb{P}$ is a probability measure on $\mathcal{P}(\Omega)$.
+  Suppose $\Omega=\{\omega_1,\omega_2, \cdots,\omega_N\}$, $\ma=\mathcal{P}(\Omega)$, and $\mathbb{P}(A)=\frac{|A|}{N}$ for all $A\in\mathcal{P}(\Omega)$, then $\mathbb{P}$ is a probability measure on $\mathcal{P}(\Omega)$.
 \end{corollary}
 
 \begin{proof}
@@ -178,7 +139,7 @@ In general, the outcome of an experiment is uncertain to an observer before the 
 \end{proof}
 
 \begin{theorem}[Classical definition of probability]
-  Suppose $\Omega=\{\omega_1,\omega_2,\ \cdots,\omega_N\}$, $\ma=\mathcal{P}(\Omega)$ and $\mathbb{P}$ is a probability measure on $\mathcal{P}(\Omega)$ such that $\mathbb{P}({\omega_1})=\mathbb{P}({\omega_2})=\cdots=\mathbb{P}({\omega_N})$, then $\mathbb{P}(A)=\frac{|A|}{N}$ for all $A\in\mathcal{P}(\Omega)$.
+  Suppose $\Omega=\{\omega_1,\omega_2, \cdots,\omega_N\}$, $\ma=\mathcal{P}(\Omega)$ and $\mathbb{P}$ is a probability measure on $\mathcal{P}(\Omega)$ such that $\mathbb{P}({\omega_1})=\mathbb{P}({\omega_2})=\cdots=\mathbb{P}({\omega_N})$, then $\mathbb{P}(A)=\frac{|A|}{N}$ for all $A\in\mathcal{P}(\Omega)$.
 \end{theorem}
 
 \begin{proof}
@@ -222,7 +183,7 @@ $$\mathbb{P}(A)=\sum_{n=1}^\infty \mathbb{P}\left(A\cap A_n \right).$$
 \end{proof}
 
 \begin{theorem}[Inclusion-exclusion Identity]
-Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $A_1,A_2,\ \cdots,A_n\in\ma $, where $n \gs2$, then $$\mathbb{P}\left(\bigcup_{i=1}^n A_i \right)=\sumkfn(-1)^{k+1}\cdot  \sum_{1\ls i_1<i_2<\cdots<i_k\ls n}\mathbb{P}\left(A_{i_1} \cap A_{i_2 } \cap\cdots\cap A_{i_k } \right).$$
+Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $A_1,A_2, \cdots,A_n\in\ma $, where $n \gs2$, then $$\mathbb{P}\left(\bigcup_{i=1}^n A_i \right)=\sumkfn(-1)^{k+1}\cdot  \sum_{1\ls i_1<i_2<\cdots<i_k\ls n}\mathbb{P}\left(A_{i_1} \cap A_{i_2 } \cap\cdots\cap A_{i_k } \right).$$
 \end{theorem}
 
 \begin{proof}
@@ -238,7 +199,7 @@ Suppose $\ma$ is a $\sigma$-algebra of subsets of a sample space $\Omega$, suppo
 \end{proof}
 
 \begin{theorem}[Inclusion-exclusion Inequality]
-Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $A_1,A_2,\ \cdots,A_n\in\ma$, where $n\gs2$, then
+Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $A_1,A_2, \cdots,A_n\in\ma$, where $n\gs2$, then
 $$\mathbb{P}\left(\bigcup_{i=1}^n A_i \right)
 \begin{cases}
 \ls\sum_{k=1}^m(-1)^{k+1}\cdot  \sum_{1\ls i_1<i_2<\cdots<i_k\ls n}\mathbb{P}\left(A_{i_1} \bigcap A_{i_2 } \bigcap\cdots\bigcap A_{i_k } \right),& \text{if $m$ is odd}\\
@@ -290,12 +251,12 @@ Let $(\Omega,\ma,\mathbb{P})$ be a probability space.\\
 \end{proof}
 
 \begin{remark}[Not Necessary]
-If $\mathbb{P}(A)=0$, then it is not necessary that $A=\varnothing$, e.g., $\Omega=(0,1)$ and $A=A_\alpha,\ \alpha\in(0,1)$.
-If $\mathbb{P}(A)=1$, then it is not necessary that $A=\Omega$, e.g., $\Omega=(0,1)$ and $A=A_\alpha^c,\ \alpha\in(0,1)$.
+If $\mathbb{P}(A)=0$, then it is not necessary that $A=\varnothing$, e.g., $\Omega=(0,1)$ and $A=A_\alpha, \alpha\in(0,1)$.
+If $\mathbb{P}(A)=1$, then it is not necessary that $A=\Omega$, e.g., $\Omega=(0,1)$ and $A=A_\alpha^c, \alpha\in(0,1)$.
 \end{remark}
 
 \begin{definition}[Length]
-The length of the intervals $(a,b),\ [a,b),\ (a,b],\ [a,b]$ are defined to be $(b-a)$.
+The length of the intervals $(a,b), [a,b), (a,b], [a,b]$ are defined to be $(b-a)$.
 \end{definition}
 
 \begin{definition}[Random]
@@ -366,7 +327,7 @@ $$\sum_{i=0}^k\binom {n+i} i=\sum_{i=0}^k \binom {n+i} n
 $$(x_1+x_2+\cdots+x_k )^n=\sum_
 {\mbox{\tiny $\begin{aligned}
 &n_1+n_2+\cdots+n_k=n \\
-&n_1,n_2,\ \cdots,n_k\gs0
+&n_1,n_2, \cdots,n_k\gs0
 \end{aligned}$}}
  \frac{n!}{n_1 !\times n_2 !\times\cdots\times n_k !}\cdot x_1^{n_1 } x_2^{n_2 }\cdots x_k^{n_k},\forall n\gs0.$$
 \end{theorem}
@@ -387,10 +348,10 @@ $$\sqrt{2\pi n}
 <n!
 <\sqrt{2\pi n} 
 \left(\frac{n}{e}\right)^n
-\cdot\exp\left(\frac{1}{12n}\right),\ 
+\cdot\exp\left(\frac{1}{12n}\right), 
 \forall n\gs1.$$
 Therefore, 
-$$n!\sim\sqrt{2\pi n} \left(\frac{n}{e}\right)^n,\ \text{i.e.},\ \limn \frac{n!}{\sqrt{2\pi n} \left(\frac{n}{e}\right)^n}=1.$$
+$$n!\sim\sqrt{2\pi n} \left(\frac{n}{e}\right)^n, \text{i.e.}, \limn \frac{n!}{\sqrt{2\pi n} \left(\frac{n}{e}\right)^n}=1.$$
 \end{theorem}
 
 \begin{proof}
@@ -403,8 +364,8 @@ $$n!\sim\sqrt{2\pi n} \left(\frac{n}{e}\right)^n,\ \text{i.e.},\ \limn \frac{n!}
 Let $(\Omega,\ma,\mathbb{P})$ be a probability space, and $A,B\in\ma$. The conditional probability of $A$ given $B$, denoted $\mathbb{P}(A|B)$, is given by
 $$\mathbb{P}(A|B)=
 \begin{cases}
-\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)},\ \text{if}\  \mathbb{P}(B)>0,  \\
-     \qquad 0         ,\qquad\ \text{if}\  \mathbb{P}(B)=0.
+\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}, \text{if}  \mathbb{P}(B)>0,  \\
+     \qquad 0         ,\qquad \text{if}  \mathbb{P}(B)=0.
 \end{cases}
 $$
 \end{definition}
@@ -480,7 +441,7 @@ Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $B_1,B_2,\
 \end{proof}
 
 \begin{corollary}[Bayes' Theorem (finite)]
-Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $B_1,B_2,\cdots B_n\in\ma$ are pairwise disjoint and $\bigcup_{i=1}^n B_i=\Omega$.  Then $$\mathbb{P}(B_k|A)=\frac{\mathbb{P}(B_k)\cdot \mathbb{P}(A|B_k)}{\sumin \mathbb{P}(B_i )\cdot \mathbb{P}(A|B_i )},\forall A\in\ma, \mathbb{P}(A)>0,k=1,2,\ \cdots,n$$
+Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $B_1,B_2,\cdots B_n\in\ma$ are pairwise disjoint and $\bigcup_{i=1}^n B_i=\Omega$.  Then $$\mathbb{P}(B_k|A)=\frac{\mathbb{P}(B_k)\cdot \mathbb{P}(A|B_k)}{\sumin \mathbb{P}(B_i )\cdot \mathbb{P}(A|B_i )},\forall A\in\ma, \mathbb{P}(A)>0,k=1,2, \cdots,n$$
 \end{corollary}
 
 \begin{proof}
@@ -499,7 +460,7 @@ Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $A,B\in\ma
                                                           
 (3) $\mathbb{P}(A|B)=\mathbb{P}(A)\to \mathbb{P}(A\cap B)=\mathbb{P}(A)\cdot \mathbb{P}(B)$
 
-    $\quad\ \mathbb{P}(A\cap B)=\mathbb{P}(A)\cap \mathbb{P}(B),\ \mathbb{P}(A)=0$ or $\mathbb{P}(B)>0\to \mathbb{P}(A|B)=\mathbb{P}(A)$
+    $\quad \mathbb{P}(A\cap B)=\mathbb{P}(A)\cap \mathbb{P}(B), \mathbb{P}(A)=0$ or $\mathbb{P}(B)>0\to \mathbb{P}(A|B)=\mathbb{P}(A)$
     
 If $\mathbb{P}(A)=0$ or $\mathbb{P}(B)>0$, then $\mathbb{P}(A|B)=\mathbb{P}(A)\Leftrightarrow \mathbb{P}(A\cap B)=\mathbb{P}(A)\cdot \mathbb{P}(B)  $
 
@@ -518,7 +479,7 @@ Furthermore, if $\mathbb{P}(A|B)>\mathbb{P}(A)$, then $A$ and $B$ are said to be
 \begin{theorem}[Properties of Independence]
 Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose  $A,B\in\ma$.
 
-(1) If $\mathbb{P}(A)=0$ or $\mathbb{P}(A)=1$, then $A\perp B,\ \forall B\in\ma$.
+(1) If $\mathbb{P}(A)=0$ or $\mathbb{P}(A)=1$, then $A\perp B, \forall B\in\ma$.
 
 (2) If $A\subseteq B$ and $A\perp B$, then either $\mathbb{P}(A)=0$ or $\mathbb{P}(B)=1$.
 
@@ -533,7 +494,7 @@ Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose  $A,B\in\m
 \begin{theorem}[Independence of Two Events]
 Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $A,B\in\ma$, and $A\perp B$.
 
-Then $A^*\perp B^*$, i.e., $\mathbb{P}(A^*\cap B^* )=\mathbb{P}(A^* )\cdot \mathbb{P}(B^* ),\forall  A^*=A,\ A^c;\ B^*=B,\ B^c$. 
+Then $A^*\perp B^*$, i.e., $\mathbb{P}(A^*\cap B^* )=\mathbb{P}(A^* )\cdot \mathbb{P}(B^* ),\forall  A^*=A, A^c; B^*=B, B^c$. 
 \end{theorem}
 
 \begin{proof}
@@ -543,8 +504,8 @@ Then $A^*\perp B^*$, i.e., $\mathbb{P}(A^*\cap B^* )=\mathbb{P}(A^* )\cdot \math
 \begin{corollary}[Conditional Probability with Independence]
 Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $A,B\in\ma$, and $A\perp B$.
 
-If $\mathbb{P}(B)>0$, then $\mathbb{P}(A^*|B)=\mathbb{P}(A^* ),\forall A^*=A,\ A^c$.\\
-If $\mathbb{P}(B)<1$, then $\mathbb{P}(A^*|B^c )=\mathbb{P}(A^* ),\forall A^*=A,\ A^c$.
+If $\mathbb{P}(B)>0$, then $\mathbb{P}(A^*|B)=\mathbb{P}(A^* ),\forall A^*=A, A^c$.\\
+If $\mathbb{P}(B)<1$, then $\mathbb{P}(A^*|B^c )=\mathbb{P}(A^* ),\forall A^*=A, A^c$.
 
 \end{corollary}
 
@@ -564,15 +525,14 @@ If $A\perp B$ and $\mathbb{P}(B)<1$, then knowledge about the occurrence of $B^c
 \end{proof}
 
 \begin{definition}[Independent Set]
-Let $(\Omega,\ma,\mathbb{P})$ be a probability space, and $A_1,A_2,\ \cdots,A_n\in\ma$, where $n\gs2$.\\
+Let $(\Omega,\ma,\mathbb{P})$ be a probability space, and $A_1,A_2, \cdots,A_n\in\ma$, where $n\gs2$.\\
 If $\mathbb{P}\left(A_{i_1}\bigcap A_{i_2}\bigcap\cdots\bigcap A_{i_k}\right)=\mathbb{P}(A_{i_1} )\mathbb{P}(A_{i_2})\cdots \mathbb{P}(A_{i_k } ),\forall 2\ls k\ls n$,
 $$ \#=\sum_{k=2}^n \binom n k=2^n-n-1,1\ls i_1<i_2<\cdots<i_k\ls n,\#:= \text{number}.$$
-Then $A_1,A_2,\ \cdots,A_{n }$ are said to be independent; otherwise, they are said to be dependent.
-\vspace{0.05cm}
+Then $A_1,A_2, \cdots,A_{n }$ are said to be independent; otherwise, they are said to be dependent.
 \end{definition}
 
 \begin{remark}[Sub Independent Set]
-If $A_1,A_2,\ \cdots,A_n\in\ma$ are independent, then $A_{i_2},A_{i_2},\ \cdots,A_{i_k}$ are independent, $\forall 2\ls k\ls n,\ 1\ls i_1<i_2<\cdots <i_k\ls n$. 
+If $A_1,A_2, \cdots,A_n\in\ma$ are independent, then $A_{i_2},A_{i_2}, \cdots,A_{i_k}$ are independent, $\forall 2\ls k\ls n, 1\ls i_1<i_2<\cdots <i_k\ls n$. 
 \end{remark}
 
 \begin{proof}
@@ -580,17 +540,17 @@ If $A_1,A_2,\ \cdots,A_n\in\ma$ are independent, then $A_{i_2},A_{i_2},\ \cdots,
 \end{proof}
 
 \begin{theorem}[Equivalent Statements of Independence]
-Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, $A_1,A_2,\ \cdots,A_n\in\ma$, where $n\gs2$. The following statements are equivalent:
+Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, $A_1,A_2, \cdots,A_n\in\ma$, where $n\gs2$. The following statements are equivalent:
 
-(1) $A_1,A_2,\ \cdots,A_n$ are independent.
+(1) $A_1,A_2, \cdots,A_n$ are independent.
 
-(2) $\mathbb{P}\left(A_{i_1}^*\bigcap A_{i_2}^*\bigcap\cdots\bigcap A_{i_k}^*\right)=\mathbb{P}\left(A_{i_1}^*\right) \mathbb{P}\left(A_{i_2}^* \right)\cdots \mathbb{P}\left(A_{i_k}^* \right),\ \forall 2\ls k\ls n,$
+(2) $\mathbb{P}\left(A_{i_1}^*\bigcap A_{i_2}^*\bigcap\cdots\bigcap A_{i_k}^*\right)=\mathbb{P}\left(A_{i_1}^*\right) \mathbb{P}\left(A_{i_2}^* \right)\cdots \mathbb{P}\left(A_{i_k}^* \right), \forall 2\ls k\ls n,$
 
-$\quad\ \ 1\ls i_1<i_2<\cdots <i_k\ls n,\ A_{i_r}^*=A_{i_r}$ or $A_{i_r}^c$.
+$\quad  1\ls i_1<i_2<\cdots <i_k\ls n, A_{i_r}^*=A_{i_r}$ or $A_{i_r}^c$.
        
-(3) $\mathbb{P}\left(A_{i_1}^*\bigcap A_{i_2}^*\bigcap\cdots\bigcap A_{i_n}^*\right)=\mathbb{P}\left(A_{i_1}^* \right)\mathbb{P}\left(A_{i_2}^* \right)\cdots \mathbb{P}\left(A_{i_n}^* \right),\ \forall A_i^*=A_i,\ A_i^c,$
+(3) $\mathbb{P}\left(A_{i_1}^*\bigcap A_{i_2}^*\bigcap\cdots\bigcap A_{i_n}^*\right)=\mathbb{P}\left(A_{i_1}^* \right)\mathbb{P}\left(A_{i_2}^* \right)\cdots \mathbb{P}\left(A_{i_n}^* \right), \forall A_i^*=A_i, A_i^c,$
 
-$\quad\ \  i=1,2,\ \cdots,n$.
+$\quad   i=1,2, \cdots,n$.
 
 \end{theorem}
 
@@ -599,22 +559,22 @@ $\quad\ \  i=1,2,\ \cdots,n$.
 \end{proof}
 
 \begin{definition}[Independent Set]
-Let $(\Omega,\ma,\mathbb{P})$ be a probability space, and $A_i\in\ma,\ \forall i\in I$, where $I$ is an index set, then $\{A_i: i\in I\}$ is said to be independent if any finite subset of $\{A_i: i\in I\}$ is independent; otherwise, it is said to be dependent.
+Let $(\Omega,\ma,\mathbb{P})$ be a probability space, and $A_i\in\ma, \forall i\in I$, where $I$ is an index set, then $\{A_i: i\in I\}$ is said to be independent if any finite subset of $\{A_i: i\in I\}$ is independent; otherwise, it is said to be dependent.
 \end{definition}
 
 \begin{corollary}[Independence under Finite Union]
-Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $A_1,A_2,\ \cdots,A_n\in\ma$ are independent. Then
+Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and suppose $A_1,A_2, \cdots,A_n\in\ma$ are independent. Then
 $$\begin{aligned}
 &\mathbb{P}\left[\left(A_{i_1}^* \bigcap A_{i_2}^*\bigcap\cdots\bigcap A_{i_k}^*\right)\bigcap\left(A_{j_1}^* \bigcap A_{j_2}^*\bigcap\cdots\bigcap A_{j_l}^* \right)\right] \\
 =&\mathbb{P}\left(A_{i_1}^*\bigcap A_{i_2}^*\bigcap\cdots\bigcap A_{i_k}^*\right)\cdot \mathbb{P}\left(A_{j_1}^*\bigcap A_{j_2}^*\bigcap\cdots\bigcap A_{j_l}^*\right)
 \end{aligned}$$
- $\forall k,l\gs1,\ k+l\ls n,\ 1\ls i_1,i_2,\ \cdots,i_k,j_1,j_2,\ \cdots,j_l\ls n$ distinct, and $A_{i_r}^*=A_{i_r}$ or $A_{i_r}^c,\ r=1,2,\ \cdots,k,\ A_{j_r}^*=A_{j_r}$ or $A_{j_r}^c,\ r=1,2,\ \cdots,l.$
+ $\forall k,l\gs1, k+l\ls n, 1\ls i_1,i_2, \cdots,i_k,j_1,j_2, \cdots,j_l\ls n$ distinct, and $A_{i_r}^*=A_{i_r}$ or $A_{i_r}^c, r=1,2, \cdots,k, A_{j_r}^*=A_{j_r}$ or $A_{j_r}^c, r=1,2, \cdots,l.$
 
-In particular, if $\mathbb{P}\left(A_{j_1}^* \bigcap A_{j_2}^* \bigcap\cdots\bigcap A_{j_l}^*\right)>0$, for some $1\ls l\ls n-1,\ 1\ls j_1,\ \cdots,j_l\ls n$ distinct, and $A_{j_r}^*=A_{j_r}$ or $A_{j_r}^c,\ r=1,2,\ \cdots,l$. Then 
+In particular, if $\mathbb{P}\left(A_{j_1}^* \bigcap A_{j_2}^* \bigcap\cdots\bigcap A_{j_l}^*\right)>0$, for some $1\ls l\ls n-1, 1\ls j_1, \cdots,j_l\ls n$ distinct, and $A_{j_r}^*=A_{j_r}$ or $A_{j_r}^c, r=1,2, \cdots,l$. Then 
 $$\begin{aligned}
 &\mathbb{P}\left[\left(A_{i_1}^*\bigcap A_{i_2}^*\bigcap\cdots\bigcap A_{i_k}^*\right)\bigg|\left(A_{j_1}^*\bigcap A_{j_2}^*\bigcap\cdots\bigcap A_{j_l}^*\right)\right]\\
 =&\mathbb{P}\left(A_{i_1}^*\bigcap A_{i_2}^*\bigcap\cdots\bigcap A_{i_k}^*\right)\end{aligned}$$
- for all $1\ls k\ls n-l.\ i_1,i_2,\ \cdots,i_k\in\{1,2,\ \cdots,n\}\backslash\{j_1,j_2,\ \cdots,j_l \}$ distinct, and $A_{i_r}^*=A_{i_r }$ or $A_{i_r}^c, \ r=1,2,\ \cdots,k$.
+ for all $1\ls k\ls n-l. i_1,i_2, \cdots,i_k\in\{1,2, \cdots,n\}\backslash\{j_1,j_2, \cdots,j_l \}$ distinct, and $A_{i_r}^*=A_{i_r }$ or $A_{i_r}^c,  r=1,2, \cdots,k$.
 \end{corollary}
 
 \begin{proof}
@@ -670,7 +630,7 @@ Suppose $(\Omega_1,\ma_1)$, $(\Omega_2,\ma_2)$, $(\Omega_3,\ma_3)$ are measurabl
 \end{proof}
 
 \begin{definition}[Open Set]
-A set $A$ in $\mr^n$ is called an open set in $\mr^n$ if for all $\mx\in A, \exists r>0\ \to\mb_{\mx}(r)\subseteq A$, where $\mb_{\mx}(r)=\left\{\my\in\mr^n:\Arrowvert\my-\mx\Arrowvert<r\right\}$.
+A set $A$ in $\mr^n$ is called an open set in $\mr^n$ if for all $\mx\in A, \exists r>0 \to\mb_{\mx}(r)\subseteq A$, where $\mb_{\mx}(r)=\left\{\my\in\mr^n:\Arrowvert\my-\mx\Arrowvert<r\right\}$.
 \end{definition}
 
 \begin{definition}[Borel $\sigma$-algebra]
@@ -686,7 +646,7 @@ Suppose $f$ is a continuous function from $\mr^n$ to $\mr^m$. Then $f$ is a meas
 \end{proof}
 
 \begin{definition}[Cell]
-A cell in $\mr$ is a finite interval of the form $(a,b),[a,b),(a,b]$, or $[a,b]$ for some $a\ls b$. A cell $I$ in $\mr^n$, where $n\gs1$, is a Cartesian product of $n$ cells $I_1,I_2,\ \cdots,I_n$ in $\mr$, i.e., $I=I_1\times I_2\times\cdots\times I_n$.
+A cell in $\mr$ is a finite interval of the form $(a,b),[a,b),(a,b]$, or $[a,b]$ for some $a\ls b$. A cell $I$ in $\mr^n$, where $n\gs1$, is a Cartesian product of $n$ cells $I_1,I_2, \cdots,I_n$ in $\mr$, i.e., $I=I_1\times I_2\times\cdots\times I_n$.
 \end{definition}
 
 \begin{definition}[Open Cube]
@@ -710,7 +670,7 @@ Suppose $(\Omega,\ma)$ is a measurable space and $f$ is a function from $\Omega$
 \end{proof}
 
 \begin{theorem}[Components of Measurable Function]
-Suppose $(\Omega,\ma)$ is a measurable space,  $f=(f_1,f_2,\ \cdots,f_n )$  is a function from $\Omega$ to $\mr^n$. Then $f$ is a measurable function from  $(\Omega,\ma)$ to $(\mr^n,\mb_{\mr^n})\Leftrightarrow f_1,f_2,\ \cdots,f_n$ are measurable functions from $(\Omega,\ma)$ to $(\mr^n,\mb_{\mr^n})$.
+Suppose $(\Omega,\ma)$ is a measurable space,  $f=(f_1,f_2, \cdots,f_n )$  is a function from $\Omega$ to $\mr^n$. Then $f$ is a measurable function from  $(\Omega,\ma)$ to $(\mr^n,\mb_{\mr^n})\Leftrightarrow f_1,f_2, \cdots,f_n$ are measurable functions from $(\Omega,\ma)$ to $(\mr^n,\mb_{\mr^n})$.
 \end{theorem}
 
 \begin{proof}
@@ -718,7 +678,7 @@ Suppose $(\Omega,\ma)$ is a measurable space,  $f=(f_1,f_2,\ \cdots,f_n )$  is a
 \end{proof}
 
 \begin{theorem}[Elementary Operation of Measurable Function]
-Suppose $f$ and $g$ are measurable functions from $(\Omega,\ma)$ to $(\mr,\mb_{\mr})$, and $c\in\mr$. Then $cf,\ f^n,\ |f|,\ f+g,\ f\circ g$ are measurable functions from $(\Omega,\ma)$ to $(\mr,\mb_{\mr})$.
+Suppose $f$ and $g$ are measurable functions from $(\Omega,\ma)$ to $(\mr,\mb_{\mr})$, and $c\in\mr$. Then $cf, f^n, |f|, f+g, f\circ g$ are measurable functions from $(\Omega,\ma)$ to $(\mr,\mb_{\mr})$.
 \end{theorem}
 
 \begin{proof}
@@ -744,7 +704,7 @@ $$
 \end{array}
 $$
 Then $f$ is a measurable function from $(\Omega,\ma)$ to $(\mr,\mb_{\mr})$
-if $f^{-1} (B)\in\ma,\ \forall B\subseteq\mc_i$ for any $i=1,2,\ \cdots,9$.
+if $f^{-1} (B)\in\ma, \forall B\subseteq\mc_i$ for any $i=1,2, \cdots,9$.
 \end{theorem}
 
 \begin{proof}
@@ -753,7 +713,7 @@ if $f^{-1} (B)\in\ma,\ \forall B\subseteq\mc_i$ for any $i=1,2,\ \cdots,9$.
 
 \begin{theorem}[Induced Probability Space under Function]
 Suppose $f$ is a measurable function from $(\Omega_1,\ma_1)$ to $(\Omega_2,\ma_2)$. Suppose $P$ is a probability measure on $\ma_1$.
-Then the function $P_f$ on $\ma_2$ given by $$P_f (B)=P[f^{-1} (B)],\  \forall B\in\ma_2$$ is a probability measure.\\
+Then the function $P_f$ on $\ma_2$ given by $$P_f (B)=P[f^{-1} (B)],  \forall B\in\ma_2$$ is a probability measure.\\
 We call $(\Omega_2,\ma_2,P_f)$ the probability space induced from $(\Omega_1,\ma_1,P)$ under $f$.
 \end{theorem}
 
@@ -762,7 +722,7 @@ We call $(\Omega_2,\ma_2,P_f)$ the probability space induced from $(\Omega_1,\ma
 \end{proof}
 
 \begin{remark}[Conventional Denotation]
-(1) The set $f^{-1} (B)$ is conventionally denoted as $f\in B$. Therefore $P_f (B)=P[f^{-1} (B)]=\mathbb{P}(f\in B),\ \forall B\in\ma_2$.\\
+(1) The set $f^{-1} (B)$ is conventionally denoted as $f\in B$. Therefore $P_f (B)=P[f^{-1} (B)]=\mathbb{P}(f\in B), \forall B\in\ma_2$.\\
 (2) If $B\in\ma_2$, then $f^{-1} (B)=f^{-1}[B\cap f(\Omega_1)]$, and hence
 $P_f (B)=\mathbb{P}(f\in B)=P[f^{-1} (B)]=P[f^{-1} (B\cap f(\Omega_1)]=P[ f\in (B\cap f(\Omega_1))]=P_f (B\cap f(\Omega_1)).$
 \end{remark}
@@ -773,11 +733,11 @@ $P_f (B)=\mathbb{P}(f\in B)=P[f^{-1} (B)]=P[f^{-1} (B\cap f(\Omega_1)]=P[ f\in (
 
 \begin{definition}[Random Variable]
 Let $(\Omega,\ma,\mathbb{P})$ be a probability space. A measurable function $X$ from $(\Omega,\ma)$ to $(\mr,\mb_{\mr})$ is called a random variable (r.v.) of the probability space $(\Omega,\ma,\mathbb{P})$.\\
-A measurable function $\mX=(X_1,X_2,\ \cdots,X_n)$ from $(\Omega,\ma)$ to $(\mr^n,\mb_{\mr^n})$ is called a random vector (r.vect.) of the probability space $(\Omega,\ma,\mathbb{P})$.
+A measurable function $\mX=(X_1,X_2, \cdots,X_n)$ from $(\Omega,\ma)$ to $(\mr^n,\mb_{\mr^n})$ is called a random vector (r.vect.) of the probability space $(\Omega,\ma,\mathbb{P})$.
 \end{definition}
 
 \begin{remark}[Conventional Denotation of Random Variable]
-If $X$ is a r.v. of the probability space $(\Omega,\ma,\mathbb{P})$, then $P_X (B)=P[X^{-1} (B)]=\mathbb{P}(X\in B)=P[\{w\in\Omega:X(w)\in B\}],\ \forall B\in\mb_{\mr}$.
+If $X$ is a r.v. of the probability space $(\Omega,\ma,\mathbb{P})$, then $P_X (B)=P[X^{-1} (B)]=\mathbb{P}(X\in B)=P[\{w\in\Omega:X(w)\in B\}], \forall B\in\mb_{\mr}$.
 \end{remark}
 
 \begin{proof}
@@ -797,8 +757,7 @@ $$P_{\mX} (B)=\mathbb{P}(\mX\in B)=\sum_{\mx\in B}\mathbb{P}(\mX=\mx)=\sum_{\mx\
 
 \begin{definition}[Cumulative Distribution Function]
 Let $X$ be a r.v. of a probability space $(\Omega,\ma,\mathbb{P})$. The cumulative distribution function (c.d.f) $F_X$ of the r.v. $X$ is a function from $\mr$ to $[0,1]$, given by
-$$F_X (t)=P_X ((-\infty,t])=\mathbb{P}(X\in(-\infty,t])=\mathbb{P}(X\ls t),\ \forall t\in\mr.$$
-\vspace{0.01cm}
+$$F_X (t)=P_X ((-\infty,t])=\mathbb{P}(X\in(-\infty,t])=\mathbb{P}(X\ls t), \forall t\in\mr.$$
 \end{definition}
 
 \begin{theorem}[Properties of C.D.F]
@@ -816,8 +775,8 @@ Suppose $X$ is a r.v. of a probability space $(\Omega,\ma,\mathbb{P})$.\\
 
 \begin{corollary}[More Properties of C.D.F]
 Suppose $X$ is a r.v. of a probability space $(\Omega,\ma,\mathbb{P})$.\\
-(1) $\mathbb{P}(X\ls a)=F_X (a),\ \mathbb{P}(X>a)=1-F_X (a)$.\\
-(2) $\mathbb{P}(X<a)=F_X (a-),\ \mathbb{P}(X\gs a)=1-F_X (a-)$.\\
+(1) $\mathbb{P}(X\ls a)=F_X (a), \mathbb{P}(X>a)=1-F_X (a)$.\\
+(2) $\mathbb{P}(X<a)=F_X (a-), \mathbb{P}(X\gs a)=1-F_X (a-)$.\\
 (3) $\mathbb{P}(X=a)=F_X (a)-F_X (a-)$.\\
 (4) $\mathbb{P}(a<X\ls b)=F_X (b)-F_X (a),\quad \mathbb{P}(a\ls X\ls b)=F_X (b)-F_X (a-),$\\
 \quad$\mathbb{P}(a<X<b)=F_X (b-)-F_X (a),\quad \mathbb{P}(a\ls X<b)=F_X (b-)-F_X (a-).$
@@ -845,16 +804,16 @@ A r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ is called a discrete r.v
 \end{definition}
 
 \begin{definition}[Probability Mass Function]
-Let $X$ be a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ s.t. $X(\Omega)=\{x_1,x_2,\cdots\}$. The probability mass function (p.m.f) $p_X: \mr\to[0,1]$ of $X$ is a function from $\mr$ to $[0,1]$ given by $p_X (x)=P_X (\{X=x\})=\mathbb{P}(X=x),\ \forall x\in\mr$.
+Let $X$ be a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ s.t. $X(\Omega)=\{x_1,x_2,\cdots\}$. The probability mass function (p.m.f) $p_X: \mr\to[0,1]$ of $X$ is a function from $\mr$ to $[0,1]$ given by $p_X (x)=P_X (\{X=x\})=\mathbb{P}(X=x), \forall x\in\mr$.
 \end{definition}
 
 \begin{theorem}[Properties of P.M.F]
 Suppose $X$ is a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$. Then,\\
-(1) $p_X (x)\gs0,\ \forall x\in X(\Omega)$.\\
-(2) $p_X (x)=0,\ \forall x\in\mr\setminus X(\Omega)$.\\
+(1) $p_X (x)\gs0, \forall x\in X(\Omega)$.\\
+(2) $p_X (x)=0, \forall x\in\mr\setminus X(\Omega)$.\\
 (3) $\dis\sum_{x\in X(\Omega)}p_X (x) =1$.\\
 Therefore if $X(\Omega)=\{x_1,x_2,\cdots\}$, then,\\
-(1) $p_X (x_i )\gs0,\ \forall i=1,2,\dots$.\\
+(1) $p_X (x_i )\gs0, \forall i=1,2,\dots$.\\
 (2) $p_X (x)=0,\forall x\in\mr\setminus\{x_1,x_2,\cdots\}$.\\
 (3) $\dis\sum_{i=1}^\infty p_X (x_i ) =1$.\\
 \end{theorem}
@@ -865,8 +824,8 @@ Therefore if $X(\Omega)=\{x_1,x_2,\cdots\}$, then,\\
 
 \begin{theorem}[Existence of P.M.F]
 Suppose $p: \mr\to[0,1]$ is a function s.t.\\
-(1) $p(x_i )\gs0\ \forall i=1,2,\dots$\\
-(2) $p(x)=0,\ \forall x\in\mr\setminus\{x_1,x_2,\cdots\}$.\\
+(1) $p(x_i )\gs0 \forall i=1,2,\dots$\\
+(2) $p(x)=0, \forall x\in\mr\setminus\{x_1,x_2,\cdots\}$.\\
 (3) $\dis\sum_{i=1}^\infty p_X (x_i ) =1$.\\
 for some distinct $x_1,x_2,\cdots\in\mr$.\\
 Then there exists a discrete r.v. $X$ of some probability space $(\Omega,\ma,\mathbb{P})$ s.t. the p.m.f. $p_X$ of $X$ is equal to $p$. We call such a function a p.m.f.
@@ -881,16 +840,16 @@ Suppose $X$ is a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ 
 $$
 F_X (t)=
 \begin{cases}
-\qquad0,\qquad \text{if} \ t<x_1\\
-\sumin p_X (x_i ),\ \text{if} \ x_n\ls t\ls x_{n+1}, \ n=1,2,\dots
+\qquad0,\qquad \text{if}  t<x_1\\
+\sumin p_X (x_i ), \text{if}  x_n\ls t\ls x_{n+1},  n=1,2,\dots
 \end{cases}
 =\sumin p_X (x_i )U(t-x_i),
 $$
 where
 $$
 U(t)=\begin{cases}
-1,\ \text{if}\ t\gs0\\
-0,\ \text{o.w.}
+1, \text{if} t\gs0\\
+0, \text{o.w.}
 \end{cases}
 $$
 \end{theorem}
@@ -920,7 +879,7 @@ if the sum converges absolutely. And if the sum diverges to $\pm\infty$, $\mathb
 \end{proof}
 
 \begin{theorem}[Expectation of Constant]
-Suppose $X$ is a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ s.t. $X$ is a constant with probability 1, i.e., $\mathbb{P}(X=c)=1$ for some $c\in\mr$. Then $c\in X(\Omega),\ \mathbb{P}(X=x)=0,\ \forall x\in X(\Omega)\setminus\{c\}$, and $\mathbb{E}[X]=c$. In particular, if $X$ is a constant r.v. of $(\Omega,\ma,\mathbb{P})$, i.e., $X(w)=c,\ \forall w\in\Omega$, for some $c\in\mr$, then $\mathbb{E}[X]=c$.
+Suppose $X$ is a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ s.t. $X$ is a constant with probability 1, i.e., $\mathbb{P}(X=c)=1$ for some $c\in\mr$. Then $c\in X(\Omega), \mathbb{P}(X=x)=0, \forall x\in X(\Omega)\setminus\{c\}$, and $\mathbb{E}[X]=c$. In particular, if $X$ is a constant r.v. of $(\Omega,\ma,\mathbb{P})$, i.e., $X(w)=c, \forall w\in\Omega$, for some $c\in\mr$, then $\mathbb{E}[X]=c$.
 \end{theorem}
 
 \begin{proof}
@@ -938,7 +897,7 @@ $$\mathbb{E}[g(X)]=\sum_{x\in X(\Omega)}g(x)\mathbb{P}(X=x).$$
 
 \begin{corollary}[Linearity of Expectation]
 Suppose $X$ is a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$,
-$g_1,g_2,\ \cdots,g_n$ are measurable functions from $(\mr,\mb_{\mr})$ to $(\mr,\mb_{\mr})$, and $\alpha_1,\alpha_2,\ \cdots,\alpha_n\in\mr$, Then
+$g_1,g_2, \cdots,g_n$ are measurable functions from $(\mr,\mb_{\mr})$ to $(\mr,\mb_{\mr})$, and $\alpha_1,\alpha_2, \cdots,\alpha_n\in\mr$, Then
 $$
 \sumin\alpha_i  g_i (X)
 $$
@@ -993,7 +952,7 @@ Suppose $X$ is a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$.
 \end{proof}
 
 \begin{theorem}[Calculating Linear Combination]
-Suppose $X$ is a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ and suppose $\mathbb{E}[X]$ exists. Then $\mathrm{Var}(aX+b)=a^2 \mathrm{Var}(X)$ and $\sigma_{aX+b}=|a| \sigma_X,\ \forall a,b\in\mr$.
+Suppose $X$ is a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ and suppose $\mathbb{E}[X]$ exists. Then $\mathrm{Var}(aX+b)=a^2 \mathrm{Var}(X)$ and $\sigma_{aX+b}=|a| \sigma_X, \forall a,b\in\mr$.
 \end{theorem}
 
 \begin{proof}
@@ -1004,12 +963,12 @@ Suppose $X$ is a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ 
 Let $X$ be a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$, and $r,c\in\mr$.
 $$\left\{
 \begin{array}{l}
-\text{The }r^{th}\ \text{moment of } X\ \text{is given by } \mathbb{E}[X^r]   \\                              
-\text{The }r^{th}\ \text{central moment of } X\ \text{is given by } \mathbb{E}[(X-\mathbb{E}[X])^r]\\
-\text{The }r^{th}\ \text{moment of } c\ \text{is given by } \mathbb{E}[(X-c)^r]      \\     
-\text{The }r^{th}\ \text{absolute moment of } X\ \text{is given by } \mathbb{E}[|X|^r]\\
-\text{The }r^{th}\ \text{absolute central moment of } X \text{is given by } \mathbb{E}[|X-\mathbb{E}[X] |^r]  \\
-\text{The } r^{th}\ \text{absolute moment of } c\ \text{is given by } \mathbb{E}[|X-c|^r] 
+\text{The }r^{th} \text{moment of } X \text{is given by } \mathbb{E}[X^r]   \                              
+\text{The }r^{th} \text{central moment of } X \text{is given by } \mathbb{E}[(X-\mathbb{E}[X])^r]\\
+\text{The }r^{th} \text{moment of } c \text{is given by } \mathbb{E}[(X-c)^r]      \     
+\text{The }r^{th} \text{absolute moment of } X \text{is given by } \mathbb{E}[|X|^r]\\
+\text{The }r^{th} \text{absolute central moment of } X \text{is given by } \mathbb{E}[|X-\mathbb{E}[X] |^r]  \\
+\text{The } r^{th} \text{absolute moment of } c \text{is given by } \mathbb{E}[|X-c|^r] 
 \end{array}
 \right.$$
 If the respective sum converges absolutely.
@@ -1088,21 +1047,20 @@ Such a p.m.f is called a Bernoulli p.m.f with parameter $p$.
 
 \begin{theorem}[Expectation and Variance of Bernoulli R.V.]
 Suppose $X\sim$ Bernoulli$(p)$, where $0<p<1$. Then $$\mathbb{E}[X]=p,\qquad \mathrm{Var}(X)=p(1-p).$$
-\vspace{0.01cm}
 \end{theorem}
 
 \begin{proof}
   abc
 \end{proof}
 
-Consider an experiment in which $n$ independent Bernoulli trials with the same probability of success, say $p$, are performed. The sample space of the experiment is $\Omega=\{(\omega_1,\omega_2,\ \cdots,\omega_n ): \omega_i=s \text{ or } f,i=1,2,\ \cdots,n\} $ and $\mathbb{P}(\{(\omega_1,\omega_2,\ \cdots,\omega_n )\})=p^i (1-p)^{n-i}$, where $i=|\{1\ls j\ls n: \omega_j=s\}|.$
+Consider an experiment in which $n$ independent Bernoulli trials with the same probability of success, say $p$, are performed. The sample space of the experiment is $\Omega=\{(\omega_1,\omega_2, \cdots,\omega_n ): \omega_i=s \text{ or } f,i=1,2, \cdots,n\} $ and $\mathbb{P}(\{(\omega_1,\omega_2, \cdots,\omega_n )\})=p^i (1-p)^{n-i}$, where $i=|\{1\ls j\ls n: \omega_j=s\}|.$
 
 Let $X$ be the number of successes in the $n$ Bernoulli trials.
 $$
 p_X (i)=
 \left\{\begin{aligned}
-&\binom n i p^i(1-p)^{n-i},\ \text{if}\ i=0,1,2,\ \cdots,n\\
-&\qquad0,\qquad\ \text{o.w.}    
+&\binom n i p^i(1-p)^{n-i}, \text{if} i=0,1,2, \cdots,n\\
+&\qquad0,\qquad \text{o.w.}    
 \end{aligned}
 \right.
 $$
@@ -1112,8 +1070,8 @@ A discrete r.v. $X$ of a probability space $(\Omega,\ma,\mathbb{P})$ is called a
 $$
 p_X (i)=
 \left\{\begin{aligned}
-&\binom n i p^i(1-p)^{n-i},\ \text{if}\ i=0,1,2,\ \cdots,n\\
-&\qquad0,\qquad\ \text{o.w.}    
+&\binom n i p^i(1-p)^{n-i}, \text{if} i=0,1,2, \cdots,n\\
+&\qquad0,\qquad \text{o.w.}    
 \end{aligned}
 \right.
 $$
@@ -1132,7 +1090,6 @@ Thus $p_X (\cdot)$ is a p.m.f.
 \begin{theorem}[Expectation and Variance of Binomial R.V.]
 Suppose $X\sim$ binomial$(n,p)$, where $n\gs1$ and $0<p<1$. Then 
 $$\mathbb{E}[X]=np,\qquad \mathrm{Var}(X)=np(1-p).$$
-\vspace{0.01cm}
 \end{theorem}
 
 \begin{proof}
@@ -1144,8 +1101,8 @@ Suppose $X\sim$ binomial$(n,p)$, where $n\gs1$ and $0<p<1$. Then
 $$
 arg\max_{0\ls i\ls n} p_X (i)=
 \begin{cases}
-(n+1)p-1 \text{  or  } (n+1)p,\ \text{if }  (n+1)p\in\mz\\
-\qquad\lfloor(n+1)p\rfloor\qquad, \ \text{if }  (n+1)p\notin\mz
+(n+1)p-1 \text{  or  } (n+1)p, \text{if }  (n+1)p\in\mz\\
+\qquad\lfloor(n+1)p\rfloor\qquad,  \text{if }  (n+1)p\notin\mz
 \end{cases}
 $$
 \end{theorem}
@@ -1157,7 +1114,7 @@ $$
 \section{Poisson R.V.'s}
 
 If $X\sim$ binomial$(n,p)$, then $p_X (i)=\binom n i p^i (1-p)^{n-i}$ is difficult to calculate if $n$ is large. A recursive relation: 
-$$p_X (0)=(1-p)^n, \ p_X (i)=\frac{n-i+1}{i(1-p)} \cdot p_X (i-1),\ \forall i\gs1.$$
+$$p_X (0)=(1-p)^n,  p_X (i)=\frac{n-i+1}{i(1-p)} \cdot p_X (i-1), \forall i\gs1.$$
 An approximation for large $n$, small $p$, and moderate $np$, say $np=\lambda$ for some constant $\lambda$:
 $$
 \begin{aligned}
@@ -1171,7 +1128,7 @@ A discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ is called a Poi
 $$
 p_X (i)=
 \left\{\begin{aligned}
-&e^{-\lambda}\cdot \frac{\lambda^i}{i!}, \ i=0,1,2,\dots\\
+&e^{-\lambda}\cdot \frac{\lambda^i}{i!},  i=0,1,2,\dots\\
 &0,\quad\text{o.w.}
 \end{aligned}           
 \right.
@@ -1201,8 +1158,8 @@ Suppose $X\sim$ Poisson$(\lambda)$, where $\lambda>0$. Then
 $$
 arg\max_{i\gs0}p_X(i)=
 \begin{cases}
-\lambda-1 \text{ or } \lambda,\ \text{if}\ \lambda\in\mz\\
-\lfloor\lambda\rfloor,\quad \text{if}\ \lambda\notin\mz
+\lambda-1 \text{ or } \lambda, \text{if} \lambda\in\mz\\
+\lfloor\lambda\rfloor,\quad \text{if} \lambda\notin\mz
 \end{cases}
 $$
 \end{theorem}
@@ -1219,7 +1176,7 @@ Let $X$ be the number of Bernoulli trials until the first success occurs,
 $$
 p_X (i)=
 \begin{cases}
-(1-p)^{i-1}\cdot p,\   i=0,1,2\cdots\\
+(1-p)^{i-1}\cdot p,   i=0,1,2\cdots\\
 0,\quad\text{o.w.}
 \end{cases}
 $$
@@ -1229,7 +1186,7 @@ A discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ is called a geo
 $$
 p_X (i)=
 \begin{cases}
-(1-p)^{i-1}\cdot p,\   i=0,1,2\cdots\\
+(1-p)^{i-1}\cdot p,   i=0,1,2\cdots\\
 0,\quad\text{o.w.}
 \end{cases}           
 $$
@@ -1257,7 +1214,7 @@ $$
 \end{proof}
 
 \begin{theorem}[Memoryless Property]
-Suppose $X$ is a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ with $X(\Omega)=\{1,2\cdots\}$. Then $P[(X>m+n)|(X>m)]=\mathbb{P}(X>n),\ \forall m,n>0 \Leftrightarrow X$ is a geometric r.v.
+Suppose $X$ is a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ with $X(\Omega)=\{1,2\cdots\}$. Then $P[(X>m+n)|(X>m)]=\mathbb{P}(X>n), \forall m,n>0 \Leftrightarrow X$ is a geometric r.v.
 \end{theorem}
 
 \begin{proof}
@@ -1271,7 +1228,7 @@ Let $X$ be the number of Bernoulli trials until the  $r^{th}$ success occurs,
 $$
 p_X (i)=
 \left\{\begin{aligned}
-&\binom {i-1} {r-1} p^r(1-p)^{i-r},\   i=r,r+1,\cdots\\
+&\binom {i-1} {r-1} p^r(1-p)^{i-r},   i=r,r+1,\cdots\\
 &0,\quad\text{o.w.}
 \end{aligned}        
 \right.   
@@ -1282,7 +1239,7 @@ A discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ is called a neg
 $$
 p_X (i)=
 \left\{\begin{aligned}
-&\binom {i-1} {r-1} p^r(1-p)^{i-r},\   i=r,r+1,\cdots\\
+&\binom {i-1} {r-1} p^r(1-p)^{i-r},   i=r,r+1,\cdots\\
 &0,\quad\text{o.w.}
 \end{aligned}        
 \right.   
@@ -1301,8 +1258,8 @@ $$
 $$
 $$
 \begin{aligned}
-&\to\sum_{i=r}^{\infty}{p_X\left(i\right)}=\sum_{i=r}^{\infty}{\binom{i-1}{r-1}p^r(1-p)^{i-r}}=\frac{p^r}{\left(r-1\right)!}\cdot\frac{\left(r-1\right)!}{(1-(1-p))^r}=1\\
-   &\to\ p_X\left(\cdot\right) \text{is a p.m.f.}
+&\to\sum_{i=r}^{\infty}{p_X(i)}=\sum_{i=r}^{\infty}{\binom{i-1}{r-1}p^r(1-p)^{i-r}}=\frac{p^r}{\left(r-1\right)!}\cdot\frac{\left(r-1\right)!}{(1-(1-p))^r}=1\\
+   &\to p_X\left(\cdot\right) \text{is a p.m.f.}
    \end{aligned}
 $$
 \end{remark}
@@ -1321,15 +1278,14 @@ $$
 
 \begin{theorem}[Maximum Point of Negative Geometric Probability]
 Suppose $X\sim$ neg.-binomial$(r,p)$, where $r\gs1$ and $0<p<1$. Then
-$$
-arg\max_{i\gs r}p_X\left(i\right)=
-\left\{\begin{array}{cl}                
-1,                             &\text{if } r=1\\
-\frac{r-1}{p}\ \text{or } \frac{r-1}{p+1},\  &\text{if } \frac{r-1}{p}\in\mz^+\vspace{0.3cm}\\
-\left\lfloor\frac{r-1}{p+1}\right\rfloor,               &\text{if } \frac{r-1}{p}\notin\mz     
-\end{array}
-\right.
-$$
+\begin{equation}
+  \argmax_{i\gs r} p_X(i)=
+  \begin{cases}
+    1,                             &\text{if}~r=1\\
+    \frac{r-1}{p}~\text{or}~\frac{r-1}{p+1},  &\text{if}~\frac{r-1}{p}\in\mz^+\\
+    \left\lfloor\frac{r-1}{p+1}\right\rfloor,               &\text{if}~\frac{r-1}{p}\notin\mz     
+  \end{cases}
+\end{equation}
 \end{theorem}
 
 \begin{proof}
@@ -1338,25 +1294,25 @@ $$
 
 A box contains $N_1$ red balls and $N_2$ blue balls. Suppose that $n$ balls are randomly drawn from the box, one by one and without replacement.
 
-Let $X$ be the number of ``red'' balls drawn
-$$
-p_X\left(i\right)=
-\left\{\begin{aligned}
-&\frac{\binom {N_1} i \binom {N_2} {n-i}}{\binom {N_1+N_2} n},i=a,a+1,\ \cdots, b. \ a=\max\{n-N_1,0\},b=\min\{n,N_1\}     \\
-&\quad0, \qquad\qquad\text{o.w.}              
-\end{aligned}\right.                                                    
-$$
+Let $X$ be the number of red balls drawn
+\begin{equation}
+  p_X(i)=
+  \left\{\begin{aligned}
+  &\frac{\binom {N_1} i \binom {N_2} {n-i}}{\binom {N_1+N_2} n},i=a,a+1, \cdots, b.  a=\max\{n-N_1,0\},b=\min\{n,N_1\}     \\
+  &\quad0, \qquad\qquad\text{o.w.}              
+  \end{aligned}\right.
+\end{equation}
 
 \begin{definition}[Hypergeometric R.V.]
-A discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ is called a hypergeometric r.v. with parameter $N_1,\ N_2$ and $n$ where $N_1,N_2\gs1$ and $n\gs1$, denoted $X\sim$ hypergeometric$(N_1,N_2,n)$, if its p.m.f is given by
+A discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ is called a hypergeometric r.v. with parameter $N_1, N_2$ and $n$ where $N_1,N_2\gs1$ and $n\gs1$, denoted $X\sim$ hypergeometric$(N_1,N_2,n)$, if its p.m.f is given by
 $$
-p_X\left(i\right)=
+p_X(i)=
 \left\{\begin{aligned}
-&\frac{\binom {N_1} i \binom {N_2} {n-i}}{\binom {N_1+N_2} n},i=a,a+1,\ \cdots, b. \ a=\max\{n-N_1,0\},b=\min\{n,N_1\}     \\
+&\frac{\binom {N_1} i \binom {N_2} {n-i}}{\binom {N_1+N_2} n},i=a,a+1, \cdots, b.  a=\max\{n-N_1,0\},b=\min\{n,N_1\}     \\
 &\quad0, \qquad\qquad\text{o.w.}              
 \end{aligned}\right.                                                    
 $$
-Such a p.m.f is called a hypergeometric r.v. with parameter $N_1,\ N_2$ and $n$.
+Such a p.m.f is called a hypergeometric r.v. with parameter $N_1, N_2$ and $n$.
 \end{definition}
 
 \begin{remark}[Justification of P.M.F.]
@@ -1365,19 +1321,23 @@ Such a p.m.f is called a hypergeometric r.v. with parameter $N_1,\ N_2$ and $n$.
 $$
 \begin{aligned}
 &(1+x)^{N_1+N_2}=(1+x)^{N_1}(1+x)^{N_2}\\
-\to\ \ &\text{the coefficient of } x^n \text{ is }
+\to  &\text{the coefficient of } x^n \text{ is }
 \binom{N_1+N_2}{n}=\sum_{i=a}^{b}\binom{N_1}{i}\binom{N_2}{n-i},\\
-&\text{where} \ a=\max\{n-N_1,0\},b=\min\{n,N_1\} \\
-\to\ &\sum_{i=a}^{b}{p_X\left(i\right)}=\sum_{i=a}^{b}\frac{\binom{N_1}{i}\binom{N_2}{n-i}}{\binom{N_1+N_2}{n}}=1.\\
-\to\ &p_X\left(\cdot\right)\ \text{is a p.m.f.}
+&\text{where}  a=\max\{n-N_1,0\},b=\min\{n,N_1\} \\
+\to &\sum_{i=a}^{b}{p_X(i)}=\sum_{i=a}^{b}\frac{\binom{N_1}{i}\binom{N_2}{n-i}}{\binom{N_1+N_2}{n}}=1.\\
+\to &p_X\left(\cdot\right) \text{is a p.m.f.}
 \end{aligned}
 $$
 \end{remark}
 
 \begin{theorem}[Expectation and Variance of Hypergeometric R.V.]
-Suppose $X\sim$ hypergeometric$(N_1,N_2,n)$, where $N_1,N_2\gs1$ and $1\ls n\ls\min\{N_1,N_2\}$. Then
+Suppose 
+\begin{equation}
+  X\sim\mathrm{hypergeometric}(N_1,N_2,n),
+\end{equation}
+where $N_1,N_2\gs1$ and $1\ls n\ls\min\{N_1,N_2\}$. Then
 $$
-\mathbb{E}\left[X\right]=\frac{nN_1}{N_1+N_2},\ 
+\mathbb{E}\left[X\right]=\frac{nN_1}{N_1+N_2}, 
 \mathrm{Var}(x)=n\cdot\frac{N_1}{N_1+N_2}\cdot\frac{N_2}{N_1+N_2}\cdot\left(1-\frac{n-1}{N_1+N_2-1}\right).
 $$
 \end{theorem}
@@ -1387,12 +1347,14 @@ $$
 \end{proof}
 
 \begin{theorem}[Binomial Approximation for Hypergeometric]
-$n$ balls are drawn with replacement
-$$\begin{aligned}
-  &\to\ X\sim\ \mathrm{binomial}\left(n,\frac{N_1}{N_1+N_2}\right)\\
-&\to\ \mathbb{E}\left[X\right]=n\cdot\frac{N_1}{N_1+N_2},\ \ \mathrm{Var}(x)=n\cdot\frac{N_1}{N_1+N_2}\cdot\frac{N_2}{N_1+N_2}.
-\end{aligned}
-$$
+Suppose $n$ balls are drawn with replacement, i.e.,
+\begin{equation}
+  X\sim \mathrm{binomial}\left(n,\frac{N_1}{N_1+N_2}\right).
+\end{equation}
+Then
+\begin{equation}
+  \mathbb{E}\left[X\right]=n\cdot\frac{N_1}{N_1+N_2},  \mathrm{Var}(x)=n\cdot\frac{N_1}{N_1+N_2}\cdot\frac{N_2}{N_1+N_2}.
+\end{equation}
 Therefore, if $n\ll N_1+N_2$, then drawing with replacement is a good approximation of drawing without replacement.
 \end{theorem}
 
@@ -1401,14 +1363,19 @@ Therefore, if $n\ll N_1+N_2$, then drawing with replacement is a good approximat
 \end{proof}
 
 \begin{theorem}[Maximum Point of Hypergeometric Probability]
-Suppose $X\sim\ \mathrm{hypergeometric}(N_1,N_2,n)$, where $N_1,N_2\gs1$ and $1\ls n\ls\min\{N_1,N_2\}$. Then
+Suppose
+\begin{equation}
+  X\sim \mathrm{hypergeometric}(N_1,N_2,n),
+\end{equation}
+where $N_1,N_2\gs1$ and $1\ls n\ls\min\{N_1,N_2\}$. Then
 $$
 \begin{aligned}
-&arg\max_{0\ls i\ls n}{p_X\left(i\right)}\\
-&=\left\{\begin{aligned}
-&\frac{(n+1)(N_1+1)}{N_1+N_2+2}-1 \text{ or } \frac{(n+1)(N_1+1)}{N_1+N_2+2},     \ \text{if }  \frac{(n+1)(N_1+1)}{N_1+N_2+2}\in\mz   \\
-&\left\lfloor \frac{(n+1)(N_1+1)}{N_1+N_2+2}\right\rfloor, \ \text{if }  \frac{(n+1)(N_1+1)}{N_1+N_2+2}\notin\mz  
-\end{aligned}\right.   
+  &\argmax_{0\ls i\ls n}{p_X(i)}\\
+  &=\left\{
+    \begin{aligned}
+      &\frac{(n+1)(N_1+1)}{N_1+N_2+2}-1~\text{or}~\frac{(n+1)(N_1+1)}{N_1+N_2+2},      \text{if}~\frac{(n+1)(N_1+1)}{N_1+N_2+2}\in\mz   \\
+      &\left\lfloor \frac{(n+1)(N_1+1)}{N_1+N_2+2}\right\rfloor,  \text{if}~\frac{(n+1)(N_1+1)}{N_1+N_2+2}\notin\mz.
+  \end{aligned}\right.   
 \end{aligned}
 $$
 \end{theorem}
@@ -1420,31 +1387,31 @@ $$
 \begin{remark}[Binomial and Poisson Approximation for Hypergeometric]
 $$
 \begin{aligned}
-p_X\left(i\right)&=\frac{\binom{N_1}{i}\binom{N_2}{n-i}}{\binom{N_1+N_2}{n}}\\
+p_X(i)&=\frac{\binom{N_1}{i}\binom{N_2}{n-i}}{\binom{N_1+N_2}{n}}\\
 &=\frac{n!}{i!\left(n-i\right)!}\cdot\frac{N_1\left(N_1-1\right)\cdots\left(N_1-i+1\right)N_2\left(N_2-1\right)\cdots(N_2-n+i+1)}{\left(N_1+N_2\right)\left(N_1+N_2-1\right)\cdots(N_1+N_2+n-1)}
 \end{aligned}
 $$
-(1) If $N_1\to\infty,\ N_2\to\infty,\ \frac{N_1}{N_1+N_2}\to p$, then
+(1) If $N_1\to\infty, N_2\to\infty, \frac{N_1}{N_1+N_2}\to p$, then
 $$\begin{aligned}
-p_X\left(i\right)&=\binom{n}{i}\cdot\frac{1}{1\cdot\left(1-\frac{1}{N_1+N_2}\right)\cdots\left(1-\frac{n-1}{N_1+N_2}\right)}\\
+p_X(i)&=\binom{n}{i}\cdot\frac{1}{1\cdot\left(1-\frac{1}{N_1+N_2}\right)\cdots\left(1-\frac{n-1}{N_1+N_2}\right)}\\
 &\cdot\frac{N_1}{N_1+N_2}\left(\frac{N_1}{N_1+N_2}-\frac{1}{N_1+N_2}\right)\cdots\left(\frac{N_1}{N_1+N_2}-\frac{i-1}{N_1+N_2}\right)\left(\frac{N_2}{N_1+N_2}\right)\\
 &\cdot\left(\frac{N_2}{N_1+N_2}-\frac{1}{N_1+N_2}\right)\cdots\left(\frac{N_2}{N_1+N_2}-\frac{n-i-1}{N_1+N_2}\right)\\
-&\xrightarrow{N_1,\ N_2\to\infty}\binom{n}{i}p^i(1-p)^{n-i}\leftarrow\mathrm{binomial}(n,p)\\
+&\xrightarrow{N_1, N_2\to\infty}\binom{n}{i}p^i(1-p)^{n-i}\leftarrow\mathrm{binomial}(n,p)\\
 \end{aligned}
 $$
-(2) If $n\to\infty,\ N_1\to\infty,\ N_2\to\infty,\ \frac{n}{N_1+N_2}\to0,\ \frac{N_1}{N_1+N_2}\to\frac{\lambda}{n}$, then
+(2) If $n\to\infty, N_1\to\infty, N_2\to\infty, \frac{n}{N_1+N_2}\to0, \frac{N_1}{N_1+N_2}\to\frac{\lambda}{n}$, then
 $$\begin{aligned}
-p_X\left(i\right)&=\frac{1}{i!}\cdot\frac{1}{\frac{\left(N_1+N_2\right)!}{\left(N_1+N_2-n\right)!}}\cdot nN_1\cdot\left(n-1\right)\left(N_1-1\right)\cdots\left(n-i+1\right)\left(N_1-i+1\right)\\ 
+p_X(i)&=\frac{1}{i!}\cdot\frac{1}{\frac{\left(N_1+N_2\right)!}{\left(N_1+N_2-n\right)!}}\cdot nN_1\cdot\left(n-1\right)\left(N_1-1\right)\cdots\left(n-i+1\right)\left(N_1-i+1\right)\ 
 &\cdot(N_1+N_2-N_1)(N_1+N_2-N_1-1)\cdots(N_1+N_2-N_1-n+i+1)
 \\
 &=\frac{1}{i!}\cdot\frac{\prod_{j=0}^{i-1}{\frac{nN_1-j\left(n+N_1\right)+j^2}{N_1+N_2}\cdot\prod_{j=0}^{n-i-1}\left(1-\frac{N_1+j}{N_1+N_2}\right)}}{\frac{1}{(N_1+N_2)^n}\cdot\frac{\sqrt{2\pi\left(N_1+N_2\right)}\left(\frac{N_1+N_2}{e}\right)^{N_1+N_2}e^{a_{N_1+N_2}}}{\sqrt{2\pi\left(N_1+N_2-n\right)}\left(\frac{N_1+N_2-n}{e}\right)^{N_1+N_2-n}e^{a_{N_1+N_2-n}}}}\\
 \end{aligned}
 $$
-where $a_n=\ln{\frac{n!}{\sqrt{2\pi n}\left(\frac{n}{e}\right)^n}}\xrightarrow{n\to\infty}0.\ $
+where $a_n=\ln{\frac{n!}{\sqrt{2\pi n}\left(\frac{n}{e}\right)^n}}\xrightarrow{n\to\infty}0. $
 $$\begin{aligned}
-p_X\left(i\right)&\xrightarrow{\dis n,N_1,N_2\to\infty,\frac{n}{N_1+N_2}\to0,\ \frac{N_1}{N_1+N_2}\to\frac{\lambda}{n}}\\
+p_X(i)&\xrightarrow{\dis n,N_1,N_2\to\infty,\frac{n}{N_1+N_2}\to0, \frac{N_1}{N_1+N_2}\to\frac{\lambda}{n}}\\
 &\frac{1}{i!}\cdot\limn{\frac{\lambda^i\left(1-\frac{\lambda}{n}\right)^{n-i}}{\frac{1}{e^n\cdot\lim_{N_1,N_2\to\infty}{\left(1-\frac{n}{N_1+N_2}\right)^{N_1+N_2-n}}}}}\\
-&=\lim_{n\to\infty}{\frac{\lambda^i}{i!}}\ \left(1-\frac{\lambda}{n}\right)^{n-i}=e^{-\lambda}\cdot\frac{\lambda^i}{i!}\ \leftarrow\mathrm{Poisson}(\lambda)\\
+&=\lim_{n\to\infty}{\frac{\lambda^i}{i!}} \left(1-\frac{\lambda}{n}\right)^{n-i}=e^{-\lambda}\cdot\frac{\lambda^i}{i!} \leftarrow\mathrm{Poisson}(\lambda)\\
 \end{aligned}
 $$
 \end{remark}
@@ -1453,9 +1420,9 @@ $$
 \section{Probability Density Function}
 
 \begin{definition}[Probability Density Function]
-Let $X$ be a r.v. of a probability space $(\Omega,\ma,\mathbb{P})$. $X$ is called an absolutely continuous (or a continuous) r.v. if there exists a nonnegative real-valued function $f_X:\ \mathbb{R}\to[0,\infty)$ s.t.
+Let $X$ be a r.v. of a probability space $(\Omega,\ma,\mathbb{P})$. $X$ is called an absolutely continuous (or a continuous) r.v. if there exists a nonnegative real-valued function $f_X: \mathbb{R}\to[0,\infty)$ s.t.
 $$
-\mathbb{P}(x\in B)=\int_{B}{f_X(x)\dif x},\ \forall B\in \mb_\mr.
+\mathbb{P}(x\in B)=\int_{B}{f_X(x)\dif x}, \forall B\in \mb_\mr.
 $$
 The function $f_X$ is called the probability density function (p.d.f.) of $X$.
 \end{definition}
@@ -1464,7 +1431,7 @@ The function $f_X$ is called the probability density function (p.d.f.) of $X$.
 $$
 \mathbb{P}(a\ls X\ls a+\delta)=\int_{a}^{a+\delta}{f_X(x)\dif x}=f_X\left(a_\delta\right)\cdot\delta,
 $$
-for some $a_\delta\in[a,\ a+\delta]$.\\
+for some $a_\delta\in[a, a+\delta]$.\\
 If $f_X$ is continuous at $a$
 $$
 \to\lim_{\delta\to0}{\frac{\mathbb{P}(a\ls X\ls a+\delta)}{\delta}}=\lim_{\delta\to0}{f_X(a_\delta)}=f_X\left(a\right).
@@ -1483,7 +1450,7 @@ $$
 $$
 \int_{-\infty}^{\infty}{f_X(x)\dif x}=1
 $$
-(3) If $f_X$ is continuous at $a$, then $F_X^\prime(a)=f_X(a)$. Therefore, if $f_X$ is a continuous function, then $F_X^\prime(x)=f_X(x),\ \forall x\in\mathbb{R}$.\\
+(3) If $f_X$ is continuous at $a$, then $F_X^\prime(a)=f_X(a)$. Therefore, if $f_X$ is a continuous function, then $F_X^\prime(x)=f_X(x), \forall x\in\mathbb{R}$.\\
 (4) $\mathbb{P}(X=a)=0,\forall a\in\mathbb{R}$. Therefore,
 $$\begin{aligned}
 &\mathbb{P}(a\ls X\ls b)=\mathbb{P}(a\ls X<b)\\
@@ -1498,7 +1465,7 @@ $$
 \end{proof}
 
 \begin{theorem}[Existence of P.D.F.]
-Suppose $f:\ \mathbb{R}\to[0,\infty)$ is a nonnegative real-valued function s.t.
+Suppose $f: \mathbb{R}\to[0,\infty)$ is a nonnegative real-valued function s.t.
 $$
 \int_{-\infty}^{\infty}{f(x)\dif x}=1.
 $$
@@ -1510,12 +1477,12 @@ Then there exists a continuous r.v. $X$ of some probability space $(\Omega,\ma,\
 \end{proof}
 
 \begin{definition}[Sufficient Conditions of P.D.F.]
-A nonnegative real-valued function $f:\ \mathbb{R}\to[0,\infty)$ s.t.
+A nonnegative real-valued function $f: \mathbb{R}\to[0,\infty)$ s.t.
 $$
 \int_{-\infty}^{\infty}{f(x)\dif x}=1
 $$
 is called a p.d.f. \\
-The c.d.f. $F:\ \mathbb{R}\to[0,1]$ associated with $f$ is given by
+The c.d.f. $F: \mathbb{R}\to[0,1]$ associated with $f$ is given by
 $$
 F(t)=\int_{-\infty}^{t}{f(x)\dif x},\forall t\in\mathbb{R}.
 $$
@@ -1546,9 +1513,9 @@ $$
 Suppose $X$ is a continuous r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ such that its p.d.f. is continuous. Suppose $Y=g(X)$, where $g$ is a measurable function from $(\mathbb{R},\mb_\mathbb{R})$ to $(\mathbb{R},\mb_\mathbb{R})$.\\
 (1) If $g(X)$ is a discrete r.v., then
 $$
-P_Y(y)=\int_{x:g(x)=y}{f_X(x)\dif x},\ \forall y\in g\left[X(\Omega)\right].
+P_Y(y)=\int_{x:g(x)=y}{f_X(x)\dif x}, \forall y\in g\left[X(\Omega)\right].
 $$
-(2) If $g(X)$ is a continuous r.v., $g^\prime(x)$ exists, and $g^\prime(x)\neq0,\ \forall x\in g^{-1}\left(\left\{y\right\}\right):\{x:g(x)=y\}$, where $y\in g\left[X(\Omega)\right]$. Then,
+(2) If $g(X)$ is a continuous r.v., $g^\prime(x)$ exists, and $g^\prime(x)\neq0, \forall x\in g^{-1}\left(\left\{y\right\}\right):\{x:g(x)=y\}$, where $y\in g\left[X(\Omega)\right]$. Then,
 $$
 f_Y(y)=\sum_{x:g(x)=y}\frac{f_X(x)}{|g^\prime(x)|}.
 $$
@@ -1576,7 +1543,7 @@ and is given by $\mathbb{E}[X]=\pm\infty$, if the integration diverges to $\pm\i
 $$\begin{aligned}
 &\mathbb{E}[X]=\int_{-\infty}^{\infty}xf_X(x)\dif x=\int_{0}^{\infty}xf_X(x)\dif x-\int_{-\infty}^{0}(-x)f_X(x)\dif x\\
 \to &\mathbb{E}[|X|]=\int_{0}^{\infty}xf_X(x)\dif x+\int_{-\infty}^{0}(-x)f_X(x)\dif x\\
-\therefore\ &\mathbb{E}[|X|]<\infty\Leftrightarrow \int_{0}^{\infty}xf_X(x)\dif x<\infty  \text{ and } \int_{-\infty}^{0}(-x)f_X(x)\dif x<\infty.
+\therefore &\mathbb{E}[|X|]<\infty\Leftrightarrow \int_{0}^{\infty}xf_X(x)\dif x<\infty  \text{ and } \int_{-\infty}^{0}(-x)f_X(x)\dif x<\infty.
 \end{aligned}$$
 \end{remark}
 
@@ -1615,7 +1582,7 @@ $$
 $$
 Therefore,
 $$
-\mathbb{E}[|X|] < \infty\  \Leftrightarrow \sum_{n = 1}^{\infty}{\mathbb{P}(|X| \gs n)} \ls \infty.
+\mathbb{E}[|X|] < \infty  \Leftrightarrow \sum_{n = 1}^{\infty}{\mathbb{P}(|X| \gs n)} \ls \infty.
 $$
 \end{theorem}
 
@@ -1675,7 +1642,7 @@ $$
 (2)
 $$
 \mathrm{Var}(aX+b)=a^2\mathrm{Var}(x),\quad
-\sigma_{aX+b}=\left|a\right|\sigma_X,\ \forall a,b\in\mathbb{R}.
+\sigma_{aX+b}=\left|a\right|\sigma_X, \forall a,b\in\mathbb{R}.
 $$
 \end{theorem}
 
@@ -1687,12 +1654,12 @@ $$
 Let $X$ be a continuous r.v. of a probability space $(\Omega,\ma,\mathbb{P})$, and $r,c\in\mr$.
 $$\left\{
 \begin{array}{l}
-\text{The }r^{th}\ \text{moment of } X\ \text{is given by } \mathbb{E}[X^r]   \\                              
-\text{The }r^{th}\ \text{central moment of } X\ \text{is given by } \mathbb{E}[(X-\mathbb{E}[X])^r]\\
-\text{The }r^{th}\ \text{moment of } c\ \text{is given by } \mathbb{E}[(X-c)^r]      \\     
-\text{The }r^{th}\ \text{absolute moment of } X\ \text{is given by } \mathbb{E}[|X|^r]\\
-\text{The }r^{th}\ \text{absolute central moment of } X \text{is given by } \mathbb{E}[|X-\mathbb{E}[X] |^r]  \\
-\text{The } r^{th}\ \text{absolute moment of } c\ \text{is given by } \mathbb{E}[|X-c|^r] 
+\text{The }r^{th} \text{moment of } X \text{is given by } \mathbb{E}[X^r]   \                              
+\text{The }r^{th} \text{central moment of } X \text{is given by } \mathbb{E}[(X-\mathbb{E}[X])^r]\\
+\text{The }r^{th} \text{moment of } c \text{is given by } \mathbb{E}[(X-c)^r]      \     
+\text{The }r^{th} \text{absolute moment of } X \text{is given by } \mathbb{E}[|X|^r]\\
+\text{The }r^{th} \text{absolute central moment of } X \text{is given by } \mathbb{E}[|X-\mathbb{E}[X] |^r]  \\
+\text{The } r^{th} \text{absolute moment of } c \text{is given by } \mathbb{E}[|X-c|^r] 
 \end{array}
 \right.$$
 If the respective sum converges absolutely.
@@ -1709,7 +1676,7 @@ Suppose $X$ is a continuous r.v. of a probability space $(\Omega,\ma,\mathbb{P})
 \begin{theorem}[Positive Variance]
 Suppose $X$ is a continuous r.v. of a probability space $(\Omega,\ma,\mathbb{P})$. Then
 $$
-\mathbb{E}\left[\left(X-a\right)^2\right]>0,\ \forall a\in\mathbb{R}.
+\mathbb{E}\left[\left(X-a\right)^2\right]>0, \forall a\in\mathbb{R}.
 $$
 Therefore
 $$
@@ -1728,14 +1695,14 @@ $$
 A continuous r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ is called a uniform r.v. over $(\alpha,\beta)$, where $\alpha,\beta\in\mathbb{R}$ and $\alpha<\beta$, denoted $X\sim U(\alpha,\beta)$, if its p.d.f. is given by
 $$
 f_{X}(x) = \left\{ \begin{aligned}
-&\frac{1}{\beta - \alpha},\quad\mathrm{\text{if}}\ \alpha < x < \beta \\
-&\quad0,\qquad\mathrm{\text{o.w.}}\\
+&\frac{1}{\beta - \alpha},\quad~\text{if}~ \alpha < x < \beta \\
+&\quad0,\qquad~\text{o.w.}~\\
 \end{aligned} \right.
 $$
 \end{definition}
 
 \begin{remark}[P.D.F. and C.D.F.]
-(1) $f_X(x)\gs0,\ \forall x\in\mathbb{R}$, and
+(1) $f_X(x)\gs0, \forall x\in\mathbb{R}$, and
 $$
 \int_{-\infty}^{\infty}{f_X(x)}\dif x=\int_{\alpha}^{\beta}\frac{1}{\beta-\alpha}\dif x=1
 $$
@@ -1743,9 +1710,9 @@ $\to f_X(x)$ is a p.d.f.\\
 (2)
 $$
 F_{X}(x) = \left\{ \begin{array}{cl}
-0,&\mathrm{\text{if}}\ x \ls \alpha \\
-\frac{x - \alpha}{\beta - \alpha},&\mathrm{\text{if}}\ \alpha < x < \beta \\
-1,&\mathrm{\text{if}}\ x \gs \beta \\
+0,&~\text{if}~ x \ls \alpha \\
+\frac{x - \alpha}{\beta - \alpha},&~\text{if}~ \alpha < x < \beta \\
+1,&~\text{if}~ x \gs \beta \\
 \end{array} \right.
 $$
 \end{remark}
@@ -1767,7 +1734,7 @@ $$
 \end{proof}
 
 \begin{remark}[Expectation and Variance of Discrete ``Uniform R.V.'']
-Suppose $X\sim\ \mathrm{Uniform}(1,2,\ \cdots,n)$, where $n\gs1$. Then
+Suppose $X\sim \mathrm{Uniform}(1,2, \cdots,n)$, where $n\gs1$. Then
 $$
 \mathbb{E}[ X] = \frac{n + 1}{2},\quad \mathbb{E}\left[ X^{2}\right] = \frac{(n + 1)(2n + 1)}{6}
 $$
@@ -1780,8 +1747,8 @@ $$
 \begin{theorem}[Linear Generated R.V.]
 Suppose $X\sim U(\alpha,\beta)$, where $\alpha,\beta\in\mathbb{R}$ and $\alpha<\beta$. Suppose $Y=aX+b$, where $\alpha,\beta\in\mathbb{R}$ and $a\neq0$. Then
 \[Y\sim\left\{ \begin{aligned}
-&U\left( a\alpha + b,a\beta + b \right),\quad\mathrm{\text{if}}\ a > 0 \\
-&U\left( a\beta + b,a\alpha + b \right),\quad\mathrm{\text{if}}\ a < 0 \\
+&U\left( a\alpha + b,a\beta + b \right),\quad~\text{if}~ a > 0 \\
+&U\left( a\beta + b,a\alpha + b \right),\quad~\text{if}~ a < 0 \\
 \end{aligned} \right.\]
 \end{theorem}
 
@@ -1794,12 +1761,12 @@ Suppose $X\sim U(\alpha,\beta)$, where $\alpha,\beta\in\mathbb{R}$ and $\alpha<\
 \begin{definition}[Normal (Gaussian) R.V.]
 A continuous r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ is called a normal (Gaussian) r.v. with parameters $\mu$ and $\sigma^2$, where $\mu,\sigma\in\mathbb{R}$, $\sigma\neq0$, denoted $X\sim \mathcal{N}(\mu,\sigma^2)$, if its p.d.f. is given by
 $$
-f_X(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\cdot\exp\left[{-\frac{(x-\mu)^2}{2\sigma^2}}\right],\ -\infty<x<\infty.
+f_X(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\cdot\exp\left[{-\frac{(x-\mu)^2}{2\sigma^2}}\right], -\infty<x<\infty.
 $$
 \end{definition}
 
 \begin{remark}[P.D.F. and C.D.F.]
-(1) $f_X(x)\gs0,\ \forall x\in\mathbb{R}$, and let $I=\int_{-\infty}^{\infty}e^{-ax^2}\dif x$.
+(1) $f_X(x)\gs0, \forall x\in\mathbb{R}$, and let $I=\int_{-\infty}^{\infty}e^{-ax^2}\dif x$.
 $$\begin{aligned}
 I^2&=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}{e^{-a\left(x^2+y^2\right)}\dif x\dif y}\\
 &\xrightarrow{x=r\cos\theta,y=r\sin\theta}\int_{0}^{\infty}\int_{0}^{2\pi}{e^{-ar^2}r\dif r\dif\theta}=\frac{\pi}{a}\\
@@ -1810,7 +1777,7 @@ $$
 \therefore\int_{-\infty}^{\infty}{f_X(x)}\dif x=\int_{-\infty}^{\infty}{\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\tfrac{(x-\mu)^2}{2\sigma^2}}}\dif x=\int_{-\infty}^{\infty}{\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\tfrac{x^2}{2\sigma^2}}}\dif x=1
 $$
 $\to f_X(x)$ is a p.d.f.\\
-(2) If $\mu=0,\ \sigma^2=1$, then $X$ is called a standard normal (Gaussian) r.v.\\
+(2) If $\mu=0, \sigma^2=1$, then $X$ is called a standard normal (Gaussian) r.v.\\
 (3)
 $$\begin{aligned}
 F_X(x)&=\int_{-\infty}^{x}{\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\tfrac{(y-\mu)^2}{2\sigma^2}}}\dif y\\
@@ -1827,7 +1794,7 @@ $$
 \begin{theorem}[Symmetric about ${\mu}$]
 Suppose $X\sim \mathcal{N}(\mu,\sigma^2)$.\\
 (1) $f_X(x)$ is symmetric about $x=\mu$, with maximum at $x=\mu$, and inflection points at $x=\mu\pm\sigma$.\\
-(2) $\Phi\left(-y\right)=1-{\Phi}(y),\ \forall y\in\mathbb{R}$ and $\Phi\left(0\right)=1$. Therefore, $$F_X\left(\mu-y\right)=1-F_X\left(\mu+y\right)$$ and $$F_X\left(\mu\right)=\frac{1}{2}.$$
+(2) $\Phi\left(-y\right)=1-{\Phi}(y), \forall y\in\mathbb{R}$ and $\Phi\left(0\right)=1$. Therefore, $$F_X\left(\mu-y\right)=1-F_X\left(\mu+y\right)$$ and $$F_X\left(\mu\right)=\frac{1}{2}.$$
 \end{theorem}
 
 \begin{proof}
@@ -1835,7 +1802,7 @@ Suppose $X\sim \mathcal{N}(\mu,\sigma^2)$.\\
 \end{proof}
 
 \begin{theorem}[Linear Generated R.V.]
-Suppose $X\sim \mathcal{N}(\mu,\sigma^2)$, where $\mu,\sigma\in\mathbb{R},\ \sigma\neq0$. Suppose $Y=aX+b$, where $\alpha,\beta\in\mathbb{R}$ and $a\neq0$. Then,
+Suppose $X\sim \mathcal{N}(\mu,\sigma^2)$, where $\mu,\sigma\in\mathbb{R}, \sigma\neq0$. Suppose $Y=aX+b$, where $\alpha,\beta\in\mathbb{R}$ and $a\neq0$. Then,
 $$
 Y\sim \mathcal{N}\left(a\mu+b,a^2\sigma^2\right).
 $$
@@ -1856,7 +1823,7 @@ $$
 \begin{definition}[Gamma Function]
 The function $\Gamma:(0,\infty)\to\mathbb{R}$ given by
 $$
-{\Gamma}(\alpha)=\int_{0}^{\infty}e^{-t}t^{\alpha-1}\dif t,\ \forall\alpha>0
+{\Gamma}(\alpha)=\int_{0}^{\infty}e^{-t}t^{\alpha-1}\dif t, \forall\alpha>0
 $$
 is called the gamma function.
 \end{definition}
@@ -1864,15 +1831,15 @@ is called the gamma function.
 \begin{theorem}[Properties of Gamma Function]
 (1)
 $$
-{\Gamma}(\alpha+1)=\alpha\Gamma(\alpha),\ \forall\alpha>0.
+{\Gamma}(\alpha+1)=\alpha\Gamma(\alpha), \forall\alpha>0.
 $$
 (2)
 $$
-{\Gamma}(n+1)=n!,\ \forall n\gs0.
+{\Gamma}(n+1)=n!, \forall n\gs0.
 $$
 (3)
 $$
-{\Gamma}\left(n+\frac{1}{2}\right)=\frac{\left(2n\right)!}{2^{2n}n!}\sqrt\pi,\ \forall n\gs0.
+{\Gamma}\left(n+\frac{1}{2}\right)=\frac{\left(2n\right)!}{2^{2n}n!}\sqrt\pi, \forall n\gs0.
 $$
 \end{theorem}
 
@@ -1881,16 +1848,16 @@ $$
 \end{proof}
 
 \begin{theorem}[Calculation of Moment and Absolute Moment]
-Suppose $X\sim \mathcal{N}(\mu,\sigma^2)$, where $\mu,\sigma\in\mathbb{R},\ \ \sigma\neq0$.\\
+Suppose $X\sim \mathcal{N}(\mu,\sigma^2)$, where $\mu,\sigma\in\mathbb{R},  \sigma\neq0$.\\
 (1)
 \[\mathbb{E}\left[ \left| x - \mu \right|^{n} \right] = \frac{\left( 2\sigma^{2} \right)^{\tfrac{n}{2}}}{\sqrt{\pi}}\Gamma\left( \frac{n + 1}{2} \right) = \left\{ \begin{array}{cll}
-\frac{2^{k + 1} \cdot k!}{\sqrt{2\pi}}\sigma^{2k + 1},&\mathrm{\text{if}}\ n = 2k + 1,&k \gs 0 \vspace{0.5cm}\\
-\frac{(2k)!}{2^{k} \cdot k!}\sigma^{2k},&\text{if}\ \ n = 2k,&k \gs 0 \\
+\frac{2^{k + 1} \cdot k!}{\sqrt{2\pi}}\sigma^{2k + 1},&~\text{if}~~n = 2k + 1,&k \gs 0 \\
+\frac{(2k)!}{2^{k} \cdot k!}\sigma^{2k},&\text{if}~n = 2k,&k \gs 0 \\
 \end{array} \right.\]
 (2)
 \[\mathbb{E}\left[ {(x - \mu)}^{n} \right] = \left\{ \begin{array}{cll}
-0,&\mathrm{\text{if}}\ n = 2k + 1,&k \gs 0 \vspace{0.5cm}\\
-\frac{(2k)!}{2^{k} \cdot k!}\sigma^{2k}\,&{\text{if}}\ \ n = 2k,&k \gs 0 \\
+0,&~\text{if}~~n = 2k + 1,&k \gs 0 \\
+\frac{(2k)!}{2^{k} \cdot k!}\sigma^{2k}\,&{\text{if}}~ n = 2k,&k \gs 0 \\
 \end{array} \right.\]
 (3)
 \[\mathbb{E}[X^{n}] = \sum_{k = 0}^{n}\binom n k \mathbb{E}\left[ \left( x - \mu \right)^{k} \right]\cdot \mu^{n - k}.\]
@@ -1901,8 +1868,8 @@ Suppose $X\sim \mathcal{N}(\mu,\sigma^2)$, where $\mu,\sigma\in\mathbb{R},\ \ \s
 \end{proof}
 
 \begin{theorem}[De Moivre-Laplace Theorem]
-Suppose $X\sim\ \mathrm{binomial}(n,p)$, where $n\gs1$ and $0<p<1$. Then
-\[\lim_{n \to \infty}{\mathbb{P}\left( a < \frac{X - np}{\sqrt{np( 1 - p )}} < b \right) = \int_{a}^{b}\frac{1}{\sqrt{2\pi}}}e^{- \tfrac{x^{2}}{2}}\dif x,\ \forall a,b \in \mathbb{R},\ a < b.\]
+Suppose $X\sim \mathrm{binomial}(n,p)$, where $n\gs1$ and $0<p<1$. Then
+\[\lim_{n \to \infty}{\mathbb{P}\left( a < \frac{X - np}{\sqrt{np( 1 - p )}} < b \right) = \int_{a}^{b}\frac{1}{\sqrt{2\pi}}}e^{- \tfrac{x^{2}}{2}}\dif x, \forall a,b \in \mathbb{R}, a < b.\]
 \end{theorem}
 
 \begin{proof}
@@ -1910,7 +1877,7 @@ Suppose $X\sim\ \mathrm{binomial}(n,p)$, where $n\gs1$ and $0<p<1$. Then
 \end{proof}
 
 \begin{theorem}[Approximation of $\Phi(x)$]
-\[\frac{1}{\sqrt{2\pi}x}\left( 1 - \frac{1}{x^{2}} \right)e^{- \tfrac{{x}^{2}}{2}} < 1 - \Phi(x) < \frac{1}{\sqrt{2\pi}x} \cdot e^{- \tfrac{{x}^{2}}{2}},\ \forall x > 0.\]
+\[\frac{1}{\sqrt{2\pi}x}\left( 1 - \frac{1}{x^{2}} \right)e^{- \tfrac{{x}^{2}}{2}} < 1 - \Phi(x) < \frac{1}{\sqrt{2\pi}x} \cdot e^{- \tfrac{{x}^{2}}{2}}, \forall x > 0.\]
 \end{theorem}
 
 \begin{proof}
@@ -1918,7 +1885,7 @@ Suppose $X\sim\ \mathrm{binomial}(n,p)$, where $n\gs1$ and $0<p<1$. Then
 \end{proof}
 
 \begin{theorem}[Expectation of Exponential Function]
-Suppose $X\sim \mathcal{N}(\mu,\sigma^2)$, where $\mu,\sigma\in\mathbb{R},\ \sigma\neq0$, and $\alpha\in\mathbb{R}$.
+Suppose $X\sim \mathcal{N}(\mu,\sigma^2)$, where $\mu,\sigma\in\mathbb{R}, \sigma\neq0$, and $\alpha\in\mathbb{R}$.
 Then 
 $$
 \mathbb{E}\left[e^{\alpha x}\right]=e^{\alpha\mu+\tfrac{1}{2}\alpha^2\sigma^2}.
@@ -1934,10 +1901,10 @@ $$
 \begin{definition}[Gamma R.V., Erlang R.V. and Exponential R.V.]
 A continuous r.v. of a probability space $(\Omega,\ma,\mathbb{P})$ is called a gamma r.v. with parameters $\alpha$ and $\lambda$, where $\alpha,\lambda>0$, denoted $X\sim \mathcal{G}(\alpha,\lambda)$, if its p.d.f. is given by
 \[f_{X}(x) = \left\{ \begin{aligned}
-&\frac{\lambda e^{- \lambda x}{(\lambda x)}^{\alpha - 1}}{\Gamma( \alpha )},\ \mathrm{\text{if}}\ \alpha > 0 \\
-&\quad0,\quad\mathrm{\text{o.w.}} \\
-\end{aligned} \right.\ \]
-If $\alpha=n,\ n\gs1$, then $X$ is called an Erlang r.v. with parameters $n$ and $\lambda$, denoted $X\sim\me(n,\lambda)$.\\
+&\frac{\lambda e^{- \lambda x}{(\lambda x)}^{\alpha - 1}}{\Gamma( \alpha )}, ~\text{if}~ \alpha > 0 \\
+&\quad0,\quad~\text{o.w.}~ \\
+\end{aligned} \right. \]
+If $\alpha=n, n\gs1$, then $X$ is called an Erlang r.v. with parameters $n$ and $\lambda$, denoted $X\sim\me(n,\lambda)$.\\
 If $\alpha=1$, then $X$ is called an exponential r.v. with parameters $\lambda$, denoted $X\sim\me(\lambda)$.
 \end{definition}
 
@@ -1958,19 +1925,19 @@ $$\begin{aligned}
 &=\frac{\lambda^\alpha}{{\Gamma}(\alpha)}\cdot e^{-\lambda x}\cdot x^{\alpha-3}\left[\left(\lambda x-\left(\alpha-1\right)\right)^2-\left(\alpha-1\right)\right]
 \end{aligned}$$
 $$
-\therefore0<\alpha\ls1\ \to\ f_X^\prime(x)<0,\ f_X^{\prime\prime}(x)>0,\ \forall x>0.
+\therefore0<\alpha\ls1 \to f_X^\prime(x)<0, f_X^{\prime\prime}(x)>0, \forall x>0.
 $$
 \[\alpha > 1 \to f_{X}^{'}(x)\left\{ \begin{aligned}
- &> 0\  \Leftrightarrow x < \frac{\alpha - 1}{\lambda} \\
+ &> 0  \Leftrightarrow x < \frac{\alpha - 1}{\lambda} \\
  &= 0 \Leftrightarrow x = \frac{\alpha - 1}{\lambda} \\
  &< 0 \Leftrightarrow x > \frac{\alpha - 1}{\lambda} \\
-\end{aligned} \right.\ \]
+\end{aligned} \right. \]
 and
 \[f_{X}^{''}(x)\left\{ \begin{aligned}
-& > 0\  \Leftrightarrow x > \frac{\alpha - 1}{\lambda} + \frac{\sqrt{\alpha - 1}}{\lambda}\ \text{or}\ x < \frac{\alpha - 1}{\lambda} - \frac{\sqrt{\alpha - 1}}{\lambda} \\
- &= 0\  \Leftrightarrow x = \frac{\alpha - 1}{\lambda} \pm \frac{\sqrt{\alpha - 1}}{\lambda} \\
-& < 0\  \Leftrightarrow\frac{\alpha - 1}{\lambda} - \frac{\sqrt{\alpha - 1}}{\lambda} < x < \frac{\alpha - 1}{\lambda} + \frac{\sqrt{\alpha - 1}}{\lambda}\\
-\end{aligned} \right.\ \]
+& > 0  \Leftrightarrow x > \frac{\alpha - 1}{\lambda} + \frac{\sqrt{\alpha - 1}}{\lambda} \text{or} x < \frac{\alpha - 1}{\lambda} - \frac{\sqrt{\alpha - 1}}{\lambda} \\
+ &= 0  \Leftrightarrow x = \frac{\alpha - 1}{\lambda} \pm \frac{\sqrt{\alpha - 1}}{\lambda} \\
+& < 0  \Leftrightarrow\frac{\alpha - 1}{\lambda} - \frac{\sqrt{\alpha - 1}}{\lambda} < x < \frac{\alpha - 1}{\lambda} + \frac{\sqrt{\alpha - 1}}{\lambda}\\
+\end{aligned} \right. \]
 \end{remark}
 
 \begin{theorem}[Calculation of C.D.F.]
@@ -2004,7 +1971,7 @@ $$
 {(\alpha)}_n=\binom{n+\alpha-1}{n}=\left(n+\alpha-1\right)\cdots\left(\alpha-1\right)\cdot\alpha
 $$
 Therefore,
-\[\mathbb{E}[ X] = \frac{\alpha}{\lambda}\text{\ \ }\mathrm{\text{and}}\mathrm{\ }\ \mathrm{Var}(x) = \frac{\alpha}{\lambda^{2}}.
+\[\mathbb{E}[ X] = \frac{\alpha}{\lambda}\text{  }\text{and}\mathrm{Var}(x) = \frac{\alpha}{\lambda^{2}}.
 \]
 \end{theorem}
 
@@ -2031,7 +1998,7 @@ Suppose $X\sim \mathcal{N}(\mu,\sigma^2)$, where $\mu,\sigma\in\mathbb{R}$, $\si
 \end{proof}
 
 \begin{lemma}[Plus to Multiply Property of Exponential Function]
-Suppose $f:[0,+\infty)\to\mathbb{R}$ is right continuous on $[0,+\infty)$ and $f(x+y)=f(x)\cdot f(y),\ \forall x,y\gs0$. Then there either $f(x)=0,\ \forall x\gs0$ or $\exists\lambda\in\mathbb{R}$ s.t. $f(x)=e^{-\lambda x},\ \forall x\gs0$.
+Suppose $f:[0,+\infty)\to\mathbb{R}$ is right continuous on $[0,+\infty)$ and $f(x+y)=f(x)\cdot f(y), \forall x,y\gs0$. Then there either $f(x)=0, \forall x\gs0$ or $\exists\lambda\in\mathbb{R}$ s.t. $f(x)=e^{-\lambda x}, \forall x\gs0$.
 \end{lemma}
 
 \begin{proof}
@@ -2039,7 +2006,7 @@ Suppose $f:[0,+\infty)\to\mathbb{R}$ is right continuous on $[0,+\infty)$ and $f
 \end{proof}
 
 \begin{theorem}[Memoryless Property]
-Suppose $X$ is a nonnegative continuous r.v. of a probability space $(\Omega,\ma,\mathbb{P})$. Then $\mathbb{P}(x>s+t| x>s)=\mathbb{P}(x>t),\ \forall s,t>0\ \Leftrightarrow X\sim\me(\lambda)$, for some $\lambda>0$.
+Suppose $X$ is a nonnegative continuous r.v. of a probability space $(\Omega,\ma,\mathbb{P})$. Then $\mathbb{P}(x>s+t| x>s)=\mathbb{P}(x>t), \forall s,t>0 \Leftrightarrow X\sim\me(\lambda)$, for some $\lambda>0$.
 \end{theorem}
 
 \begin{proof}
@@ -2059,33 +2026,33 @@ Suppose $X\sim\me(\lambda)$ where $\lambda>0$ and $Y=\left\lceil X\right\rceil$.
 \end{proof}
 
 \begin{definition}[Independent Set]
-A set of r.v.'s $\{X_i:i\in I\}$ of a probability space $(\Omega,\ma,\mathbb{P})$ is called independent, if for any finite subset $\left\{X_{i_1},X_{i_2},\ \cdots,X_{i_k}\right\},\ k\gs2$ of $\{X_i:i\in I\}$ the events
+A set of r.v.'s $\{X_i:i\in I\}$ of a probability space $(\Omega,\ma,\mathbb{P})$ is called independent, if for any finite subset $\left\{X_{i_1},X_{i_2}, \cdots,X_{i_k}\right\}, k\gs2$ of $\{X_i:i\in I\}$ the events
 $$
-X_{i_1}\in B_1,\ X_{i_2}\in B_2,\ \cdots,X_{i_k}\in B_k
+X_{i_1}\in B_1, X_{i_2}\in B_2, \cdots,X_{i_k}\in B_k
 $$
-are independent for all $B_1,B_2,\ \cdots,B_k\in\mb_\mathbb{R}$.\\
+are independent for all $B_1,B_2, \cdots,B_k\in\mb_\mathbb{R}$.\\
 Otherwise, $\{X_i:i\in I\}$ is called dependent.
 \end{definition}
 
 \begin{definition}[Continuous R.Vect.]
-A r.vect. $\mX=(X_1,\ X_2,\ \cdots,X_n)$ of a probability space $(\Omega,\ma,\mathbb{P})$ is called an absolute continuous r.vect. (or continuous r.vect.) if there exists a nonnegative real-valued function $f_{\mX}:\mathbb{R}^n\to[0,\infty)$ s.t.
+A r.vect. $\mX=(X_1, X_2, \cdots,X_n)$ of a probability space $(\Omega,\ma,\mathbb{P})$ is called an absolute continuous r.vect. (or continuous r.vect.) if there exists a nonnegative real-valued function $f_{\mX}:\mathbb{R}^n\to[0,\infty)$ s.t.
 $$
-\mathbb{P}(X_1\in B_1,X_2\in B_2,\ \cdots,X_n\in B_k)=\int_{B_1}\int_{B_2}{\cdots\int_{B_n}{f_{\mX}(\mx)\dif x_n}}\cdots \dif x_2\dif x_1
+\mathbb{P}(X_1\in B_1,X_2\in B_2, \cdots,X_n\in B_k)=\int_{B_1}\int_{B_2}{\cdots\int_{B_n}{f_{\mX}(\mx)\dif x_n}}\cdots \dif x_2\dif x_1
 $$
-for all $B_1,B_2,\ \cdots,B_n\in\mb_\mathbb{R}$.\\
-Then the function $f_{\mX}$ is called the p.d.f. of the r.vect. $\mX$, or the joint p.d.f. of the r.v.'s $X_1,\ X_2,\ \cdots,X_n$.
+for all $B_1,B_2, \cdots,B_n\in\mb_\mathbb{R}$.\\
+Then the function $f_{\mX}$ is called the p.d.f. of the r.vect. $\mX$, or the joint p.d.f. of the r.v.'s $X_1, X_2, \cdots,X_n$.
 \end{definition}
 
 \begin{theorem}[P.D.F. and C.D.F. of Continuous R.Vect.]
-Suppose $\mX=(X_1,\ X_2,\ \cdots,X_n)$ is a continuous r.vect. and 
+Suppose $\mX=(X_1, X_2, \cdots,X_n)$ is a continuous r.vect. and 
 $$
-F_{\mX}(\mx)=\mathbb{P}(X_1\ls x_1,X_2\ls x_2,\ \cdots,X_n\ls x_n).
+F_{\mX}(\mx)=\mathbb{P}(X_1\ls x_1,X_2\ls x_2, \cdots,X_n\ls x_n).
 $$
 Then
 $$
 f_{\mX}(\mx)=\frac{\partial F_{\mX}(\mx)}{\partial x_1\cdots\partial x_n}.
 $$
-Furthermore, if $X_1,\ X_2,\ \cdots,X_n$ are independent, then
+Furthermore, if $X_1, X_2, \cdots,X_n$ are independent, then
 $$
 f_{\mX}(\mx)=f_{X_1}(x)f_{X_2}(x)\cdots f_{X_n}(x).
 $$
@@ -2111,15 +2078,15 @@ $$
 \end{proof}
 
 \begin{definition}[Beta Function]
-The function $B:\ \mathbb{R}^+\times\mathbb{R}^+\to\mathbb{R}$ is given by
+The function $B: \mathbb{R}^+\times\mathbb{R}^+\to\mathbb{R}$ is given by
 $$
-B(\alpha,\beta)=\int_{0}^{1}x^{\alpha-1}{(1-x)}^{\beta-1}\dif x,\ \forall\alpha,\beta>0
+B(\alpha,\beta)=\int_{0}^{1}x^{\alpha-1}{(1-x)}^{\beta-1}\dif x, \forall\alpha,\beta>0
 $$
 is called beta function.
 \end{definition}
 
 \begin{lemma}[Calculation of Beta Function]
-\[B(\alpha,\beta) = \frac{\Gamma( \alpha ) \cdot \Gamma( \beta )}{\Gamma( \alpha + \beta)},\ \forall\alpha,\beta > 0.\]
+\[B(\alpha,\beta) = \frac{\Gamma( \alpha ) \cdot \Gamma( \beta )}{\Gamma( \alpha + \beta)}, \forall\alpha,\beta > 0.\]
 \end{lemma}
 
 \begin{proof}
@@ -2127,7 +2094,7 @@ is called beta function.
 \end{proof}
 
 \begin{theorem}[Independent Additivity of Gamma R.V.]
-Suppose $X_i\sim\mathcal{G}(\alpha_i,\lambda)$ where $\alpha_i,\lambda>0$, $i=1,2,\ \cdots,n,$ ${X}_1,\ X_2,\ \cdots,X_n$ are independent, and $Y=X_1+X_2+\cdots+X_n$. Then
+Suppose $X_i\sim\mathcal{G}(\alpha_i,\lambda)$ where $\alpha_i,\lambda>0$, $i=1,2, \cdots,n,$ ${X}_1, X_2, \cdots,X_n$ are independent, and $Y=X_1+X_2+\cdots+X_n$. Then
 \[Y\sim\mathcal{G}\left( \sum_{i = 1}^{n}\alpha_{i},\lambda \right).\]
 \end{theorem}
 
@@ -2136,8 +2103,8 @@ Suppose $X_i\sim\mathcal{G}(\alpha_i,\lambda)$ where $\alpha_i,\lambda>0$, $i=1,
 \end{proof}
 
 \begin{theorem}[Independent Minimum of Exponential R.V.]
-Suppose $X_i\sim\me(\lambda_i)$ where $\lambda_i>0,\ i=1,2,\ \cdots,n$, and ${X}_1,X_2,\ \cdots,X_n$ are independent.\\
-(1) If $Y=\min\{X_1,X_2,\ \cdots,X_n\}$, then
+Suppose $X_i\sim\me(\lambda_i)$ where $\lambda_i>0, i=1,2, \cdots,n$, and ${X}_1,X_2, \cdots,X_n$ are independent.\\
+(1) If $Y=\min\{X_1,X_2, \cdots,X_n\}$, then
 \[Y\sim\me\left( \sum_{i = 1}^{n}\lambda_{i} \right).\]
 (2)
 $$
@@ -2154,15 +2121,15 @@ A stochastic process (s.p.) $\{X(t):i\in I\}$ is a collection of r.v.'s of a pro
 \end{definition}
 
 \begin{definition}[Counting Process and Poisson Process]
-Let $\{T_1,T_2,\cdots\}$ be a discrete-time S.P. s.t. $T_i,\ i=1,2,\dots$, is the time of occurrence of the $i^{th}$ event, and $0<T_1<T_2<\cdots$.\\
+Let $\{T_1,T_2,\cdots\}$ be a discrete-time S.P. s.t. $T_i, i=1,2,\dots$, is the time of occurrence of the $i^{th}$ event, and $0<T_1<T_2<\cdots$.\\
 
-Let $X_i=T_i-T_{i-1},\ i=1,2,\dots$, where $T_0=0$ be the inter-occurrence time between the ${(i-1)}^{th}$ and the $i^{th}$ events, and $N(t)=|\{i:0<T_i\ls t\}|$ be the number of events occurring in $(0,t]$, so that $\{N(t):0<t<\infty\}$ is called the counting process of the S.P. $\{T_1,T_2,\cdots\}$.\\
+Let $X_i=T_i-T_{i-1}, i=1,2,\dots$, where $T_0=0$ be the inter-occurrence time between the ${(i-1)}^{th}$ and the $i^{th}$ events, and $N(t)=|\{i:0<T_i\ls t\}|$ be the number of events occurring in $(0,t]$, so that $\{N(t):0<t<\infty\}$ is called the counting process of the S.P. $\{T_1,T_2,\cdots\}$.\\
 
 Then we call $\{T_1,T_2,\cdots\}$ a Poisson process with rate $\lambda$, if $X_1,X_2,\cdots$ are independent and identically distributed (i.i.d.) and $N(t)\sim\mathrm{Poisson}(\lambda t)$.
 \end{definition}
 
 \begin{theorem}[Necessary and Sufficient Condition of Poisson Process]
-Suppose $\{T_1,T_2,\cdots\}$ is a S.P. s.t. $0<T_1<T_2<\cdots$ and its inter-occurrence times $X_i=T_i-T_{i-1},\ i=1,2,\dots$ are i.i.d., where $T_0=0$. Then $\{T_1,T_2,\cdots\}$ is a Poisson process with rate $\lambda\ \Leftrightarrow X_i\sim\me(\lambda),\ i=1,2,\dots.$
+Suppose $\{T_1,T_2,\cdots\}$ is a S.P. s.t. $0<T_1<T_2<\cdots$ and its inter-occurrence times $X_i=T_i-T_{i-1}, i=1,2,\dots$ are i.i.d., where $T_0=0$. Then $\{T_1,T_2,\cdots\}$ is a Poisson process with rate $\lambda \Leftrightarrow X_i\sim\me(\lambda), i=1,2,\dots.$
 \end{theorem}
 
 \begin{proof}
@@ -2170,16 +2137,16 @@ Suppose $\{T_1,T_2,\cdots\}$ is a S.P. s.t. $0<T_1<T_2<\cdots$ and its inter-occ
 \end{proof}
 
 \begin{remark}[Negative Binomial $\leftrightarrow$ Geometric vs Gamma$ \leftrightarrow$ Exponential]
-(1) A negative binomial r.v. $T_r=X_1+\ X_2+\cdots+X_r\sim\text{neg.-binomial}(r,p)$ is the number of i.i.d. Bernoulli trials with the same probability of success $p$ until the $r^{th}$ success occurs, where $X_i\sim\mathrm{geometric}(p)$ is the number of Bernoulli trials between the ${(i-1)}^{th}$ and the $i^{th}$ successes, and $X_1,X_2,\cdots$ are independent.\\
+(1) A negative binomial r.v. $T_r=X_1+ X_2+\cdots+X_r\sim\text{neg.-binomial}(r,p)$ is the number of i.i.d. Bernoulli trials with the same probability of success $p$ until the $r^{th}$ success occurs, where $X_i\sim\mathrm{geometric}(p)$ is the number of Bernoulli trials between the ${(i-1)}^{th}$ and the $i^{th}$ successes, and $X_1,X_2,\cdots$ are independent.\\
 
 (2) A gamma r.v. $T_n=X_1+X_2+\cdots+X_n\sim\mathcal{G}(n,\lambda)$ is the time of occurrence of the $n^{th}$ event of a Poisson process with rate $\lambda$, where $X_i\sim\me(\lambda)$ is the inter-occurrence time between the ${(i-1)}^{th}$ and the $i^{th}$ events, and $X_1,X_2,\cdots$ are independent.
 \end{remark}
 
 \begin{theorem}[Merging and Splitting of Poisson Process]
-(1) Suppose that $k$ independent Poisson processes with rates $\lambda_1,\lambda_2,\ \cdots,\lambda_k$ are merged into a S.P. $\{T_1,T_2,\cdots\}$. Then $\{T_1,T_2,\cdots\}$ is a Poisson process with rate $\lambda=\lambda_1+\lambda_2+\cdots+\lambda_k$.\\
+(1) Suppose that $k$ independent Poisson processes with rates $\lambda_1,\lambda_2, \cdots,\lambda_k$ are merged into a S.P. $\{T_1,T_2,\cdots\}$. Then $\{T_1,T_2,\cdots\}$ is a Poisson process with rate $\lambda=\lambda_1+\lambda_2+\cdots+\lambda_k$.\\
 
-(2) Suppose that in a Poisson process with rate $\lambda$, an event is a type-$i$ event with probability $P_i,\ i=1,2,\ \cdots,k.$ Then the S.P. $\{T_1,T_2,\cdots\}$ of the times of the occurrences of the type-$i$ events is a
- Poisson process with rate $\lambda\cdot P_i,\ i=1,2,\ \cdots,k.$
+(2) Suppose that in a Poisson process with rate $\lambda$, an event is a type-$i$ event with probability $P_i, i=1,2, \cdots,k.$ Then the S.P. $\{T_1,T_2,\cdots\}$ of the times of the occurrences of the type-$i$ events is a
+ Poisson process with rate $\lambda\cdot P_i, i=1,2, \cdots,k.$
 \end{theorem}
 
 \begin{proof}
@@ -2191,29 +2158,31 @@ Suppose $\{T_1,T_2,\cdots\}$ is a S.P. s.t. $0<T_1<T_2<\cdots$ and its inter-occ
 \begin{definition}[Beta R.V.]
 A continuous r.v. $X$ of a probability space $(\Omega,\ma,\mathbb{P})$ is called a beta r.v. with parameter $\alpha$ and $\beta$, where $\alpha,\beta>0$, denoted $X\sim\mb(\alpha,\beta)$, if its p.d.f. is given by
 \[f_{X}(x) = \left\{ \begin{aligned}
-\frac{1}{B(\alpha,\beta)}&x^{\alpha - 1}{(1 - x)}^{\beta - 1},\ \mathrm{\text{if}}\ \ 0 < x < 1 \\
-&0, \qquad\mathrm{\text{o.w.}} \\
+\frac{1}{B(\alpha,\beta)}&x^{\alpha - 1}{(1 - x)}^{\beta - 1}, ~\text{if}~  0 < x < 1 \\
+&0, \qquad~\text{o.w.}~ \\
 \end{aligned} \right.\]
 where
 \[B(\alpha,\beta) = \int_{0}^{1}x^{\alpha - 1}{(1 - x)}^{\beta - 1}\dif x = \frac{\Gamma( \alpha ) \cdot \Gamma( \beta )}{\Gamma( \alpha + \beta )}.\]
 \end{definition}
 
 \begin{remark}[P.D.F. and C.D.F.]
-(1) $\int_{-\infty}^{\infty}{f_X(x)\dif x}=1\ \to\ f_X(x)$ is a p.d.f.
-\vspace{0.4cm}\\
-(2) Beta r.v.'s are good approximations of r.v.'s that vary between two limits.\vspace{0.2cm}\\
-(3) If $X_1,X_2,\ \cdots,X_n$ are i.i.d. $\sim U(0,1)$ and ${X}_{(i)}$ is the $i^{th}$ smallest r.v. of $X_1,X_2,\ \cdots,X_n$ so that $X_{(1)}\ls{X}_{(2)}\ls\cdots\ls X_{(n)}$, then
+(1) $\int_{-\infty}^{\infty}{f_X(x)\dif x}=1 \to f_X(x)$ is a p.d.f.
+
+(2) Beta r.v.'s are good approximations of r.v.'s that vary between two limits.
+
+(3) If $X_1,X_2, \cdots,X_n$ are i.i.d. $\sim U(0,1)$ and ${X}_{(i)}$ is the $i^{th}$ smallest r.v. of $X_1,X_2, \cdots,X_n$ so that $X_{(1)}\ls{X}_{(2)}\ls\cdots\ls X_{(n)}$, then
 $$
 {X}_{(i)}\sim\mb\left(i,n+1-i\right).
 $$
+
 (4)
 $$\begin{aligned}
 f_{X}^{'}(x) &= \frac{\left( \alpha - 1 \right)x^{\alpha - 2}\left( 1 - x \right)^{\beta - 1} - (\beta - 1)x^{\alpha - 1}{(1 - x)}^{\beta - 2}}{B(\alpha,\beta)}\\
 &= \frac{x^{\alpha - 2}{(1 - x)}^{\beta - 2}}{B(\alpha,\beta)}\left[ \left( \alpha - 1 \right) - \left( \alpha + \beta - 2 \right)x \right]\\
 &\to f_{X}^{'}(x)\left\{ \begin{aligned}
- &> 0,\ \Leftrightarrow \left( \alpha + \beta - 2 \right)x < \alpha - 1 \\
- &= 0,\ \Leftrightarrow \left( \alpha + \beta - 2 \right)x = \alpha - 1 \\
- &< 0,\ \Leftrightarrow \left( \alpha + \beta - 2 \right)x > \alpha - 1 \\
+ &> 0, \Leftrightarrow \left( \alpha + \beta - 2 \right)x < \alpha - 1 \\
+ &= 0, \Leftrightarrow \left( \alpha + \beta - 2 \right)x = \alpha - 1 \\
+ &< 0, \Leftrightarrow \left( \alpha + \beta - 2 \right)x > \alpha - 1 \\
 \end{aligned} \right.
 \end{aligned}$$
 $$\begin{aligned}
@@ -2250,7 +2219,7 @@ and
 \end{proof}
 
 \begin{theorem}[Beta R.V. vs Binomial R.V.]
-Suppose $X\sim\mb(\alpha,\beta)$, and $Y\sim\mathrm{binomial}(\alpha+\beta-1,p)$, where $\alpha,\beta\in\mathbb{Z}^+,\ 0<p<1$. Then
+Suppose $X\sim\mb(\alpha,\beta)$, and $Y\sim\mathrm{binomial}(\alpha+\beta-1,p)$, where $\alpha,\beta\in\mathbb{Z}^+, 0<p<1$. Then
 $$
 \mathbb{P}(X\ls p)=\mathbb{P}(Y\gs\alpha)
 $$
@@ -2269,38 +2238,38 @@ $$
 \section{Joint Distributions of Two or More R.V.'s}
 
 \begin{definition}[Joint P.M.F. of Multiple R.v.'s]
-Let $X_1,\ X_2,\ \cdots,X_n$ be discrete r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. The nonnegative function $P_X:\mathbb{R}^n\to[0,1]$ given by 
+Let $X_1, X_2, \cdots,X_n$ be discrete r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. The nonnegative function $P_X:\mathbb{R}^n\to[0,1]$ given by 
 \[p_{\mX}(\mx) = P_{\mX}\left( \left\{ \mx\right\} \right) = \mathbb{P}(\mX =\mx ) = \left\{ \begin{aligned}
-&\mathbb{P}(\mX =\mx ),\ \mx\in\mX(\Omega) \\
+&\mathbb{P}(\mX =\mx ), \mx\in\mX(\Omega) \\
 &\qquad0,\quad\mx\in \mathbb{R}^{n}\backslash\mX(\Omega) \\
 \end{aligned} \right.\]
-is called the joint p.m.f. of $X_1,\ X_2,\ \cdots,X_n$.
+is called the joint p.m.f. of $X_1, X_2, \cdots,X_n$.
 \end{definition}
 
 \begin{remark}[Properties of Joint P.M.F.]
 (1)
-\[p_{\mX}(\mx) \gs 0,\ \forall \mx\in \mX( \Omega )\ \mathrm{\text{and}}\mathrm{\ }\ p_{\mX}(\mx) = 0,\ \forall\mx \in \mathbb{R}^{n}\backslash \mX(\Omega).\]
+\[p_{\mX}(\mx) \gs 0, \forall \mx\in \mX( \Omega ) ~\text{and}~\mathrm{ } p_{\mX}(\mx) = 0, \forall\mx \in \mathbb{R}^{n}\backslash \mX(\Omega).\]
 (2)
 \[\sum_{\mx\in \mX(\Omega)}{p_{\mX}(\mx)} = \sum_{\mx\in \mX(\Omega)}{\mathbb{P}(\mX=\mx)} = \mathbb{P}(\mX \in \mX(\Omega) ) = \mathbb{P}( \Omega ) = 1\]
 (3)
 \[\mX(\Omega) \subseteq \prod_{i = 1}^{n}{X_{i}(\Omega)}\]
 (4)
 \[p_{\mX}(\mx) = \left\{ \begin{aligned}
-&\mathbb{P}(\mX =\mx),\ \mx\in\prod_{i = 1}^{n}X_{i}(\Omega) \\
+&\mathbb{P}(\mX =\mx), \mx\in\prod_{i = 1}^{n}X_{i}(\Omega) \\
 &\qquad0,\qquad\mx  \in \mathbb{R}^{n}\backslash\prod_{i = 1}^{n}X_{i}( \Omega) \\
 \end{aligned} \right.\]
 \end{remark}
 
 \begin{theorem}[Joint Marginal P.M.F.]
-Suppose $X_1,X_2,\ \cdots,X_n$ are discrete r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. Then 
-\[p_{X_{i_{1}},X_{i_{2}},\ \cdots,X_{i_{k}}}\left( x_{i_{1}},x_{i_{2}},\ \cdots,x_{i_{k}} \right) = \left\{ \begin{aligned}
+Suppose $X_1,X_2, \cdots,X_n$ are discrete r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. Then 
+\[p_{X_{i_{1}},X_{i_{2}}, \cdots,X_{i_{k}}}\left( x_{i_{1}},x_{i_{2}}, \cdots,x_{i_{k}} \right) = \left\{ \begin{aligned}
 \sum_{\mbox{\tiny$\begin{aligned}
 &x_{i} \in X_{i}\left( \Omega \right) \\
 i &\neq i_{1},i_{2},\cdots\,i_{k} \\
-\end{aligned}$}} & {p_{X_i}\left( x_i \right),\ \forall i = i_{1},i_{2},\ \cdots,i_{k}} \\
-&0,\qquad\mathrm{\text{o.w.}} \\
+\end{aligned}$}} & {p_{X_i}\left( x_i \right), \forall i = i_{1},i_{2}, \cdots,i_{k}} \\
+&0,\qquad~\text{o.w.}~ \\
 \end{aligned} \right.\]
-We call $$p_{X_{i_1},X_{i_2},\ \cdots,X_{i_k}}\left(x_{i_1},x_{i_2},\ \cdots,x_{i_k}\right)$$ the joint p.m.f. marginalized over $X_{i_1},X_{i_2},\ \cdots,X_{i_k}$.  If $k=1$, we call $p_{X_i}(x_i)$ the marginal p.m.f. of $X_i$.
+We call $$p_{X_{i_1},X_{i_2}, \cdots,X_{i_k}}\left(x_{i_1},x_{i_2}, \cdots,x_{i_k}\right)$$ the joint p.m.f. marginalized over $X_{i_1},X_{i_2}, \cdots,X_{i_k}$.  If $k=1$, we call $p_{X_i}(x_i)$ the marginal p.m.f. of $X_i$.
 \end{theorem}
 
 \begin{proof}
@@ -2308,10 +2277,10 @@ We call $$p_{X_{i_1},X_{i_2},\ \cdots,X_{i_k}}\left(x_{i_1},x_{i_2},\ \cdots,x_{
 \end{proof}
 
 \begin{theorem}[Expectation of Measurable Function]
-Suppose $X_1,\ X_2,\ \cdots,X_n$ are discrete r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, and $g$ is a measurable function from $(\mathbb{R}^n,\ \ \mb_{\mathbb{R}^n})$ to $(\mathbb{R},\ \mb_\mathbb{R})$. Then
+Suppose $X_1, X_2, \cdots,X_n$ are discrete r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, and $g$ is a measurable function from $(\mathbb{R}^n,  \mb_{\mathbb{R}^n})$ to $(\mathbb{R}, \mb_\mathbb{R})$. Then
 \[\mathbb{E}\left[ g(\mx) \right] = \sum_{\mbox{\tiny$\begin{aligned}
 x_{i} \in X_{i}\left( \Omega \right) \\
-i = 1,2,\ \cdots,n \\
+i = 1,2, \cdots,n \\
 \end{aligned}$}}^{}{g(\mx) \cdot p_{\mX}(\mx).}\]
 \end{theorem}
 
@@ -2320,7 +2289,7 @@ i = 1,2,\ \cdots,n \\
 \end{proof}
 
 \begin{corollary}[Expectation of Linear Combined Measurable Function]
-Suppose $X_1,\ X_2,\ \cdots,X_n$ are discrete r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, and $g_1,g_2,\ \cdots,g_m$ are measurable functions from $(\mathbb{R}^n,\mb_{\mathbb{R}^n})$ to $(\mathbb{R},\mb_\mathbb{R})$, and $\alpha_1,\alpha_2,\ \cdots,\alpha_m\in\mathbb{R}$,
+Suppose $X_1, X_2, \cdots,X_n$ are discrete r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, and $g_1,g_2, \cdots,g_m$ are measurable functions from $(\mathbb{R}^n,\mb_{\mathbb{R}^n})$ to $(\mathbb{R},\mb_\mathbb{R})$, and $\alpha_1,\alpha_2, \cdots,\alpha_m\in\mathbb{R}$,
 Then $$\sum_{k=1}^{m}\alpha_k\cdot g_k(\mx)$$ is a discrete r.v. of $(\Omega,\ma,\mathbb{P})$ and 
 \[\mathbb{E}\left[ \sum_{k = 1}^{m}\alpha_{k}g_{k}(\mx) \right] = \sum_{k = 1}^{m}\alpha_{k}\mathbb{E}\left[ g_{k}(\mx) \right].\]
 \end{corollary}
@@ -2330,20 +2299,20 @@ Then $$\sum_{k=1}^{m}\alpha_k\cdot g_k(\mx)$$ is a discrete r.v. of $(\Omega,\ma
 \end{proof}
 
 \begin{definition}[Joint P.D.F.]
-Let $X_1,\ X_2,\ \cdots,X_n$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. We say that $X_1,\ X_2,\ \cdots,X_n$ are jointly continuous r.v.'s if there exists a nonnegative function $f_{\mX}:\mathbb{R}^n\to[0,1]$ s.t.
+Let $X_1, X_2, \cdots,X_n$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. We say that $X_1, X_2, \cdots,X_n$ are jointly continuous r.v.'s if there exists a nonnegative function $f_{\mX}:\mathbb{R}^n\to[0,1]$ s.t.
 $$
-\mathbb{P}(\mX\in B)=\int\int_{B}\cdots\int f_{\mX}(\mx)\dif \mx,\ \ \forall B\in\mb_{\mathbb{R}^n}.
+\mathbb{P}(\mX\in B)=\int\int_{B}\cdots\int f_{\mX}(\mx)\dif \mx,  \forall B\in\mb_{\mathbb{R}^n}.
 $$
-The function $f_{\mX}$ is called the joint p.d.f. of $X_1,\ X_2,\ \cdots,X_n$.
+The function $f_{\mX}$ is called the joint p.d.f. of $X_1, X_2, \cdots,X_n$.
 \end{definition}
 
 \begin{theorem}[Joint Marginal P.D.F.]
-Suppose $X_1,\ X_2,\ \cdots,X_n$ are jointly continuous r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. Then $X_{i_1},X_{i_2},\ \cdots,X_{i_k}$ are also jointly continuous r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$ with joint p.d.f.
+Suppose $X_1, X_2, \cdots,X_n$ are jointly continuous r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. Then $X_{i_1},X_{i_2}, \cdots,X_{i_k}$ are also jointly continuous r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$ with joint p.d.f.
 $$
-f_{X_{i_1},X_{i_2},\ \cdots,X_{i_k}}\left(x_{i_1},x_{i_2},\ \cdots,x_{i_k}\right)=\underbrace{\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\cdots\int_{-\infty}^{\infty}}_{n-k}{f_{\mX}(\mx)\dif x_i}
+f_{X_{i_1},X_{i_2}, \cdots,X_{i_k}}\left(x_{i_1},x_{i_2}, \cdots,x_{i_k}\right)=\underbrace{\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\cdots\int_{-\infty}^{\infty}}_{n-k}{f_{\mX}(\mx)\dif x_i}
 $$
 where $i\neq i_1,i_2,\cdots i_k$.\\
-We call $$f_{X_{i_1},X_{i_2},\ \cdots,X_{i_k}}\left(x_{i_1},x_{i_2},\ \cdots,x_{i_k}\right)$$ the joint p.d.f. marginalized over $X_{i_1},X_{i_2},\ \cdots,X_{i_k}$. If $k=1$, we call $f_{X_i}(x_i)$ the marginal p.d.f. of $X_i$.
+We call $$f_{X_{i_1},X_{i_2}, \cdots,X_{i_k}}\left(x_{i_1},x_{i_2}, \cdots,x_{i_k}\right)$$ the joint p.d.f. marginalized over $X_{i_1},X_{i_2}, \cdots,X_{i_k}$. If $k=1$, we call $f_{X_i}(x_i)$ the marginal p.d.f. of $X_i$.
 \end{theorem}
 
 \begin{proof}
@@ -2351,7 +2320,7 @@ We call $$f_{X_{i_1},X_{i_2},\ \cdots,X_{i_k}}\left(x_{i_1},x_{i_2},\ \cdots,x_{
 \end{proof}
 
 \begin{theorem}[Expectation of Measurable Function]
-Suppose $X_1,\ X_2,\ \cdots,X_n$ are jointly continuous r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, and $g$ is a measurable function from $(\mathbb{R}^n,\ \mb_{\mathbb{R}^n})$ to $(\mathbb{R},\mb_\mathbb{R})$. Then
+Suppose $X_1, X_2, \cdots,X_n$ are jointly continuous r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, and $g$ is a measurable function from $(\mathbb{R}^n, \mb_{\mathbb{R}^n})$ to $(\mathbb{R},\mb_\mathbb{R})$. Then
 $$
 \mathbb{E}\left[g(\mx)\right]=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}{\cdots\int_{-\infty}^{\infty}{g(\mx)f_{\mX}(\mx)\dif x_n\cdots \dif x_2\dif x_1}}.
 $$
@@ -2363,27 +2332,27 @@ $$
 
 \begin{remark}[Properties of Joint P.D.F.]
 (1)
-\[f_{\mX}(\mx) > 0,\ \forall\mx \in \mathbb{R}^{n}.\]
+\[f_{\mX}(\mx) > 0, \forall\mx \in \mathbb{R}^{n}.\]
 (2)
 \[\int_{- \infty}^{\infty}{\int_{- \infty}^{\infty}{\cdots\int_{- \infty}^{\infty}{f_{\mX}(\mx)\dif\mx}}} = \mathbb{P}(\mX \in \mathbb{R}^{n}) = 1.\]
 (3)
-\[\mathbb{P}( X_{1} \in B_{1},X_{2} \in B_{2},\ \cdots,X_{n} \in B_{n}) = \int_{B_{1}}^{}{\int_{B_{2}}^{}{\cdots\int_{B_{n}}^{}{f_{\mX}(\mx)\dif x_{n}\cdots \dif x_{2}}}}\dif x_{1},\]
-$\forall B_{i} \in \mb_{\mathbb{R}^{n}},\ i = 1,2,\ \cdots,n$.\\
+\[\mathbb{P}( X_{1} \in B_{1},X_{2} \in B_{2}, \cdots,X_{n} \in B_{n}) = \int_{B_{1}}^{}{\int_{B_{2}}^{}{\cdots\int_{B_{n}}^{}{f_{\mX}(\mx)\dif x_{n}\cdots \dif x_{2}}}}\dif x_{1},\]
+$\forall B_{i} \in \mb_{\mathbb{R}^{n}}, i = 1,2, \cdots,n$.\\
 (4)
 \[\mathbb{P}(\mX = \mathbf{a}) = \int_{a_{1}}^{a_{1}}{\int_{a_{2}}^{a_{2}}{\cdots\int_{a_{n}}^{a_{n}}{f_{\mX}(\mx)\dif x_{n}\cdots \dif x_{2}}}}\dif x_{1} = 0.\]
 (5)
 \[\begin{aligned}
-&\quad\  \mathbb{P}(a_{i} \ls X_{i} \ls a_{i} + \delta_{i},\ i = 1,2,\ \cdots,n)\\
+&\quad  \mathbb{P}(a_{i} \ls X_{i} \ls a_{i} + \delta_{i}, i = 1,2, \cdots,n)\\
 &= \int_{a_{1}}^{a_{1} + \delta_{1}}{\int_{a_{2}}^{a_{2} + \delta_{2}}{\cdots\int_{a_{n}}^{a_{n} + \delta_{n}}{f_{\mX}(\mx)\dif x_{n}\cdots \dif x_{2}}}}\dif x_{1}\\
 &= f_{\mX}( {\mathbf{a}}_{\bm{\delta}} ) \cdot \delta_{1} \cdot \delta_{2} \cdots\delta_{n} \text{ for some }{\mathbf{a}}_{\bm{\delta}} \in \prod_{i = 1}^{n}{[ a_{i},a_{i} + \delta_{i}]} \text{ if } f_{\mX}(\mx) \text{ is continuous}.\\
-&\to \lim_{\bm{\delta}\to\mathbf{0}}\frac{\mathbb{P}(a_{i} \ls X_{i} \ls a_{i} + \delta_{i},\ i = 1,2,\ \cdots,n)}{\delta_{1} \cdot \delta_{2} \cdots \delta_{n}} = \lim_{\bm{\delta}\to\mathbf{0}}{f_{\mX}( {\mathbf{a}}_{\bm{\delta}} )} = f_{\mX}(\mathbf{a})\\
-&\ \text{and } \mathbb{P}(a_{i} \ls X_{i} \ls a_{i} + \delta_{i},\ i = 1,2,\ \cdots,n) \approx f_{\mX}(\mathbf{a}) \cdot \delta_{1} \cdot \delta_{2} \cdots\delta_{n}.\\
+&\to \lim_{\bm{\delta}\to\mathbf{0}}\frac{\mathbb{P}(a_{i} \ls X_{i} \ls a_{i} + \delta_{i}, i = 1,2, \cdots,n)}{\delta_{1} \cdot \delta_{2} \cdots \delta_{n}} = \lim_{\bm{\delta}\to\mathbf{0}}{f_{\mX}( {\mathbf{a}}_{\bm{\delta}} )} = f_{\mX}(\mathbf{a})\\
+& \text{and } \mathbb{P}(a_{i} \ls X_{i} \ls a_{i} + \delta_{i}, i = 1,2, \cdots,n) \approx f_{\mX}(\mathbf{a}) \cdot \delta_{1} \cdot \delta_{2} \cdots\delta_{n}.\\
 \end{aligned}\]
 \end{remark}
 
 \begin{corollary}[Expectation of Linear Combined Measurable Function]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are \textbf{jointly continuous}
-r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$ and $g_{1},\ g_{2},\ \cdots, g_{m}$ are \textbf{measurable functions} from $(\mathbb{R}^{n}, \mb_{\mathbb{R}^{n}})$ to $\mathbb{(R,}\mb_{\mathbb{R}})$, and $\alpha_{1},\alpha_{2},\ \cdots,\alpha_{m} \in \mathbb{R}$, then
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are \textbf{jointly continuous}
+r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$ and $g_{1}, g_{2}, \cdots, g_{m}$ are \textbf{measurable functions} from $(\mathbb{R}^{n}, \mb_{\mathbb{R}^{n}})$ to $\mathbb{(R,}\mb_{\mathbb{R}})$, and $\alpha_{1},\alpha_{2}, \cdots,\alpha_{m} \in \mathbb{R}$, then
 \[\sum_{k = 1}^{m}\alpha_{k}\cdot g_{k}(\mx)
 \]
 is a continuous r.v. of $(\Omega,\ma,\mathbb{P})$ and 
@@ -2395,17 +2364,17 @@ is a continuous r.v. of $(\Omega,\ma,\mathbb{P})$ and
 \end{proof}
 
 \begin{definition}[Joint C.D.F.]
-Let $X_{1},\ X_{2},\ \cdots,X_{n}$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. The \textbf{joint c.d.f.} of $X_{1},\ X_{2},\ \cdots,X_{n}$ is given by
-\[F_{\mX}(\mx) = \mathbb{P}( X_{1} \ls x_{1},X_{2} \ls x_{2},\ \cdots,X_{n} \ls x_{n}),\ \forall\mx \in \mathbb{R}^{n}.\]
+Let $X_{1}, X_{2}, \cdots,X_{n}$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. The \textbf{joint c.d.f.} of $X_{1}, X_{2}, \cdots,X_{n}$ is given by
+\[F_{\mX}(\mx) = \mathbb{P}( X_{1} \ls x_{1},X_{2} \ls x_{2}, \cdots,X_{n} \ls x_{n}), \forall\mx \in \mathbb{R}^{n}.\]
 \end{definition}
 
 \begin{theorem}[Joint Marginal C.D.F.]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. Then
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. Then
 \[\begin{aligned}
-&F_{X_{i_{1}},X_{i_{2}},\cdots\,X_{i_{k}}}\left( x_{i_{1}},x_{i_{2}},\ \cdots,x_{i_{k}} \right) \\
-=& F_{\mX}\left( \infty,\, \cdots,\infty,x_{i_{1}},\infty,\ \cdots,\infty,x_{i_{2}},\infty,\ \cdots,\infty,x_{i_{k}},\infty,\ \cdots,\infty \right)
+&F_{X_{i_{1}},X_{i_{2}},\cdots\,X_{i_{k}}}\left( x_{i_{1}},x_{i_{2}}, \cdots,x_{i_{k}} \right) \\
+=& F_{\mX}\left( \infty,\, \cdots,\infty,x_{i_{1}},\infty, \cdots,\infty,x_{i_{2}},\infty, \cdots,\infty,x_{i_{k}},\infty, \cdots,\infty \right)
 \end{aligned}\]
-We call \[F_{X_{i_{1}},X_{i_{2}},\ \cdots,X_{i_{k}}}\left( x_{i_{1}},x_{i_{2}},\ \cdots,x_{i_{k}} \right)\] the \textbf{joint c.d.f.} marginalized over $X_{1},\ X_{2},\ \cdots,X_{n}$. If $k = 1$, we call $F_{X_{i}}(x_{i})$ the \textbf{marginal c.d.f.} of $X_{i}$.
+We call \[F_{X_{i_{1}},X_{i_{2}}, \cdots,X_{i_{k}}}\left( x_{i_{1}},x_{i_{2}}, \cdots,x_{i_{k}} \right)\] the \textbf{joint c.d.f.} marginalized over $X_{1}, X_{2}, \cdots,X_{n}$. If $k = 1$, we call $F_{X_{i}}(x_{i})$ the \textbf{marginal c.d.f.} of $X_{i}$.
 \end{theorem}
 
 \begin{proof}
@@ -2413,16 +2382,16 @@ We call \[F_{X_{i_{1}},X_{i_{2}},\ \cdots,X_{i_{k}}}\left( x_{i_{1}},x_{i_{2}},\
 \end{proof}
 
 \begin{theorem}[Properties of Joint C.D.F.]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are r.v.'s of a probability
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are r.v.'s of a probability
 space $(\Omega,\ma,\mathbb{P})$.\\
 (1) $F_{\mX}(\mx)$ is \textbf{increasing} and \textbf{right
-continuous} in each argument $x_{i},i = 1,2,\ \cdots,n.$\\
+continuous} in each argument $x_{i},i = 1,2, \cdots,n.$\\
 (2) $F_{\mX}(\mx) = 0$ if there exists at least one $i$ such
 that $x_{i} = - \infty$.\\
-(3) $F_{\mX}\left( \infty,\infty,\ \cdots,\infty \right) = 1$.\\
-(4) If $X_{1},\ X_{2},\ \cdots,X_{n}$ are \textbf{jointly continuous}
+(3) $F_{\mX}\left( \infty,\infty, \cdots,\infty \right) = 1$.\\
+(4) If $X_{1}, X_{2}, \cdots,X_{n}$ are \textbf{jointly continuous}
 r.v.'s, then
-\[f_{\mX}(\mx) = \frac{\partial F_{\mX}(\mx)}{\partial x_{1}\partial x_{2}\cdots\partial x_{n}},\ \forall\mx \in \mathbb{R}^{n}.\]
+\[f_{\mX}(\mx) = \frac{\partial F_{\mX}(\mx)}{\partial x_{1}\partial x_{2}\cdots\partial x_{n}}, \forall\mx \in \mathbb{R}^{n}.\]
 \end{theorem}
 
 \begin{proof}
@@ -2432,17 +2401,17 @@ r.v.'s, then
 \section{Independent R.V.'s}
 
 \begin{definition}[Independent Set]
-Let $\{X_{i},\ i \in I\}$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. We say that the r.v.'s $\{X_{i},\ i \in I\}$ are \textbf{independent} if for any finite subset
-$\left\{ X_{i_{1}},X_{i_{2}},\ \cdots,X_{i_{k}} \right\}\ (k \gs 2)$ of $\{ X_{i},\ i \in I\}$, the events $X_{i_{1}} \in B_{i_{1}},X_{i_{2}} \in B_{i_{2}},\ \cdots,X_{i_{k}} \in B_{i_{k}}$ are independent $\forall B_{i_{1}},B_{i_{2}},\ \cdots,B_{i_{k}} \in \mb_{\mathbb{R}}.$ Otherwise, the r.v.'s $\{X_{i},\ i \in I\}$ are dependent.
+Let $\{X_{i}, i \in I\}$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. We say that the r.v.'s $\{X_{i}, i \in I\}$ are \textbf{independent} if for any finite subset
+$\left\{ X_{i_{1}},X_{i_{2}}, \cdots,X_{i_{k}} \right\} (k \gs 2)$ of $\{ X_{i}, i \in I\}$, the events $X_{i_{1}} \in B_{i_{1}},X_{i_{2}} \in B_{i_{2}}, \cdots,X_{i_{k}} \in B_{i_{k}}$ are independent $\forall B_{i_{1}},B_{i_{2}}, \cdots,B_{i_{k}} \in \mb_{\mathbb{R}}.$ Otherwise, the r.v.'s $\{X_{i}, i \in I\}$ are dependent.
 \end{definition}
 
 \begin{theorem}[Equivalent Statements of Independence]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. The following three statements are \textbf{equivalent}:\\
-(1) $X_{1},\ X_{2},\ \cdots,X_{n}$ are independent.\\
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. The following three statements are \textbf{equivalent}:\\
+(1) $X_{1}, X_{2}, \cdots,X_{n}$ are independent.\\
 (2)
-\[\mathbb{P}( X_{1} \in B_{1},X_{2} \in B_{2},\ \cdots,X_{n} \in B_{n}) = \prod_{i = 1}^{n}{\mathbb{P}(X_{i} \in B_{i})},\forall B_{1},B_{2},\ \cdots,B_{n} \in \mb_{\mathbb{R}}\]
+\[\mathbb{P}( X_{1} \in B_{1},X_{2} \in B_{2}, \cdots,X_{n} \in B_{n}) = \prod_{i = 1}^{n}{\mathbb{P}(X_{i} \in B_{i})},\forall B_{1},B_{2}, \cdots,B_{n} \in \mb_{\mathbb{R}}\]
 (3)
-\[F_{\mX}(\mx) = \prod_{i = 1}^{n}{F_{X_{i}}(x_{i})},\ \forall \mx\in \mathbb{R}^{n}\]
+\[F_{\mX}(\mx) = \prod_{i = 1}^{n}{F_{X_{i}}(x_{i})}, \forall \mx\in \mathbb{R}^{n}\]
 \end{theorem}
 
 \begin{proof}
@@ -2450,13 +2419,13 @@ Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are r.v.'s of a probability space $(\Omeg
 \end{proof}
 
 \begin{theorem}[Necessary and Sufficient Condition of Independence]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are r.v.'s of a probability
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are r.v.'s of a probability
 space $(\Omega,\ma,\mathbb{P})$.\\
-(1) If $X_{1},\ X_{2},\ \cdots,X_{n}$ are \textbf{discrete} r.v.'s, then $X_{1},\ X_{2},\ \cdots,X_{n}$ are independent
-\[\Leftrightarrow P_{\mX}(\mx) = \prod_{i = 1}^{n}{P_{X_{i}}(x_{i})},\ \forall\mx \in \mathbb{R}^{n}\]
-(2) If $X_{1},\ X_{2},\ \cdots,X_{n}$ are \textbf{jointly continuous}
-r.v.'s, then $X_{1},\ X_{2},\ \cdots,X_{n}$ are independent
-\[\Leftrightarrow f_{\mX}(\mx) = \prod_{i = 1}^{n}{f_{X_{i}}(x_{i})},\ \forall \mx\in \mathbb{R}^{n}\]
+(1) If $X_{1}, X_{2}, \cdots,X_{n}$ are \textbf{discrete} r.v.'s, then $X_{1}, X_{2}, \cdots,X_{n}$ are independent
+\[\Leftrightarrow P_{\mX}(\mx) = \prod_{i = 1}^{n}{P_{X_{i}}(x_{i})}, \forall\mx \in \mathbb{R}^{n}\]
+(2) If $X_{1}, X_{2}, \cdots,X_{n}$ are \textbf{jointly continuous}
+r.v.'s, then $X_{1}, X_{2}, \cdots,X_{n}$ are independent
+\[\Leftrightarrow f_{\mX}(\mx) = \prod_{i = 1}^{n}{f_{X_{i}}(x_{i})}, \forall \mx\in \mathbb{R}^{n}\]
 \end{theorem}
 
 \begin{proof}
@@ -2466,11 +2435,11 @@ r.v.'s, then $X_{1},\ X_{2},\ \cdots,X_{n}$ are independent
 \begin{definition}[Indicator Function]
 Let $(\Omega,\ma,\mathbb{P})$ be a probability space, and $A \in \ma$. The \textbf{indicator function} $I_{A}$ of the event $A$ is given by
 \[I_{A}(w) = \left\{ \begin{aligned}
-&1,\ \mathrm{\text{\ if}}\ w \in A \\
-&0,\quad \mathrm{\text{o.w.}} \\
-\end{aligned} \right.\quad \mathrm{\text{i.e.}}\quad I_{A} = \left\{ \begin{aligned}
-&1,\ \mathrm{\text{ if }} A \ \mathrm{\text{occurs}} \\
-&0,\quad \mathrm{\text{o.w.}} \\
+&1, ~\text{ if}~ w \in A \\
+&0,\quad ~\text{o.w.}~ \\
+\end{aligned} \right.\quad ~\text{i.e.}~\quad I_{A} = \left\{ \begin{aligned}
+&1, \text{ if } A  \text{occurs} \\
+&0,\quad \text{o.w.} \\
 \end{aligned} \right.\]
 \end{definition}
 
@@ -2483,8 +2452,8 @@ Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space. $I_{A}$ is a \textbf{d
 \end{proof}
 
 \begin{theorem}[Indicator R.V.'s Indicates Independence]
-Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and $A_{1},A_{2},\ \cdots,A_{n} \in \ma$. The events $A_{1},A_{2},\ \cdots,A_{n}$ are \textbf{independent} $\Leftrightarrow$ the \textbf{indicator r.v.'s}
-$I_{A_{1}},I_{A_{2}},\ \cdots,I_{A_{n}}$ are \textbf{independent}.
+Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and $A_{1},A_{2}, \cdots,A_{n} \in \ma$. The events $A_{1},A_{2}, \cdots,A_{n}$ are \textbf{independent} $\Leftrightarrow$ the \textbf{indicator r.v.'s}
+$I_{A_{1}},I_{A_{2}}, \cdots,I_{A_{n}}$ are \textbf{independent}.
 \end{theorem}
 
 \begin{proof}
@@ -2492,9 +2461,9 @@ $I_{A_{1}},I_{A_{2}},\ \cdots,I_{A_{n}}$ are \textbf{independent}.
 \end{proof}
 
 \begin{theorem}[Expectation of Measurable Functions of Independent R.V.]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are independent r.v.'s of a
-probability space $(\Omega,\ma,\mathbb{P})$, and $g_{1},g_{2},\ \cdots,g_{n}$ are measurable functions from $\mathbb{(R,}\mb_{\mathbb{R}})$ to
-$\mathbb{(R,}\mb_{\mathbb{R}})$. Then $g_{1}(x_{1}),g_{2}(x_{2}),\ \cdots,g_{n}(X_{n})$ are independent and
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are independent r.v.'s of a
+probability space $(\Omega,\ma,\mathbb{P})$, and $g_{1},g_{2}, \cdots,g_{n}$ are measurable functions from $\mathbb{(R,}\mb_{\mathbb{R}})$ to
+$\mathbb{(R,}\mb_{\mathbb{R}})$. Then $g_{1}(x_{1}),g_{2}(x_{2}), \cdots,g_{n}(X_{n})$ are independent and
 \[\mathbb{E}\left[ \prod_{i = 1}^{n}{g_{i}(x_{i})} \right] = \prod_{i = 1}^{n}{\mathbb{E}[ g_{i}(x_{i})]}.\]
 \end{theorem}
 
@@ -2504,34 +2473,34 @@ $\mathbb{(R,}\mb_{\mathbb{R}})$. Then $g_{1}(x_{1}),g_{2}(x_{2}),\ \cdots,g_{n}(
 
 \begin{remark}[Independent Expectations Can't Imply Independence of R.V.'s]
 The converse is \textbf{not true}, i.e.,
-\[\mathbb{E}\left[ \prod_{i = 1}^{n}{g_{i}(x_{i})} \right] = \prod_{i = 1}^{n}{\mathbb{E}[ g_{i}(x_{i})]} \nRightarrow g_{1}(x_{1}),\ g_{2}(x_{2}),\ \cdots, g_{n}(x_{n})\mathrm{\text{\ are\ independent.}}\]
+\[\mathbb{E}\left[ \prod_{i = 1}^{n}{g_{i}(x_{i})} \right] = \prod_{i = 1}^{n}{\mathbb{E}[ g_{i}(x_{i})]} \nRightarrow g_{1}(x_{1}), g_{2}(x_{2}), \cdots, g_{n}(x_{n})~\text{ are independent.}~\]
 \end{remark}
 
 \section{Conditional Distributions}
 
 \begin{lemma}[Properties of Conditional Probability]
-Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and $A,B,A_{1},A_{2},\ \cdots,A_{n},B_{1},B_{2},\ \cdots,B_{n} \in \ma$.
+Suppose $(\Omega,\ma,\mathbb{P})$ is a probability space, and $A,B,A_{1},A_{2}, \cdots,A_{n},B_{1},B_{2}, \cdots,B_{n} \in \ma$.
 \[\mathbb{P}( A | B ) = \left\{ \begin{aligned}
-&\frac{\mathbb{P}(A  \cap B)}{\mathbb{P}(B)},\mathrm{\text{\ if\ }}\mathbb{P}( B ) \neq 0\\
-&\qquad0\qquad,\mathrm{\text{\ if\ }}\mathbb{P}( B ) = 0 \\
+&\frac{\mathbb{P}(A  \cap B)}{\mathbb{P}(B)},~\text{ if }~\mathbb{P}( B ) \neq 0\\
+&\qquad0\qquad,~\text{ if }~\mathbb{P}( B ) = 0 \\
 \end{aligned} \right.\]
 (1) If $\mathbb{P}(B) \neq 0$, then $\mathbb{P}(\cdot | B)$ regarded as a function on $\ma$ is a \textbf{probability} \textbf{measure.}\\
 (2) \textbf{Multiplication theorem:}
-\[\mathbb{P}( A_{1}\cap{A_{2}\cap{\cdots\cap A_{n}}} ) = \mathbb{P}( A_{1} )\mathbb{P}( A_{2} | A_{1} ) \cdots \mathbb{P}(A_{n}|A_{1}\cap{A_{2}\cap{\  \cdots\cap A_{n - 1}}}).\]
+\[\mathbb{P}( A_{1}\cap{A_{2}\cap{\cdots\cap A_{n}}} ) = \mathbb{P}( A_{1} )\mathbb{P}( A_{2} | A_{1} ) \cdots \mathbb{P}(A_{n}|A_{1}\cap{A_{2}\cap{  \cdots\cap A_{n - 1}}}).\]
 (3) \textbf{Total probability theorem:}\\
 If ${\{ B_{n}\}}_{n = 1}^{\infty}$ is a partition of $\Omega$, then
 \[\mathbb{P}(A) = \sum_{n = 1}^{\infty}{\mathbb{P}(B_{n}) \cdot}\mathbb{P}(A|B_{n}),\forall A \in \ma.\]
 (4) \textbf{Bayes' theorem:}\\
 If $\mathbb{P}(A) \neq 0$ and ${\{ B_{n}\}}_{n = 1}^{\infty}$ is
 a partition of $\Omega$, then
-\[\mathbb{P}(B_{k} | A) = \frac{\mathbb{P}(B_{k}) \cdot \mathbb{P}(A|B_{k})}{\sum_{n = 1}^{\infty}{\mathbb{P}(B_{n}) \cdot}\mathbb{P}( A | B_{n} )},\ \forall A \in \ma\mathrm{,\ }\mathbb{P}(A) > 0,\ k = 1,2,\dots\]
+\[\mathbb{P}(B_{k} | A) = \frac{\mathbb{P}(B_{k}) \cdot \mathbb{P}(A|B_{k})}{\sum_{n = 1}^{\infty}{\mathbb{P}(B_{n}) \cdot}\mathbb{P}( A | B_{n} )}, \forall A \in \ma\mathrm{, }\mathbb{P}(A) > 0, k = 1,2,\dots\]
 \end{lemma}
 
 \begin{proof}
   abc
 \end{proof}
 
-$\bigstar\ P_{X|Y}(x|y):\ X$ and $Y$ are discrete r.v.'s
+$\bigstar P_{X|Y}(x|y): X$ and $Y$ are discrete r.v.'s
 
 \begin{definition}[P.M.F. and C.D.F. of D-D]
 Let $X$ and $Y$ be discrete r.v.'s of a probability space
@@ -2539,13 +2508,13 @@ $(\Omega,\ma,\mathbb{P})$ and $y \in \mathbb{R}$. The conditional p.m.f. $P_{X|Y
 \[P_{X|Y}(x|y) = \left\{ \begin{aligned}
 \mathbb{P}( X = x | Y = y ) &= \frac{\mathbb{P}(X = x,Y = y)}{\mathbb{P}(Y = y)} \\
 &= \frac{P_{X,Y}(x,y)}{P_{Y}(y)},P_{Y}(y) \neq 0,\forall x \in \mathbb{R} \\
-&0, \qquad\qquad\mathrm{\text{o.w.}}\\
-\end{aligned} \right.\ \]
+&0, \qquad\qquad~\text{o.w.}~\\
+\end{aligned} \right. \]
 The conditional c.d.f. $F_{X|Y}\left( \cdot | y \right)$ of $X$ given that $Y = y$ is given by
 \[\begin{aligned}
 F_{X|Y}(x|y) &= \mathbb{P}( X \ls x | Y = y )\\
-& = \sum_{t \ls X,\ t \in X(\Omega)}^{}{\mathbb{P}( X = t | Y = y )} \\
-&= \sum_{t \ls X,\ t \in X(\Omega)}^{}{P_{X|Y}\left( t | y \right)},\forall x \in \mathbb{R}.
+& = \sum_{t \ls X, t \in X(\Omega)}^{}{\mathbb{P}( X = t | Y = y )} \\
+&= \sum_{t \ls X, t \in X(\Omega)}^{}{P_{X|Y}\left( t | y \right)},\forall x \in \mathbb{R}.
 \end{aligned}\]
 \end{definition}
 
@@ -2555,11 +2524,11 @@ F_{X|Y}(x|y) &= \mathbb{P}( X \ls x | Y = y )\\
 \end{remark}
 
 \begin{theorem}[Properties of D-D Conditional Probability]
-Suppose $X,Y,X_{1},X_{2},\ \cdots,X_{n}$ are discrete r.v.'s of a
+Suppose $X,Y,X_{1},X_{2}, \cdots,X_{n}$ are discrete r.v.'s of a
 probability space $(\Omega,\ma,\mathbb{P})$.\\
 (1) If $y \in \mathbb{R}$ and $P_{Y}(y) \neq 0$, then $P_{X|Y}\left( \cdot | y \right)$ is a p.m.f.\\
 (2) $\forall x \in \mathbb{R}^{n},$
- \[P_{X}(x) = P_{X_{1}}(x_{1}) \cdot P_{X_{2}|X_{1}}\left( x_{2}|x_{1} \right) \cdots P_{X_{n}|X_{1},X_{2},\ \cdots,X_{n - 1}}\left( x_{n}|x_{1},x_{2},\ \cdots,x_{n - 1} \right).\]
+ \[P_{X}(x) = P_{X_{1}}(x_{1}) \cdot P_{X_{2}|X_{1}}\left( x_{2}|x_{1} \right) \cdots P_{X_{n}|X_{1},X_{2}, \cdots,X_{n - 1}}\left( x_{n}|x_{1},x_{2}, \cdots,x_{n - 1} \right).\]
 (3) $\forall x \in \mathbb{R},$
 \[P_{X}(x) = \sum_{y \in Y(\Omega)}^{}{P_{Y}(y)} \cdot P_{X|Y}(x|y).\]
 (4) If $x \in \mathbb{R}$ and $P_{X}(x) \neq 0$, then
@@ -2570,35 +2539,35 @@ probability space $(\Omega,\ma,\mathbb{P})$.\\
   abc
 \end{proof}
 
-$\bigstar\ f_{X|Y}(x|y):\ X$ and $Y$ are jointly continuous r.v.'s
+$\bigstar f_{X|Y}(x|y): X$ and $Y$ are jointly continuous r.v.'s
 
 \begin{definition}[C.D.F. and P.D.F. of C-C]
 Let $X$ and $Y$ be jointly continuous r.v.'s of a probability
 space $(\Omega,\ma,\mathbb{P})$ and $y \in \mathbb{R}$. The conditional c.d.f. $F_{X|Y}(x|y)$ of $X$ given that $Y = y$ is given by
 \[F_{X|Y}(x|y) = \left\{ \begin{aligned}
-\lim_{\delta \to 0}&\ \ {\mathbb{P}( X = x | y \ls Y \ls y + \delta )}\\ 
+\lim_{\delta \to 0}&  {\mathbb{P}( X = x | y \ls Y \ls y + \delta )}\ 
 &\quad= \lim_{\delta \to 0}\frac{\mathbb{P}( X = x,y \ls Y \ls y + \delta)}{\mathbb{P}( y \ls Y \ls y + \delta)} \\
 &\quad= \lim_{\delta \to 0}\frac{[ F_{X,Y}\left( x,y + \delta \right) - F_{X,Y}(x,y)]/\delta}{[ F_{Y}\left( y + \delta \right) - F_{Y}(y)]/\delta} \\
 &\quad= \frac{\frac{\partial F_{X,Y}(x,y)}{\partial y}}{f_{Y}(y)},f_{Y}(y) \neq 0,\forall x \in \mathbb{R} \\
-0&, \qquad\qquad\mathrm{\text{o.w.}} \\
-\end{aligned} \right.\ \]
+0&, \qquad\qquad~\text{o.w.}~ \\
+\end{aligned} \right. \]
 The conditional p.d.f. $f_{X|Y}\left( \cdot | y \right)$ of $X$ given that $Y = y$ is given by
 \[f_{X|Y}(x|y) = \left\{ \begin{aligned}
 \frac{\partial F_{X,Y}(x,y)}{\partial x} &= \frac{f_{X,Y}(x,y)}{f_{Y}(y)},f_{Y}(y) \neq 0,\forall x \in \mathbb{R} \\
-&0,\qquad\mathrm{\text{o.w.}} \\
+&0,\qquad~\text{o.w.}~ \\
 \end{aligned} \right.\]
 \end{definition}
 
 \begin{remark}[Joint P.D.F.]
-(1) $f_{X,Y}(x,y) = f_{Y}(y) \cdot f_{X|Y}(x|y) = f_{X}(x) \cdot f_{Y|X}(y|x),\ \forall x,y \in \mathbb{R}$\\
+(1) $f_{X,Y}(x,y) = f_{Y}(y) \cdot f_{X|Y}(x|y) = f_{X}(x) \cdot f_{Y|X}(y|x), \forall x,y \in \mathbb{R}$\\
 (2) A similar definition can be made for jointly continuous \textbf{random vectors}.
 \end{remark}
 
 \begin{theorem}[Properties of C-C Conditional Probability]
-Suppose $X,Y,X_{1},\ X_{2},\ \cdots,X_{n}$ are jointly continuous r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$.\\
+Suppose $X,Y,X_{1}, X_{2}, \cdots,X_{n}$ are jointly continuous r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$.\\
 (1) If $y \in \mathbb{R}$ and $f_{Y}(y) \neq 0$, then $f_{X|Y}\left( \cdot | y \right)$ is a p.d.f.\\
 (2) $\forall x \in \mathbb{R}^{n}$,
-\[f_{X}(x) = f_{X_{1}}(x_{1}) \cdot f_{X_{2}|X_{1}}\left( x_{2}|x_{1} \right) \cdot \cdot \cdot f_{X_{n}|X_{1},X_{2},\ \cdots\,X_{n - 1}}\left( x_{n}|x_{1},x_{2},\ \cdots,x_{n - 1} \right).\]
+\[f_{X}(x) = f_{X_{1}}(x_{1}) \cdot f_{X_{2}|X_{1}}\left( x_{2}|x_{1} \right) \cdot \cdot \cdot f_{X_{n}|X_{1},X_{2}, \cdots\,X_{n - 1}}\left( x_{n}|x_{1},x_{2}, \cdots,x_{n - 1} \right).\]
 (3)
 \[f_{X}(x) = \int_{- \infty}^{\infty}{f_{Y}(y) \cdot f_{X|Y}(x|y)}\dif y,\forall x \in \mathbb{R}.\]
 (4) If $x \in \mathbb{R}$ and $f_{X}(x) \neq 0$, then
@@ -2609,39 +2578,39 @@ Suppose $X,Y,X_{1},\ X_{2},\ \cdots,X_{n}$ are jointly continuous r.v.'s of a pr
   abc
 \end{proof}
 
-$\bigstar\ f_{X|Y}(x|y)\ \mathrm{\text{and}}\ P_{X|Y}(x|y):\ X$ is a continuous r.v. and $Y$ is a discrete r.v.
+$\bigstar f_{X|Y}(x|y) ~\text{and}~ P_{X|Y}(x|y): X$ is a continuous r.v. and $Y$ is a discrete r.v.
 
 \begin{definition}[C.D.F., P.D.F. and P.M.F. of C-D and D-C]
 Let $X$ be a continuous r.v. and $Y$ be a discrete r.v. of a probability space $(\Omega,\ma,\mathbb{P})$.\\
-The conditional \textbf{c.d.f.} $F_{X|Y}\left( \cdot | y \right)$ of $X$ given that $Y = y,\ y \in \mathbb{R}$ is given by
+The conditional \textbf{c.d.f.} $F_{X|Y}\left( \cdot | y \right)$ of $X$ given that $Y = y, y \in \mathbb{R}$ is given by
 \[F_{X|Y}(x|y) = \left\{ \begin{aligned}
 &\mathbb{P}(X \ls x | Y = y),P_{Y}(y) \neq 0,\forall x \in \mathbb{R} \\
-&\qquad\qquad0,\qquad\mathrm{\text{o.w.}} \\
-\end{aligned} \right.\ \]
-The conditional \textbf{p.d.f.} $f_{X|Y}\left( \cdot | y \right)$ of $X$ given that $Y = y,\ y \in \mathbb{R}$ is given by
+&\qquad\qquad0,\qquad~\text{o.w.}~ \\
+\end{aligned} \right. \]
+The conditional \textbf{p.d.f.} $f_{X|Y}\left( \cdot | y \right)$ of $X$ given that $Y = y, y \in \mathbb{R}$ is given by
 \[f_{X|Y}(x|y) = \left\{ \begin{aligned}
 \frac{\partial F_{X,Y}(x,y)}{\partial x} &= \lim_{\delta \to 0}\frac{F_{X|Y}\left( x + \delta | y \right) - F_{X|Y}(x|y)}{\delta} \\
 &= \lim_{\delta \to 0}\frac{\mathbb{P}( x \ls X \ls x + \delta | Y = y )}{\delta},P_{Y}(y) \neq 0,\forall x \in \mathbb{R} \\
-&0,\qquad\mathrm{\text{o.w.}} \\
-\end{aligned} \right.\ \]
+&0,\qquad~\text{o.w.}~ \\
+\end{aligned} \right. \]
 The conditional \textbf{p.m.f.} $P_{X|Y}\left( \cdot | y \right)$ of $Y$ given that $X = x,x \in \mathbb{R}$ is given by
 \[P_{Y|X}(y|x) = \left\{ \begin{aligned}
-\lim_{\delta \to 0}&\ \ \mathbb{P}( Y = y | x \ls X \ls x + \delta ) \\
+\lim_{\delta \to 0}&  \mathbb{P}( Y = y | x \ls X \ls x + \delta ) \\
 &\quad= \lim_{\delta \to 0}\frac{\mathbb{P}(Y = y) \cdot \mathbb{P}( x \ls X \ls x + \delta | Y = y )/\delta}{\mathbb{P}(x \ls X \ls x + \delta)/\delta} \\
 &\quad= \frac{P_{Y}(y) \cdot f_{X|Y}(x|y)}{f_{X}(x)},f_{X}(x) \neq 0,\forall y \in \mathbb{R} \\
-&0, \qquad\mathrm{\text{o.w.}} \\
-\end{aligned} \right.\ \]
+&0, \qquad~\text{o.w.}~ \\
+\end{aligned} \right. \]
 The conditional \textbf{c.d.f.} $F_{Y|X}\left( \cdot | x \right)$ of $Y$ given that $X = x,x \in \mathbb{R}$ is given by
 \[F_{Y|X}(y|x) = \left\{ \begin{aligned}
-\sum_{t \ls X,\ t \in X(\Omega) }^{}{P_{Y,X}\left( t|x \right)} &= \frac{\sum_{t \ls X,\ t \in X(\Omega)}^{}{P_{Y}(t) \cdot f_{X|Y}\left( x | t \right)}}{f_{X}(x)},\\
+\sum_{t \ls X, t \in X(\Omega) }^{}{P_{Y,X}\left( t|x \right)} &= \frac{\sum_{t \ls X, t \in X(\Omega)}^{}{P_{Y}(t) \cdot f_{X|Y}\left( x | t \right)}}{f_{X}(x)},\\
 &\quad f_{X}(x) \neq 0,\forall y \in \mathbb{R} \\
-&0, \qquad\mathrm{\text{o.w.}} \\
-\end{aligned} \right.\ \]
+&0, \qquad~\text{o.w.}~ \\
+\end{aligned} \right. \]
 \end{definition}
 
 \begin{remark}[Calculation of C-D P.D.F. and D-C P.M.F.]
 (1)
-$P_{Y}(y) \cdot f_{X|Y}(x|y) = f_{X}(x) \cdot P_{Y|X}(y|x),\ \forall x,y \in \mathbb{R}.$
+$P_{Y}(y) \cdot f_{X|Y}(x|y) = f_{X}(x) \cdot P_{Y|X}(y|x), \forall x,y \in \mathbb{R}.$
 
 (2) If $y \in \mathbb{R}$ and $P_{Y}(y) \neq 0$, then
 
@@ -2658,17 +2627,17 @@ Suppose $X$ is a continuous r.v. and $Y$ is a discrete r.v. of a probability spa
 (1) If $y \in \mathbb{R}$ and $P_{Y}(y) \neq 0$, then
 $f_{X|Y}\left( \cdot | y \right)$ is a p.d.f. If $x \in \mathbb{R}$ and $f_{X}(x) \neq 0$, then $P_{Y|X}(y|x)$ is a p.m.f.\\
 (2)
-\[f_{X}(x) = \sum_{y \in Y(\Omega)}^{}{P_{Y}(y) \cdot f_{X|Y}(x|y)},\ \forall x \in \mathbb{R}.\]
+\[f_{X}(x) = \sum_{y \in Y(\Omega)}^{}{P_{Y}(y) \cdot f_{X|Y}(x|y)}, \forall x \in \mathbb{R}.\]
 
-\[P_{Y}(y) = \int_{- \infty}^{\infty}{f_{X}(x) \cdot P_{Y|X}(y|x)\dif x,}\ \forall y \in \mathbb{R}.\]
+\[P_{Y}(y) = \int_{- \infty}^{\infty}{f_{X}(x) \cdot P_{Y|X}(y|x)\dif x,} \forall y \in \mathbb{R}.\]
 
 (3) If $x \in \mathbb{R}$ and $f_{X}(x) \neq 0$, then
 
-\[P_{Y|X}(y|x) = \frac{P_{Y}(y) \cdot f_{X|Y}(x|y)}{\sum_{y \in Y(\Omega)}^{}{P_{Y}(y) \cdot f_{X|Y}(x|y)}},\ \forall y \in \mathbb{R}.\]
+\[P_{Y|X}(y|x) = \frac{P_{Y}(y) \cdot f_{X|Y}(x|y)}{\sum_{y \in Y(\Omega)}^{}{P_{Y}(y) \cdot f_{X|Y}(x|y)}}, \forall y \in \mathbb{R}.\]
 
 If $y \in \mathbb{R}$ and $P_{Y}(y) \neq 0$, then
 
-\[f_{X|Y}(x|y) = \frac{f_{X}(x) \cdot P_{Y|X}(y|x)}{\int_{- \infty}^{\infty}{f_{X}(x) \cdot P_{Y|X}(y|x)\dif x}}\dif x,\ \forall x \in \mathbb{R}.\]
+\[f_{X|Y}(x|y) = \frac{f_{X}(x) \cdot P_{Y|X}(y|x)}{\int_{- \infty}^{\infty}{f_{X}(x) \cdot P_{Y|X}(y|x)\dif x}}\dif x, \forall x \in \mathbb{R}.\]
 \end{theorem}
 
 \begin{proof}
@@ -2676,20 +2645,20 @@ If $y \in \mathbb{R}$ and $P_{Y}(y) \neq 0$, then
 \end{proof}
 
 \begin{definition}[Expectation of Conditional R.V.]
-Let $X$ and $Y$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$ and
-$y \in \mathbb{R}$. The conditional expectation $\mathbb{E}[ X|Y = y]$ of $X$ given that $Y = y$ is given by
-\[\mathbb{E}\left[ X | Y = y \right] = \left\{ \begin{aligned}
-&\sum_{x \in X(\Omega)}^{}{x \cdot P_{X|Y}(x|y),\quad \mathrm{\text{if\ }}X\mathrm{\text{\ is\ a\ discrete\ r.v.}}} \\
-&\int_{- \infty}^{\infty}{x \cdot}f_{X|Y}(x|y)\dif x,\quad\mathrm{\text{if\ }}X\mathrm{\text{\ is\ a\ continuous\ r.v.}} \\
-\end{aligned} \right.\ \]
+  Let $X$ and $Y$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$ and
+  $y \in \mathbb{R}$. The conditional expectation $\mathbb{E}[ X|Y = y]$ of $X$ given that $Y = y$ is given by
+  \[\mathbb{E}\left[ X | Y = y \right] = \left\{ \begin{aligned}
+  &\sum_{x \in X(\Omega)}^{}{x \cdot P_{X|Y}(x|y),\quad \text{if}~X~\text{is a discrete r.v.}} \\
+  &\int_{- \infty}^{\infty}{x \cdot}f_{X|Y}(x|y)\dif x,\quad\text{if}~X~\text{is a continuous r.v.} \\
+  \end{aligned} \right. \]
 \end{definition}
 
 \begin{theorem}[Expectation of Conditional Measurable Function]
-Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$), and $g$ is a measurable function from $\mathbb{(R,}\mb_{\mathbb{R}})$ to $\mathbb{(R,}\mb_{\mathbb{R}})$. Then
+Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, and $g$ is a measurable function from $(\mathbb{R},\mb_{\mathbb{R}})$ to $(\mathbb{R},\mb_{\mathbb{R}})$. Then
 \[\mathbb{E}\left[ g(X) | Y = y \right] = \left\{ \begin{aligned}
-&\sum_{x \in X(\Omega)}^{}{g(x) \cdot P_{X|Y}(x|y),\quad \mathrm{\text{if\ }}X\mathrm{\text{\ is\ a\ discrete\ r.v.}}} \\
-&\int_{- \infty}^{\infty}g(x) \cdot f_{X|Y}(x|y)\dif x,\quad\mathrm{\text{if\ }}X\mathrm{\text{\ is\ a\ continuous\ r.v.}} \\
-\end{aligned} \right.\ \]
+&\sum_{x \in X(\Omega)}^{}{g(x) \cdot P_{X|Y}(x|y),\quad \text{if }X\text{ is a discrete r.v.}} \\
+&\int_{- \infty}^{\infty}g(x) \cdot f_{X|Y}(x|y)\dif x,\quad\text{if }X\text{ is a continuous r.v.} \\
+\end{aligned} \right. \]
 \end{theorem}
 
 \begin{proof}
@@ -2699,18 +2668,18 @@ Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$)
 \section{Transformations of Two R.V.'s}
 
 \begin{theorem}[Transformations of Two R.V.'s]
-Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, $g$ and $h$ are measurable functions from $(\mathbb{R}^{2},\mb_{\mathbb{R}^{2}})$ to $\mathbb{(R,}\mb_{\mathbb{R}})$, and $U = g(X,Y)$ and $V = h(X,Y)$.\\
+Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, $g$ and $h$ are measurable functions from $(\mathbb{R}^{2},\mb_{\mathbb{R}^{2}})$ to $(\mathbb{R},\mb_{\mathbb{R}})$, and $U = g(X,Y)$ and $V = h(X,Y)$.\\
 (1) If $X$ and $Y$ are discrete r.v.'s, then $U$ and $V$ are discrete r.v.'s and
 \[P_{U,V}(u,v) = \sum_{(x,y):g(x,y) = u,h(x,y) = v}^{}{P_{X,Y}(x,y)}.\]
 (2) If $X$ and $Y$ are jointly continuous r.v.'s, $U$ and $V$ are discrete r.v.'s, then
 \[P_{U,V}(u,v) = \iint_{\{(x,y):g(x,y) = u,h(x,y) = v\}}^{}{f_{X,Y}(x,y)\dif x\dif y.}\]
-(3) If $X$and $Y$are jointly continuous r.v.'s, $U$and $V$are jointly continuous r.v.'s, and
+(3) If $X$ and $Y$ are jointly continuous r.v.'s, $U$and $V$are jointly continuous r.v.'s, and
 \[J(x,y) = \left| \begin{matrix}
 \frac{\partial g(x,y)}{\partial x} & \frac{\partial g(x,y)}{\partial y} \\
 \frac{\partial h(x,y)}{\partial x} & \frac{\partial h(x,y)}{\partial y} \\
 \end{matrix} \right| \neq 0\]
 
-$\forall(x,y) \in \{(x,y):g(x,y) = u,\ h(x,y) = v\}$, where $J(x,y)$ is the Jacobian determinant, $(u,v) \in g(X,Y)(\Omega) \times h(X,Y)(\Omega)$, then
+$\forall(x,y) \in \{(x,y):g(x,y) = u, h(x,y) = v\}$, where $J(x,y)$ is the Jacobian determinant, $(u,v) \in g(X,Y)(\Omega) \times h(X,Y)(\Omega)$, then
 \[f_{U,V}(u,v) = \sum_{(x,y):g(x,y) = u,h(x,y) = v}^{}\frac{f_{X,Y}(x,y)}{|J(x,y)|}\]
 \end{theorem}
 
@@ -2733,66 +2702,65 @@ Suppose $X$ and $Y$ are two independent r.v.'s of a probability space $(\Omega,\
 \section{Order Statistics}
 
 \begin{definition}[Order Statistic]
-Let $X_{1},\ X_{2},\ \cdots,X_{n}$ be i.i.d. r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. The $i^{th}$ order statistic $X_{(i)},\ \ i = 1,2,\ \cdots,n$
-of $X_{1},\ X_{2},\ \cdots,X_{n}$ is defined as the $i^{th}$
-\textbf{smallest} value in $\left\{ X_{1},\ X_{2},\ \cdots,X_{n} \right\}$ so that
-$X_{(1)} \ls X_{(2)} \ls \cdots\ls X_{(n)}$, namely, $X_{\left( i \right)}(w) =$ the $i^{th}\ $smallest value in $\left\{ X_{1}(w),\ X_{2}(w),\ \cdots,X_{n}(w) \right\}$ for all $w \in \Omega$. In particular,
-$X_{(1)} = \min\{ X_{1},\ X_{2},\ \cdots,X_{n}\}$ and $X_{(n)} = \max\{ X_{1},\ X_{2},\ \cdots,X_{n}\}$.
+Let $X_{1}, X_{2}, \cdots,X_{n}$ be i.i.d. r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. The $i^{th}$ order statistic $X_{(i)},  i = 1,2, \cdots,n$
+of $X_{1}, X_{2}, \cdots,X_{n}$ is defined as the $i^{th}$
+\textbf{smallest} value in $\left\{ X_{1}, X_{2}, \cdots,X_{n} \right\}$ so that
+$X_{(1)} \ls X_{(2)} \ls \cdots\ls X_{(n)}$, namely, $X_{\left( i \right)}(w) =$ the $i^{th} $smallest value in $\left\{ X_{1}(w), X_{2}(w), \cdots,X_{n}(w) \right\}$ for all $w \in \Omega$. In particular,
+$X_{(1)} = \min\{ X_{1}, X_{2}, \cdots,X_{n}\}$ and $X_{(n)} = \max\{ X_{1}, X_{2}, \cdots,X_{n}\}$.
 \end{definition}
 
 \begin{remark}[Without Equal $\&$ Not I.I.D.]
-(1) If $X_{1},\ X_{2},\ \cdots,X_{n}$ are jointly continuous r.v.'s, then
-\[\mathbb{P}\left( X_{\left( i \right)} = X_{\left( j \right)} \right) = 0,\ \forall i \neq j\ \  \to \mathbb{P}\left( X_{\left( 1 \right)} < X_{\left( 2 \right)} < \cdots< X_{\left( n \right)} \right) = 1.\]
-(2) $X_{(i)},\ \ i = 1,2,\ \cdots,n$ is a function of $X_{1},\ X_{2},\ \cdots,X_{n}$ $\to X_{(1)},X_{(2)},\ \cdots,X_{(n)}$ are \textbf{neither independent} \textbf{nor identically distributed} in general.
+(1) If $X_{1}, X_{2}, \cdots,X_{n}$ are jointly continuous r.v.'s, then
+\[\mathbb{P}\left( X_{\left( i \right)} = X_{\left( j \right)} \right) = 0, \forall i \neq j   \to \mathbb{P}\left( X_{\left( 1 \right)} < X_{\left( 2 \right)} < \cdots< X_{\left( n \right)} \right) = 1.\]
+(2) $X_{(i)},  i = 1,2, \cdots,n$ is a function of $X_{1}, X_{2}, \cdots,X_{n}$ $\to X_{(1)},X_{(2)}, \cdots,X_{(n)}$ are \textbf{neither independent} \textbf{nor identically distributed} in general.
 \end{remark}
 
 \begin{definition}[Random Sample]
-A random sample of size $n$ of a probability space $(\Omega,\ma,\mathbb{P})$ is a sequence of $n$ i.i.d. r.v.'s $X_1,\ X_2,\ \cdots,X_n$ of $(\Omega,\ma,\mathbb{P})$.
+A random sample of size $n$ of a probability space $(\Omega,\ma,\mathbb{P})$ is a sequence of $n$ i.i.d. r.v.'s $X_1, X_2, \cdots,X_n$ of $(\Omega,\ma,\mathbb{P})$.
 \end{definition}
 
 \begin{definition}[Range, Midrange, Median and Mean of Random Sample]
-Let $X_{1},\ X_{2},\ \cdots,X_{n}$ be a random sample of size $n$ of
+Let $X_{1}, X_{2}, \cdots,X_{n}$ be a random sample of size $n$ of
 a probability space $(\Omega,\ma,\mathbb{P})$.
 
 The \textbf{sample range} is given by
-$X_{\left( 1 \right)} + X_{\left( n \right)}$.\vspace{0.5cm}
+$X_{\left( 1 \right)} + X_{\left( n \right)}$.
 
 The \textbf{sample midrange} is given by
 $\frac{X_{\left( 1 \right)} + X_{\left( n \right)}}{2}$.
 
 The \textbf{sample median} is given by $\left\{ \begin{aligned}
-&\quad\ X_{\left( i - 1 \right)},\qquad\mathrm{\text{\ if}}\ n = 2i + 1 \\
-&\frac{X_{\left( i \right)} + X_{\left( i + 1 \right)}}{2},\ \mathrm{\text{if}}\ n = 2i\\
-\end{aligned} \right.$\vspace{0.5cm}
+&\quad X_{\left( i - 1 \right)},\qquad~\text{ if}~ n = 2i + 1 \\
+&\frac{X_{\left( i \right)} + X_{\left( i + 1 \right)}}{2}, ~\text{if}~ n = 2i\\
+\end{aligned} \right.$
 
-$\dis\mathrm{\text{The\ }}\mathrm{\textbf{sample\ mean}}\ \bar{X}\ \mathrm{\text{is\ given\ by}}\text{\ \ }\bar{X} = \frac{1}{n}\sum_{i = 1}^{n}X_{i}.$
+The \textbf{sample mean} $\bar{X}$ is given by $\bar{X} = \frac{1}{n}\sum_{i = 1}^{n}X_{i}.$
 \end{definition}
 
 \begin{remark}[Forced Decline]
-If $\exists\ i_{j} < i_{l} \to x_{i_{j}} \gs x_{i_{l}}$, then
+If $\exists i_{j} < i_{l} \to x_{i_{j}} \gs x_{i_{l}}$, then
 \[\begin{aligned}
-&F_{X_{(i_{1})},X_{(i_{2})},\cdots\,X_{(i_{k})}}\left( x_{i_{1}},\ \cdots,x_{i_{j}},\ \cdots,x_{i_{l}},\ \cdots,\ x_{i_{k}} \right) \\
-=& F_{X_{(i_{1})},X_{(i_{2})},\cdots\,X_{(i_{k})}}\left( x_{i_{1}},\ \cdots,x_{i_{l}},\ \cdots,x_{i_{l}},\ \cdots,\ x_{i_{k}} \right)\ \end{aligned}\]
+&F_{X_{(i_{1})},X_{(i_{2})},\cdots\,X_{(i_{k})}}\left( x_{i_{1}}, \cdots,x_{i_{j}}, \cdots,x_{i_{l}}, \cdots, x_{i_{k}} \right) \\
+=& F_{X_{(i_{1})},X_{(i_{2})},\cdots\,X_{(i_{k})}}\left( x_{i_{1}}, \cdots,x_{i_{l}}, \cdots,x_{i_{l}}, \cdots, x_{i_{k}} \right) \end{aligned}\]
 and
-$f_{X_{(i_{1})},X_{(i_{2})},\cdots\,X_{(i_{k})}}\left( x_{i_{1}},x_{i_{2}},\ \cdots,\ x_{i_{k}} \right) = 0$.
+$f_{X_{(i_{1})},X_{(i_{2})},\cdots\,X_{(i_{k})}}\left( x_{i_{1}},x_{i_{2}}, \cdots, x_{i_{k}} \right) = 0$.
 \end{remark}
 
 \begin{theorem}[C.D.F. and P.D.F. of Jointly Order R.V.'s]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are i.i.d. jointly continuous r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$ with common c.d.f. $F(x)$ and common p.d.f. $f(x)$. If
-$1 \ls i_{1} \ls i_{2} \ls \cdots \ls i_{k} \ls n,\  - \infty < x_{i_{1}} < x_{i_{2}} < \cdots < x_{i_{k}} < \infty$, then
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are i.i.d. jointly continuous r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$ with common c.d.f. $F(x)$ and common p.d.f. $f(x)$. If
+$1 \ls i_{1} \ls i_{2} \ls \cdots \ls i_{k} \ls n,  - \infty < x_{i_{1}} < x_{i_{2}} < \cdots < x_{i_{k}} < \infty$, then
 \[\begin{aligned}
-&F_{X_{\left(i_{1}\right)},X_{\left(i_{2}\right)},\ \cdots,X_{\left(i_{k}\right)}}\left( x_{i_{1}},x_{i_{2}},\ \cdots,\ x_{i_{k}} \right)\\
-=& \sum_{j_{k} = i_{k}}^{n}{\sum_{j_{k - 1} = i_{k - 1}}^{j_{k}}\cdots}\sum_{j_{1} = i_{1}}^{j_{2}} \binom{n}{j_{k}}\binom{j_{k}}{j_{k - 1}} \cdots \binom{j_{2}}{j_{1}}\left[ F\left( x_{i_{1}} \right) \right]^{j_{1}}\ \left[ F\left( x_{i_{2}} \right) - F\left( x_{i_{1}} \right) \right]^{j_{2} - j_{1}}\\
-&\qquad\cdots\ \left[ F\left( x_{i_{k}} \right) - F\left( x_{i_{k - 1}} \right) \right]^{j_{k} - j_{k - 1}}\ \left[ 1 - F\left( x_{i_{k}} \right) \right]^{n - j_{k}}\\
+&F_{X_{\left(i_{1}\right)},X_{\left(i_{2}\right)}, \cdots,X_{\left(i_{k}\right)}}\left( x_{i_{1}},x_{i_{2}}, \cdots, x_{i_{k}} \right)\\
+=& \sum_{j_{k} = i_{k}}^{n}{\sum_{j_{k - 1} = i_{k - 1}}^{j_{k}}\cdots}\sum_{j_{1} = i_{1}}^{j_{2}} \binom{n}{j_{k}}\binom{j_{k}}{j_{k - 1}} \cdots \binom{j_{2}}{j_{1}}\left[ F\left( x_{i_{1}} \right) \right]^{j_{1}} \left[ F\left( x_{i_{2}} \right) - F\left( x_{i_{1}} \right) \right]^{j_{2} - j_{1}}\\
+&\qquad\cdots \left[ F\left( x_{i_{k}} \right) - F\left( x_{i_{k - 1}} \right) \right]^{j_{k} - j_{k - 1}} \left[ 1 - F\left( x_{i_{k}} \right) \right]^{n - j_{k}}\\
 \end{aligned}\]
 and
 \[\begin{aligned}
-&\qquad f_{X_{\left(i_{1}\right)},X_{\left(i_{2}\right)},\ \cdots,X_{\left(i_{k}\right)}}\left( x_{i_{1}},x_{i_{2}},\ \cdots,\ x_{i_{k}} \right)\\
+&\qquad f_{X_{\left(i_{1}\right)},X_{\left(i_{2}\right)}, \cdots,X_{\left(i_{k}\right)}}\left( x_{i_{1}},x_{i_{2}}, \cdots, x_{i_{k}} \right)\\
 &= \frac{n!}{\left( i_{1} - 1 \right)!\left( i_{2} - i_{1} - 1 \right)!\cdots\left( i_{k} - i_{k - 1} - 1 \right)!\left( n - i_{k} \right)!}\\
 &\cdot f\left( x_{i_{1}} \right)f\left( x_{i_{2}} \right)\cdots f\left( x_{i_{k}} \right)\cdot \left[ F\left( x_{i_{1}} \right) \right]^{i_{1} - 1}\left[ F\left( x_{i_{2}} \right) - F\left( x_{i_{1}} \right) \right]^{i_{2} - i_{1} - 1}\\
-&\cdots\ \left[ F\left( x_{i_{k}} \right) - F\left( x_{i_{k - 1}} \right) \right]^{i_{k} - i_{k - 1} - 1}\ \left[ 1 - F\left( x_{i_{k}} \right) \right]^{n - i_{k}}\\
+&\cdots \left[ F\left( x_{i_{k}} \right) - F\left( x_{i_{k - 1}} \right) \right]^{i_{k} - i_{k - 1} - 1} \left[ 1 - F\left( x_{i_{k}} \right) \right]^{n - i_{k}}\\
 \end{aligned}\]
-\vspace{0.01cm}
 \end{theorem}
 
 \begin{proof}
@@ -2800,8 +2768,8 @@ and
 \end{proof}
 
 \begin{corollary}[Beta R.V. vs Binomial R.V.]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are i.i.d. r.v.'s $\sim U(0,1)$, then
-\[X_{(i)}\sim\mb\left( i,n + 1 - i \right),\ i = 1,2,\ \cdots,n.\]
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are i.i.d. r.v.'s $\sim U(0,1)$, then
+\[X_{(i)}\sim\mb\left( i,n + 1 - i \right), i = 1,2, \cdots,n.\]
 \end{corollary}
 
 \begin{proof}
@@ -2809,7 +2777,7 @@ Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are i.i.d. r.v.'s $\sim U(0,1)$, then
 f_{X_{\left( i \right)}}(x) &= \frac{n!}{\left( i - 1 \right)!\left( n - i \right)!}f(x)\left[ F(x) \right]^{i - 1}\left[ 1 - F(x) \right]^{n - i}\\
 &= \frac{n!}{\left( i - 1 \right)!\left( n - i \right)!}1 \cdot x^{i - 1}{(1 - x)}^{n - i}\\
 &= \frac{\Gamma(n + 1)}{\Gamma(i)\Gamma(n + 1 - i)}x^{i - 1}{(1 - x)}^{(n + 1 - i) - 1}\\
-&= \frac{x^{i - 1}{(1 - x)}^{(n + 1 - i) - 1}}{B(i,n + 1 - i)},\ 0 < x < 1\\
+&= \frac{x^{i - 1}{(1 - x)}^{(n + 1 - i) - 1}}{B(i,n + 1 - i)}, 0 < x < 1\\
 &\to X_{(i)}\sim\mb\left( i,n + 1 - i \right)
 \end{aligned}\]
 \end{proof}
@@ -2818,16 +2786,16 @@ f_{X_{\left( i \right)}}(x) &= \frac{n!}{\left( i - 1 \right)!\left( n - i \righ
 
 (1)
 \[\begin{aligned}
-\ F_{X_{\left( i \right)}}(x) &= \sum_{j = i}^{n}{\binom{n}{j}\left[ F(x) \right]^{j}\left[ 1 - F(x) \right]^{n - j}},\ -\infty < x < \infty,\\
-f_{X_{\left( i \right)}}(x) &= \frac{n!}{\left( i - 1 \right)!\left( n - i \right)!}f(x)\left[ F(x) \right]^{i - 1}\left[ 1 - F(x) \right]^{n - i},\ -\infty < x < \infty.
+ F_{X_{\left( i \right)}}(x) &= \sum_{j = i}^{n}{\binom{n}{j}\left[ F(x) \right]^{j}\left[ 1 - F(x) \right]^{n - j}}, -\infty < x < \infty,\\
+f_{X_{\left( i \right)}}(x) &= \frac{n!}{\left( i - 1 \right)!\left( n - i \right)!}f(x)\left[ F(x) \right]^{i - 1}\left[ 1 - F(x) \right]^{n - i}, -\infty < x < \infty.
 \end{aligned}\]
 In particular,
 \[\begin{aligned}
-F_{X_{\left( 1 \right)}}(x) &= 1 - \left[ 1 - F(x) \right]^{n},\ -\infty < x < \infty,\\
-f_{X_{\left( 1 \right)}}(x) &= n\cdot f(x)\left[ 1 - F(x) \right]^{n - 1},\ -\infty < x < \infty,
+F_{X_{\left( 1 \right)}}(x) &= 1 - \left[ 1 - F(x) \right]^{n}, -\infty < x < \infty,\\
+f_{X_{\left( 1 \right)}}(x) &= n\cdot f(x)\left[ 1 - F(x) \right]^{n - 1}, -\infty < x < \infty,
 \end{aligned}\]
 and
-\[F_{X_{\left( n \right)}}(x) = \left[ F(x) \right]^{n},\ f_{X_{\left( 1 \right)}}(x) = nf(x)\left[ F(x) \right]^{n - 1},\ -\infty < x < \infty.\]
+\[F_{X_{\left( n \right)}}(x) = \left[ F(x) \right]^{n}, f_{X_{\left( 1 \right)}}(x) = nf(x)\left[ F(x) \right]^{n - 1}, -\infty < x < \infty.\]
 (2)
 \[\begin{aligned}
 &F_{X_{\left( i_{1} \right)},X_{\left( i_{2} \right)}}(x,y)\\
@@ -2841,14 +2809,14 @@ f_{X_{\left( i_{1} \right)},X_{\left( i_{2} \right)}}(x,y) =& \frac{n!}{\left( i
 \end{aligned}\]
 (3)
 \[\begin{aligned}
-&\quad F_{X_{(1)},X_{(2)},\ \cdots,X_{(n)}}\left( x_{1},x_{2},\ \cdots,\ x_{n} \right)\\
+&\quad F_{X_{(1)},X_{(2)}, \cdots,X_{(n)}}\left( x_{1},x_{2}, \cdots, x_{n} \right)\\
 &= \sum_{j_{n - 1} = i_{n - 1}}^{n}{\sum_{j_{n - 2} = i_{n - 2}}^{j_{n - 1}}\cdots}\sum_{j_{1} = i_{1}}^{j_{2}} \binom{n}{j_{n - 1}}  \binom{j_{n - 1}}{j_{n - 2}} \cdots\binom{j_{2}}{j_{1}}\left[ F( x_{1} ) \right]^{j_{1}}\\
-&\cdot\left[ F( x_{2} ) - F( x_{1} ) \right]^{j_{2} - j_{1}}\cdots\ \left[ F( x_{n - 1} ) - F( x_{n - 2} ) \right]^{j_{n - 1} - j_{n - 2}}\ \left[ F( x_{n} ) - F( x_{n - 1} ) \right]^{n - j_{n - 1}}\\
+&\cdot\left[ F( x_{2} ) - F( x_{1} ) \right]^{j_{2} - j_{1}}\cdots \left[ F( x_{n - 1} ) - F( x_{n - 2} ) \right]^{j_{n - 1} - j_{n - 2}} \left[ F( x_{n} ) - F( x_{n - 1} ) \right]^{n - j_{n - 1}}\\
 \end{aligned}\]
 and
 \[\begin{aligned}
-&f_{X_{\left( 1 \right)},X_{\left( 2 \right)},\ \cdots,X_{\left( n \right)}}\left( x_{1},x_{2},\ \cdots,\ x_{n} \right)\\
-=& n!f(x_{1})f(x_{2})\cdots f(x_{n}),\ \ \  - \infty < x_{1} < x_{2} < \cdots < x_{n} < \infty
+&f_{X_{\left( 1 \right)},X_{\left( 2 \right)}, \cdots,X_{\left( n \right)}}\left( x_{1},x_{2}, \cdots, x_{n} \right)\\
+=& n!f(x_{1})f(x_{2})\cdots f(x_{n}),    - \infty < x_{1} < x_{2} < \cdots < x_{n} < \infty
 \end{aligned}\]
 \end{corollary}
 
@@ -2858,35 +2826,35 @@ and
 
 \section{Multinomial Distributions}
 
-Consider an experiment with $k$ possible outcomes $\omega_{1},\ \omega_{2},\ \cdots,\omega_{k}$. Let $A_{\left( i \right)} = \left\{ \omega_{i} \right\}$ be the event that the outcome is $\omega_{i}$ and let $P_{i} = \mathbb{P}(A_{i}),i = 1,2,\ \cdots,k.$ Suppose that such an experiment is independently and successively performed $n$ times. Let $X_{i},\ i = 1,2,\ \cdots,k$ be the number of times that event $A_{i}$ occurs. Then
+Consider an experiment with $k$ possible outcomes $\omega_{1}, \omega_{2}, \cdots,\omega_{k}$. Let $A_{\left( i \right)} = \left\{ \omega_{i} \right\}$ be the event that the outcome is $\omega_{i}$ and let $P_{i} = \mathbb{P}(A_{i}),i = 1,2, \cdots,k.$ Suppose that such an experiment is independently and successively performed $n$ times. Let $X_{i}, i = 1,2, \cdots,k$ be the number of times that event $A_{i}$ occurs. Then
 \[\begin{aligned}
-&P_{X_{1},X_{2},\ \cdots,X_{k}}\left( x_{1},x_{2},\, \cdots,x_{k} \right) \\
-=& \mathbb{P}( X_{1} = x_{1},X_{2} = x_{2},\ \cdots,X_{k} = x_{k} )\\
-=& \frac{n!}{x_{1}!x_{2}!\cdots x_{k}!}P_{1}^{x_{1}}P_{2}^{x_{2}}\cdots P_{k}^{x_{k}},\ x_{1},x_{2},\ \cdots,\ x_{k} \gs 0\ \mathrm{\text{and}}\ \sum_{i=1}^k x_i=n.
+&P_{X_{1},X_{2}, \cdots,X_{k}}\left( x_{1},x_{2},\, \cdots,x_{k} \right) \\
+=& \mathbb{P}( X_{1} = x_{1},X_{2} = x_{2}, \cdots,X_{k} = x_{k} )\\
+=& \frac{n!}{x_{1}!x_{2}!\cdots x_{k}!}P_{1}^{x_{1}}P_{2}^{x_{2}}\cdots P_{k}^{x_{k}}, x_{1},x_{2}, \cdots, x_{k} \gs 0 ~\text{and}~ \sum_{i=1}^k x_i=n.
 \end{aligned}\]
 
 \begin{definition}[Multinomial Joint R.V.'s]
-Let $X_{1},\ X_{2},\ \cdots,X_{k}$ be discrete r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. We call $X_{1},\ X_{2},\ \cdots,X_{k}$ multinomial joint r.v.'s with parameters $n,P_{1},P_{2},\ \cdots,P_{k}$, where $n \gs 1,\ P_{1},P_{2},\ \cdots,P_{k} \gs 0,\ P_{1} + P_{2} + \cdots + P_{k} = 1$, if the joint p.m.f. is given by
+Let $X_{1}, X_{2}, \cdots,X_{k}$ be discrete r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. We call $X_{1}, X_{2}, \cdots,X_{k}$ multinomial joint r.v.'s with parameters $n,P_{1},P_{2}, \cdots,P_{k}$, where $n \gs 1, P_{1},P_{2}, \cdots,P_{k} \gs 0, P_{1} + P_{2} + \cdots + P_{k} = 1$, if the joint p.m.f. is given by
 \[P_{\mX}(\mx) = \left\{ \begin{aligned}
-\frac{n!}{x_{1}!x_{2}!\cdots x_{k}!} & P_{1}^{x_{1}}P_{2}^{x_{2}}\cdots P_{k}^{x_{k}},\ \mathrm{\ }x_{1},x_{2},\ \cdots,x_{k} \gs 0\ \mathrm{\text{and}}\ \sum_{i=1}^k x_i=n \\
-&0, \qquad\qquad\mathrm{\text{o.w.}}\\
+\frac{n!}{x_{1}!x_{2}!\cdots x_{k}!} & P_{1}^{x_{1}}P_{2}^{x_{2}}\cdots P_{k}^{x_{k}}, \mathrm{ }x_{1},x_{2}, \cdots,x_{k} \gs 0 ~\text{and}~ \sum_{i=1}^k x_i=n \\
+&0, \qquad\qquad~\text{o.w.}~\\
 \end{aligned} \right.\]
 \end{definition}
 
 \begin{remark}[Verification of P.M.F.]
-$P_{\mX}(\mx) \gs 0,\ \forall\mx \in \mathbb{R}^{n}$ and
+$P_{\mX}(\mx) \gs 0, \forall\mx \in \mathbb{R}^{n}$ and
 \[\sum_{\mbox{\tiny$\begin{aligned}
-x_{1},x_{2},\,\cdots,\ x_{k} \gs 0 \\
+x_{1},x_{2},\,\cdots, x_{k} \gs 0 \\
 x_{1} + x_{2} + \cdots + x_{k} = n \\
 \end{aligned}$}}^{}{\frac{n!}{x_{1}!x_{2}!\cdots x_{k}!}P_{1}^{x_{1}}P_{2}^{x_{2}}\cdots P_{k}^{x_{k}}} = \left( P_{1} + P_{2} + \cdots + P_{k} \right)^{n} = 1\]
 $\to P_{\mX}(\mx)$ is a p.m.f.
 \end{remark}
 
 \begin{theorem}[Splitting of Multinomial Joint R.V.'s]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{l}$ are multinomial r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, with parameters $n,P_{1},P_{2},\ \cdots,P_{l}$,
-where $n \gs 1,\ P_{1},P_{2},\ \cdots,P_{k} \gs 0,\ P_{1} + P_{2} + \cdots + P_{k} = 1$. Then
-\[X_{(i_{1})},X_{(i_{2})},\cdots\,X_{\left( i_{k} \right)},\ n - X_{\left( i_{1} \right)} - X_{\left( i_{2} \right)} - \cdots - X_{\left( i_{k} \right)}\]
-are multinomial joint r.v.'s with parameters \[n,P_{i_{1}},P_{i_{2}},\ \cdots,P_{i_{k}},\ 1 - P_{i_{1}} - P_{i_{2}} - \cdots - P_{i_{k}}.\]
+Suppose $X_{1}, X_{2}, \cdots,X_{l}$ are multinomial r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, with parameters $n,P_{1},P_{2}, \cdots,P_{l}$,
+where $n \gs 1, P_{1},P_{2}, \cdots,P_{k} \gs 0, P_{1} + P_{2} + \cdots + P_{k} = 1$. Then
+\[X_{(i_{1})},X_{(i_{2})},\cdots\,X_{\left( i_{k} \right)}, n - X_{\left( i_{1} \right)} - X_{\left( i_{2} \right)} - \cdots - X_{\left( i_{k} \right)}\]
+are multinomial joint r.v.'s with parameters \[n,P_{i_{1}},P_{i_{2}}, \cdots,P_{i_{k}}, 1 - P_{i_{1}} - P_{i_{2}} - \cdots - P_{i_{k}}.\]
 \end{theorem}
 
 \begin{proof}
@@ -2898,7 +2866,7 @@ are multinomial joint r.v.'s with parameters \[n,P_{i_{1}},P_{i_{2}},\ \cdots,P_
 \section{Expected Values of Sums of R.V.'s}
 
 \begin{theorem}[Expectations of Sum of Finite R.V.'s]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, then
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, then
 \[\mathbb{E}\left[ \sum_{i = 1}^{n}X_{i} \right] = \sum_{i = 1}^{n}{\mathbb{E}[ X_{i}]}.\]
 \end{theorem}
 
@@ -2907,8 +2875,8 @@ Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are r.v.'s of a probability space $(\Omeg
 \end{proof}
 
 \begin{theorem}[Expectations of Sum of Infinite R.V.'s]
-Suppose $X_{1},\ X_{2},\ \cdots$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. If \[\sum_{i = 1}^{\infty}{\mathbb{E}[ X_{i}]} < \infty\] or if
-$X_{i}$ is nonnegative for all $i = 1,2,\ \cdots,$ then
+Suppose $X_{1}, X_{2}, \cdots$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. If \[\sum_{i = 1}^{\infty}{\mathbb{E}[ X_{i}]} < \infty\] or if
+$X_{i}$ is nonnegative for all $i = 1,2, \cdots,$ then
 \[\mathbb{E}\left[ \sum_{i = 1}^{\infty}X_{i} \right] = \sum_{i = 1}^{\infty}{\mathbb{E}[ X_{i}]}.\]
 \end{theorem}
 
@@ -2947,12 +2915,12 @@ exists. Then
 \begin{remark}[Cauchy-Schwarz Equalities]
 Suppose that $\mathbb{E}[ X^{2}] \neq 0$ and $\mathbb{E}[ Y^{2}] \neq 0$, then
 
-\[\mathbb{E}[XY]= \sqrt{\mathbb{E}\left[ X^{2} \right] \cdot \mathbb{E}\left[ Y^{2} \right]}\  \Leftrightarrow Y = aX\]
+\[\mathbb{E}[XY]= \sqrt{\mathbb{E}\left[ X^{2} \right] \cdot \mathbb{E}\left[ Y^{2} \right]}  \Leftrightarrow Y = aX\]
 with probability 1, where
 
 \[a = \frac{\mathbb{E}[XY]}{\mathbb{E}\left[ X^{2} \right]} = \sqrt{\frac{\mathbb{E}\left[ Y^{2} \right]}{\mathbb{E}\left[ X^{2} \right]}} > 0.\]
 
-\[\mathbb{E}[XY]= - \sqrt{\mathbb{E}\left[ X^{2} \right] \cdot \mathbb{E}\left[ Y^{2} \right]}\  \Leftrightarrow Y = aX\]
+\[\mathbb{E}[XY]= - \sqrt{\mathbb{E}\left[ X^{2} \right] \cdot \mathbb{E}\left[ Y^{2} \right]}  \Leftrightarrow Y = aX\]
 with probability 1, where
 
 \[a = \frac{\mathbb{E}[XY]}{\mathbb{E}\left[ X^{2} \right]} = - \sqrt{\frac{\mathbb{E}\left[ Y^{2} \right]}{\mathbb{E}\left[ X^{2} \right]}} < 0.\]
@@ -2973,7 +2941,7 @@ $\mathbb{E}[ X^{2}]$ exists, then
 Let $X$ and $Y$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$ with means $\mu_{X}$ and $\mu_{Y}$, resp. The covariance $\mathrm{Cov}(X,Y)$ (or $\sigma_{X,Y}$) of $X$ and $Y$ is given by
 \[\mathrm{Cov}(X,Y) = \sigma_{X,Y} = \mathbb{E}\left[ \left( X - \mu_{X} \right)\left( Y - \mu_{Y} \right) \right].\]
 We say that $X$ and $Y$ are positively correlated, negatively correlated and uncorrelated if
-$\mathrm{Cov}(X,Y) > 0,\ \mathrm{Cov}(X,Y) < 0$ and
+$\mathrm{Cov}(X,Y) > 0, \mathrm{Cov}(X,Y) < 0$ and
 $\mathrm{Cov}(X,Y) = 0$, resp.
 \end{definition}
 
@@ -3004,17 +2972,17 @@ Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$.
 $\mathrm{Cov}(X,Y) = \mathrm{Cov}(Y,X) = \mathbb{E}[XY] - \mathbb{E}[X] \mathbb{E}[Y].$
 
 (3)
-$\left| \mathrm{Cov}(X,Y) \right| \ls \sigma_{X}\cdot \sigma_{Y},\ \text{``=''} \Leftrightarrow X = \mu_{X}$ with probability 1 or
+$\left| \mathrm{Cov}(X,Y) \right| \ls \sigma_{X}\cdot \sigma_{Y}, \text{``=''} \Leftrightarrow X = \mu_{X}$ with probability 1 or
 $Y = \mu_{Y}$ with probability 1 or $Y=aX+b$ with probability 1, where
-\[a = \frac{\sigma_{X,Y}}{\sigma_{X}^{2}},\ b = \mu_{Y} - \mu_{X} \cdot \frac{\sigma_{X,Y}}{\sigma_{X}^{2}}.\]
+\[a = \frac{\sigma_{X,Y}}{\sigma_{X}^{2}}, b = \mu_{Y} - \mu_{X} \cdot \frac{\sigma_{X,Y}}{\sigma_{X}^{2}}.\]
 
 If $\sigma_{X} \neq 0$ and $\sigma_{Y} \neq 0$, then
 \[\mathrm{Cov}( X,Y)= \sigma_{X}\cdot \sigma_{Y} \Leftrightarrow Y = aX + b\]
 with probability 1, where
-\[a = \frac{\sigma_{Y}}{\sigma_{X}} > 0,\ b = \mu_{Y} - \mu_{X} \cdot \frac{\sigma_{Y}}{\sigma_{X}}.\]
+\[a = \frac{\sigma_{Y}}{\sigma_{X}} > 0, b = \mu_{Y} - \mu_{X} \cdot \frac{\sigma_{Y}}{\sigma_{X}}.\]
 \[\mathrm{Cov}( X,Y)=- \sigma_{X}\cdot \sigma_{Y} \Leftrightarrow Y = aX + b\]
 with probability 1, where
-\[a = - \frac{\sigma_{Y}}{\sigma_{X}} < 0,\ b = \mu_{Y} + \mu_{X} \cdot \frac{\sigma_{Y}}{\sigma_{X}}.\]
+\[a = - \frac{\sigma_{Y}}{\sigma_{X}} < 0, b = \mu_{Y} + \mu_{X} \cdot \frac{\sigma_{Y}}{\sigma_{X}}.\]
 \end{theorem}
 
 \begin{proof}
@@ -3022,14 +2990,14 @@ with probability 1, where
 \end{proof}
 
 \begin{theorem}[Covariance of Two Linear Combined R.V.'s]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n},\ Y_{1},\ Y_{2},\ \cdots,Y_{m}$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$.
+Suppose $X_{1}, X_{2}, \cdots,X_{n}, Y_{1}, Y_{2}, \cdots,Y_{m}$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$.
 
 (1)
-\[\mathrm{Cov}\left( \sum_{i = 1}^{n}{a_{i}X_{i}},\ \sum_{j = 1}^{m}{b_{j}Y_{j}} \right) = \sum_{i = 1}^{n}{\sum_{j = 1}^{m}a_{i}b_{j}}\mathrm{Cov}\left( X_{i},Y_{j} \right).\]
+\[\mathrm{Cov}\left( \sum_{i = 1}^{n}{a_{i}X_{i}}, \sum_{j = 1}^{m}{b_{j}Y_{j}} \right) = \sum_{i = 1}^{n}{\sum_{j = 1}^{m}a_{i}b_{j}}\mathrm{Cov}\left( X_{i},Y_{j} \right).\]
 (2)
 \[\mathrm{Var}\left( \sum_{i = 1}^{n}{a_{i}X_{i}} \right) = \sum_{i = 1}^{n}{a_{i}^{2}\mathrm{Var}(x_{i})} + 2\sum_{1 \ls i < j \ls n}^{}a_{i}b_{j}\mathrm{Cov}\left( X_{i},X_{j} \right).\]
 
-In particular, if $X_{1},\ X_{2},\ \cdots,X_{n}$ are \textbf{pairwise
+In particular, if $X_{1}, X_{2}, \cdots,X_{n}$ are \textbf{pairwise
 uncorrelated}, then
 \[\mathrm{Var}\left( \sum_{i = 1}^{n}{a_{i}X_{i}} \right) = \sum_{i = 1}^{n}{a_{i}^{2}\mathrm{Var}(x_{i})}.\]
 \end{theorem}
@@ -3041,7 +3009,6 @@ uncorrelated}, then
 \begin{theorem}[Independence Implies Uncorrelated]
 Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. If $X\bot Y$, then $X$ and $Y$ are uncorrelated, i.e.,
 \[\mathrm{Cov}(X,Y) = \mathbb{E}[XY] - \mathbb{E}[X] \mathbb{E}[Y] = \mathbb{E}[X] \mathbb{E}[Y] - \mathbb{E}[X] \mathbb{E}[Y] = 0.\]
-\vspace{0.01cm}
 \end{theorem}
 
 \begin{proof}
@@ -3051,7 +3018,6 @@ Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$.
 \begin{remark}[Uncorrelated Can't Imply Independence]
 The inverse is not true, i.e.,
 \[\mathrm{Cov}(X,Y) = 0 \nRightarrow X\bot Y.\]
-\vspace{0.01cm}
 \end{remark}
 
 \begin{definition}[Correlation Coefficient]
@@ -3067,23 +3033,22 @@ $0 < \sigma_{X}^{2} < \infty,0 < \sigma_{Y}^{2} < \infty$. The correlation coeff
 (2) $- 1 \ls \rho_{X,Y} \ls 1.$
 
 $\rho_{X,Y} = 1 \Leftrightarrow Y = aX + b$ with probability 1, where
-\[a = \frac{\sigma_{Y}}{\sigma_{X}} > 0,\ b = \mu_{Y} - \mu_{X} \cdot \frac{\sigma_{Y}}{\sigma_{X}}.\]
+\[a = \frac{\sigma_{Y}}{\sigma_{X}} > 0, b = \mu_{Y} - \mu_{X} \cdot \frac{\sigma_{Y}}{\sigma_{X}}.\]
 
 $\rho_{X,Y} =- 1 \Leftrightarrow Y = aX + b$ with probability 1, where
-\[a = - \frac{\sigma_{Y}}{\sigma_{X}} < 0,\ b = \mu_{Y} + \mu_{X} \cdot \frac{\sigma_{Y}}{\sigma_{X}}.\]
+\[a = - \frac{\sigma_{Y}}{\sigma_{X}} < 0, b = \mu_{Y} + \mu_{X} \cdot \frac{\sigma_{Y}}{\sigma_{X}}.\]
 \end{remark}
 
 \section{Conditioning on R.V.'s}
 
 \begin{definition}[Conditional Expectation on R.V.'s]
 Let $X$ and $Y$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$.\\
- Let $g(Y) = \mathbb{E}[X | Y = y],\ \forall y\mathbb{\in R}$. We denote $\mathbb{E}[ X|Y]$ as the r.v. $g(Y)$. Note that $\mathbb{E}[ X|Y]$ is a function of $Y$.
+ Let $g(Y) = \mathbb{E}[X | Y = y], \forall y\mathbb{\in R}$. We denote $\mathbb{E}[ X|Y]$ as the r.v. $g(Y)$. Note that $\mathbb{E}[ X|Y]$ is a function of $Y$.
 \end{definition}
 
 \begin{theorem}[Marginal Expectation]
 Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. Then
 \[\mathbb{E}\left[ \mathbb{E}\left[ X | Y \right] \right] = \mathbb{E}[X].\]
-\vspace{0.01cm}
 \end{theorem}
 
 \begin{proof}
@@ -3093,7 +3058,6 @@ Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$.
 \begin{theorem}[Marginal Expectation of Measurable Function]
 Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. Then
 \[\mathbb{E}\left[ \mathbb{E}\left[ X \cdot g(Y) | Y \right] \right] = g( Y )\mathbb{E}\left[ X|Y \right].\]
-\vspace{0.01cm}
 \end{theorem}
 
 \begin{proof}
@@ -3101,8 +3065,8 @@ Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$.
 \end{proof}
 
 \begin{theorem}[Wald's Equations]
-Suppose $X_{1},\ X_{2},\ \cdots$ are i.i.d. r.v.'s $\sim X$ and $N$
-is a positive integer-valued r.v. of a probability space $(\Omega,\ma,\mathbb{P})$, and $N\bot\{ X_{1},\ X_{2},\ \cdots\}$.
+Suppose $X_{1}, X_{2}, \cdots$ are i.i.d. r.v.'s $\sim X$ and $N$
+is a positive integer-valued r.v. of a probability space $(\Omega,\ma,\mathbb{P})$, and $N\bot\{ X_{1}, X_{2}, \cdots\}$.
 
 (1) If $\mathbb{E}[X] < \infty$ and
 $\mathbb{E}\left[ N \right] < \infty$, then
@@ -3119,8 +3083,8 @@ $\mathbb{E}\left[ N \right] < \infty$, then
 \begin{theorem}[Law of Total Probability]
 Suppose $A$ is an event and $X$ is a r.v. of a probability space $(\Omega,\ma,\mathbb{P})$, then
 \[\mathbb{P}(A) = \left\{ \begin{aligned}
-&\sum_{x \in X(\Omega)}^{}{\mathbb{P}(A|X = x) \cdot P_{X}(x)},\qquad\ \mathrm{\text{if\ }}X\mathrm{\text{\ is\ a\ discrete\ r.v.}}\\
-&\int_{- \infty}^{\infty} \mathbb{P}( A | X = x ) \cdot f_{X}( x )\dif x,\qquad\text{if\ }X\text{\ is\ a\ continuous\ r.v.} \\
+&\sum_{x \in X(\Omega)}^{}{\mathbb{P}(A|X = x) \cdot P_{X}(x)},\qquad \text{if}~X~\text{is a discrete r.v.}\\
+&\int_{- \infty}^{\infty} \mathbb{P}( A | X = x ) \cdot f_{X}( x )\dif x,\qquad\text{if}~X~\text{is a continuous r.v.} \\
 \end{aligned} \right.\]
 \end{theorem}
 
@@ -3131,7 +3095,6 @@ Suppose $A$ is an event and $X$ is a r.v. of a probability space $(\Omega,\ma,\m
 \begin{theorem}[Conditional Variance on R.V.'s]
 Suppose $X$ and $Y$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$, then
 \[\mathrm{Var}(X) = \mathbb{E}[\mathrm{Var}(x|y)] + \mathrm{Var}(\mathbb{E}[X | Y]).\]
-\vspace{0.01cm}
 \end{theorem}
 
 \begin{proof}
@@ -3169,11 +3132,11 @@ Suppose $X_{1}$ and $X_{2}$ are r.v.'s of a probability space $(\Omega,\ma,\math
 
 (1) $X_{1}\sim \mathcal{N}\left( \mu_{1},\sigma_{11} \right)$ and
 $X_{2}\sim \mathcal{N}\left( \mu_{2},\sigma_{22} \right)$. Therefore
-\[\mu_{1} = \mu_{X_{1}},\ \sigma_{11} = \sigma_{X_{1}}^{2} := \sigma_{1}^{2},\ \mu_{2} = \mu_{X_{2}},\ \sigma_{22} = \sigma_{X_{2}}^{2} := \sigma_{2}^{2}.\]
+\[\mu_{1} = \mu_{X_{1}}, \sigma_{11} = \sigma_{X_{1}}^{2} := \sigma_{1}^{2}, \mu_{2} = \mu_{X_{2}}, \sigma_{22} = \sigma_{X_{2}}^{2} := \sigma_{2}^{2}.\]
 (2)
-\[X_{2}|_{X_{1} = x_{1}}\sim \mathcal{N}\left( \mu_{2} + \frac{\sigma_{12}}{\sigma_{11}}\left( x_{1} - \mu_{1} \right),\ \frac{\left| \bm{\Sigma} \right|}{\sigma_{11}} \right)\]
+\[X_{2}|_{X_{1} = x_{1}}\sim \mathcal{N}\left( \mu_{2} + \frac{\sigma_{12}}{\sigma_{11}}\left( x_{1} - \mu_{1} \right), \frac{\left| \bm{\Sigma} \right|}{\sigma_{11}} \right)\]
 and
-\[X_{1}|_{X_{2} = x_{2}}\sim \mathcal{N}\left( \mu_{1} + \frac{\sigma_{12}}{\sigma_{22}}\left( x_{2} - \mu_{2} \right),\ \frac{\left|\bm{\Sigma}\right|}{\sigma_{22}} \right).\]
+\[X_{1}|_{X_{2} = x_{2}}\sim \mathcal{N}\left( \mu_{1} + \frac{\sigma_{12}}{\sigma_{22}}\left( x_{2} - \mu_{2} \right), \frac{\left|\bm{\Sigma}\right|}{\sigma_{22}} \right).\]
 (3)
 $\sigma_{12} = \sigma_{X_{1},X_{2}} = \rho_{X_{1},X_{2}} \cdot \sigma_{X_{1}}\sigma_{X_{2}} := \rho \cdot \sigma_{1}\sigma_{2}$. Therefore
 \[X_{2}|_{X_{1} = x_{1}}\sim \mathcal{N}\left( \mu_{2} + \rho\cdot\frac{\sigma_{2}}{\sigma_{1}}\left( x_{1} - \mu_{1} \right),\left(1 - \rho^{2}\right)\sigma_{2}^{2} \right)\]
@@ -3194,7 +3157,7 @@ $\dis\bm{\mu}= \binom{\mu_{1}}{\mu_{2}}$ is called the mean vector of $\mX$, and
 
 \begin{lemma}[Linear Conditional Expectation and Constant Variance]
 Suppose $X_{1}$ and $X_{2}$ are jointly continuous r.v.'s of a probability
-space $(\Omega,\ma,\mathbb{P})$ with $\mu_{X_{1}} = \mu_{1},\ \ \mu_{X_{2}} = \mu_{2},\ \sigma_{X_{1}}^{2} = \sigma_{1}^{2},\ \sigma_{X_{2}}^{2} = \sigma_{2}^{2},\ \rho_{X_{1},X_{2}} = \rho$.
+space $(\Omega,\ma,\mathbb{P})$ with $\mu_{X_{1}} = \mu_{1},  \mu_{X_{2}} = \mu_{2}, \sigma_{X_{1}}^{2} = \sigma_{1}^{2}, \sigma_{X_{2}}^{2} = \sigma_{2}^{2}, \rho_{X_{1},X_{2}} = \rho$.
 
 (1) If
 $\mathbb{E}[ X_{2} | X_{1} = x_{1}] = ax_{1} + b$
@@ -3265,7 +3228,7 @@ for all $t \in ( - \delta,\delta)$.
 
 \begin{theorem}[Moment Generation]
 (1)
-$\mathbb{E}[X^{n}] = M_{X}^{\left( n \right)}(0),\ \forall n \gs 0.$
+$\mathbb{E}[X^{n}] = M_{X}^{\left( n \right)}(0), \forall n \gs 0.$
 
 (2) Maclaurin's series for $M_{X}(t)$:
 \[M_{X}(t) = \sum_{n = 0}^{\infty}\frac{M_{X}^{\left( n \right)}(0)}{n!}t^{n} = \sum_{n = 0}^{\infty}\frac{\mathbb{E}[X^{n}]}{n!}t^{n}.\]
@@ -3293,10 +3256,10 @@ $t \in ( - \delta,\delta)$ for some $\delta > 0$, then the c.d.f. of $X$ and $Y$
 \section{Sums of Independent R.V.'s}
 
 \begin{theorem}[M.G.F. of Sums of Independent R.V.'s]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are \textbf{independent} r.v.'s
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are \textbf{independent} r.v.'s
 with m.g.f.'s
-\[M_{X_{1}}(t),M_{X_{2}}(t),\ \cdots,M_{X_{n}}(t)\] respectively. Then the m.g.f. of their \textbf{sum}
-$X = X_{1} + \ X_{2} + \cdots + \ X_{n}$ is
+\[M_{X_{1}}(t),M_{X_{2}}(t), \cdots,M_{X_{n}}(t)\] respectively. Then the m.g.f. of their \textbf{sum}
+$X = X_{1} +  X_{2} + \cdots +  X_{n}$ is
 \[M_{X}(t) = \prod_{i = 1}^{n}{M_{X_{i}}(t)}.\]
 \end{theorem}
 
@@ -3305,9 +3268,9 @@ $X = X_{1} + \ X_{2} + \cdots + \ X_{n}$ is
 \end{proof}
 
 \begin{theorem}[M.G.F. of Sums of Normal R.V.'s]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are \textbf{independent} r.v.'s
-and $X_{i}\sim \mathcal{N}\left( \mu_{i},\ \sigma_{i}^{2} \right),\ \forall i = 1,2,\ \cdots,n$
-and suppose $a_{1},a_{2},\ \cdots,a_n\in\mathbb{R}$.
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are \textbf{independent} r.v.'s
+and $X_{i}\sim \mathcal{N}\left( \mu_{i}, \sigma_{i}^{2} \right), \forall i = 1,2, \cdots,n$
+and suppose $a_{1},a_{2}, \cdots,a_n\in\mathbb{R}$.
 If 
 \[ X = \sum_{i = 1}^{n}{a_{i}X}_{i},\]
 then
@@ -3319,20 +3282,22 @@ then
 \end{proof}
 
 \begin{corollary}[M.G.F. of Sums of I.I.D. Normal R.V.'s]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are \textbf{i.i.d.} 
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are \textbf{i.i.d.} 
 $\sim \mathcal{N}\left( \mu,\sigma^{2} \right)$, then
-\[S_{n} = \sum_{i = 1}^{n}X_{i}\sim \mathcal{N}\left( n\mu,n\sigma^{2} \right),\ \mathrm{\text{and}}\mathrm{\ }\ \bar{X} = \frac{S_{n}}{n}\sim \mathcal{N}\left( \mu,\frac{\sigma^{2}}{n} \right).\]
+\[S_{n} = \sum_{i = 1}^{n}X_{i}\sim \mathcal{N}\left( n\mu,n\sigma^{2} \right),~\text{and}~\bar{X} = \frac{S_{n}}{n}\sim \mathcal{N}\left( \mu,\frac{\sigma^{2}}{n} \right).\]
 \end{corollary}
 
 \begin{proof}
   abc
 \end{proof}
 
-\section{Markov and Chebyshev Inequalities}
+\section{Concentration Inequalities}
 
 \begin{theorem}[Markov's Inequality]
-Suppose $X$ is a nonnegative r.v., then
-\[\mathbb{P}(X \gs t) \ls \frac{\mathbb{E}[X]}{t},\ \forall t > 0.\]
+  Suppose $X$ is a nonnegative r.v., then
+  \begin{equation}
+    \mathbb{P}(X \gs t) \ls \frac{\mathbb{E}[X]}{t}, \forall t > 0.
+  \end{equation}
 \end{theorem}
 
 \begin{proof}
@@ -3340,9 +3305,9 @@ Suppose $X$ is a nonnegative r.v., then
 \end{proof}
 
 \begin{theorem}[Chebyshev's Inequality]
-\[\mathbb{P}( \left| X - \mu_{X} \right| \gs t ) \ls \frac{\sigma_{X}^{2}}{t^{2}},\ \forall t > 0.\]
-In particular,
-\[\mathbb{P}(\left| X - \mu_{X} \right| \gs k \cdot \sigma_{X}) \ls \frac{1}{k^{2}},\ \forall k > 0.\]
+  \[\mathbb{P}( \left| X - \mu_{X} \right| \gs t ) \ls \frac{\sigma_{X}^{2}}{t^{2}}, \forall t > 0.\]
+  In particular,
+  \[\mathbb{P}(\left| X - \mu_{X} \right| \gs k \cdot \sigma_{X}) \ls \frac{1}{k^{2}}, \forall k > 0.\]
 \end{theorem}
 
 \begin{proof}
@@ -3350,13 +3315,13 @@ In particular,
 \end{proof}
 
 \begin{remark}[Not Tight Bounds]
-The bounds obtained by Markov and Chebyshev inequalities are usually
-\textbf{not very tight}.\\
-\vspace{0.01cm}
+  The bounds obtained by Markov and Chebyshev inequalities are usually \textbf{not very tight}.
 \end{remark}
 
 \begin{theorem}[Zero Absolute Moment]
-\[\mathbb{E}[\left| X \right|] = 0\  \Leftrightarrow X = 0\ \mathrm{\text{with\ probability}}\ 1.\]
+  \begin{equation}
+    \mathbb{E}[\left| X \right|] = 0  \Leftrightarrow X = 0 ~\text{with probability}~ 1.
+  \end{equation}
 \end{theorem}
 
 \begin{proof}
@@ -3364,7 +3329,7 @@ The bounds obtained by Markov and Chebyshev inequalities are usually
 \end{proof}
 
 \begin{corollary}[Zero Variance]
-\[\mathrm{Var}(X) = 0\  \Leftrightarrow X = 0\ \mathrm{\text{with\ probability}}\ 1.\]
+  \[\mathrm{Var}(X) = 0  \Leftrightarrow X = 0 ~\text{with probability}~ 1.\]
 \end{corollary}
 
 \begin{proof}
@@ -3372,12 +3337,12 @@ The bounds obtained by Markov and Chebyshev inequalities are usually
 \end{proof}
 
 \begin{theorem}[Chebyshev's Inequality for I.I.D R.V.'s]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are \textbf{i.i.d.} r.v.'s with
-mean $\mu$ and variance $\sigma^{2} < \infty$. Let 
-\[\bar{X} = \frac{1}{n}\sum_{i = 1}^{n}X_{i}\]
-be the sample mean of $ X_{1},\ X_{2},\ \cdots,X_{n}.$
-Then
-\[\mathbb{P}\left( \left| \bar{X} - \mu \right| \gs \epsilon \right) \ls \frac{\sigma^{2}}{n\epsilon^{2}}.\]
+  Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are \textbf{i.i.d.} r.v.'s with
+  mean $\mu$ and variance $\sigma^{2} < \infty$. Let 
+  \[\bar{X} = \frac{1}{n}\sum_{i = 1}^{n}X_{i}\]
+  be the sample mean of $ X_{1}, X_{2}, \cdots,X_{n}.$
+  Then
+  \[\mathbb{P}\left( \left| \bar{X} - \mu \right| \gs \epsilon \right) \ls \frac{\sigma^{2}}{n\epsilon^{2}}.\]
 \end{theorem}
 
 \begin{proof}
@@ -3385,12 +3350,124 @@ Then
 \end{proof}
 
 \begin{theorem}[Chebyshev's Inequality for I.I.D. Bernoulli R.V.'s]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are i.i.d. $\sim$ Bernoulli$(p)$. Let 
-\[\bar{X} = \frac{1}{n}\sum_{i = 1}^{n}X_{i}\]
-be the sample mean of $ X_{1},\ X_{2},\ \cdots,X_{n}.$
-Then
-\[\mathbb{P}\left( \left| \bar{X} - p \right| \gs \epsilon \right) \ls \frac{p(1 - p)}{n\epsilon^{2}} \ls \frac{1}{4n\epsilon^{2}}.\]
+  Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are i.i.d. $\sim$ Bernoulli$(p)$. Let 
+  \[\bar{X} = \frac{1}{n}\sum_{i = 1}^{n}X_{i}\]
+  be the sample mean of $ X_{1}, X_{2}, \cdots,X_{n}.$
+  Then
+  \[\mathbb{P}\left( \left| \bar{X} - p \right| \gs \epsilon \right) \ls \frac{p(1 - p)}{n\epsilon^{2}} \ls \frac{1}{4n\epsilon^{2}}.\]
 \end{theorem}
+
+\begin{proof}
+  abc
+\end{proof}
+
+\begin{theorem}[Cantelli’s Inequality]
+  Let $X$ be a real random variable with variance $\sigma^2<\infty$. Then
+  \begin{equation}
+    \mathbb{P}(X-\mathbb{E}[X]\geqslant t)\leqslant\frac{\sigma^2}{\sigma^2+t^2},
+  \end{equation}
+  and
+  \begin{equation}
+    \mathbb{P}(|X-\mathbb{E}[X]|\geqslant t)\leqslant2\frac{\sigma^2}{\sigma^2+t^2}.
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  abc
+\end{proof}
+
+\begin{theorem}[Hoeffding's inequality]
+  Let $X_1,\dots,X_n$ be independent random variables with $X_i$ taking values in $[a_i, b_i]$ for all $i=1,\dots,n$. Let $S_n=\sum_{i=1}^{n}X_i$, then for any $\epsilon>0$,
+  \begin{equation}
+    \mathbb{P}(S_n-\mathbb{E}[S_n]\geqslant\epsilon)\leqslant \exp\left(-\frac{2\epsilon^2}{\sum_{i=1}^{n}(b_i-a_i)^2}\right),
+  \end{equation}
+  and
+  \begin{equation}
+    \mathbb{P}(S_n-\mathbb{E}[S_n]\leqslant-\epsilon)\leqslant \exp\left(-\frac{2\epsilon^2}{\sum_{i=1}^{n}(b_i-a_i)^2}\right).
+  \end{equation}
+  Moreover, let $\bar{X}=\frac{1}{n}S_n$. By viewing $X_i$ taking values in $[a_i/n, b_i/n]$ for $S_n$, we have
+  \begin{equation}
+    \mathbb{P}(X_n-\mathbb{E}[X_n]\geqslant\epsilon)\leqslant \exp\left(-\frac{2n^2\epsilon^2}{\sum_{i=1}^{n}(b_i-a_i)^2}\right),
+  \end{equation}
+  and
+  \begin{equation}
+    \mathbb{P}(X_n-\mathbb{E}[X_n]\leqslant-\epsilon)\leqslant \exp\left(-\frac{2n^2\epsilon^2}{\sum_{i=1}^{n}(b_i-a_i)^2}\right).
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  abc
+\end{proof}
+
+\begin{theorem}[Sanov's theorem]
+  Let $X_1,\dots,X_n$ be independent random variables drawn according to some distribution with mean $p$ and support included in $[0, 1]$. Let $\hat{p}=\frac{1}{n}\sum_{i=1}^{n}X_i$, then for any $q\in[0, 1]$,
+  \begin{equation}
+    \mathbb{P}(\hat{p}\geqslant q)\leqslant\exp(-mD(q||p)),
+  \end{equation}
+  where $D(q||p)=q\log\frac{q}{p}+(1-q)\log\frac{1-q}{1-p}$ is the binary relative entropy of $p$ and $q$.
+\end{theorem}
+
+\begin{proof}
+  abc
+\end{proof}
+
+\begin{theorem}[Multiplicative Chernoff Bounds]
+  Let $X_1,\dots,X_n$ be independent random variables drawn according to some distribution with mean $p$ and support included in $[0, 1]$. Let $\hat{p}=\frac{1}{n}\sum_{i=1}^{n}X_i$, then for any $\gamma\in[0, \frac{1}{p}-1]$,
+  \begin{equation}
+    \mathbb{P}(\hat{p}\geqslant(1+\gamma)p)\leqslant\exp\left(-\frac{mp\gamma^2}{3}\right),
+  \end{equation}
+  and
+  \begin{equation}
+    \mathbb{P}(\hat{p}\leqslant(1-\gamma)p)\leqslant\exp\left(-\frac{mp\gamma^2}{2}\right).
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  abc
+\end{proof}
+
+\begin{theorem}[Paley-Zygmund Inequality]
+  Let $X$ be a non-negative random variable with finite variance. Then
+  \begin{equation}
+    \mathbb{P}(X>t\mathbb{E}[X])\geqslant(1-t)^2\frac{\mathbb{E}^2[X]}{\mathbb{E}[X^2]},\quad t\in[0,1].
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  abc
+\end{proof}
+
+% https://zhuanlan.zhihu.com/p/538654580
+\begin{theorem}[Kolmogorov's (Maximal) Inequality]
+  Suppose $X_1,\dots,X_n$ are independent random variables with zero means and finite variances. Let $S_k:=\sum_{i=1}^{k}X_i$, then
+  \begin{equation}
+    \mathbb{P}\left(\max_{1\leqslant k\leqslant n}|S_k|\geqslant t\right)\leqslant\frac{1}{t^2}\mathrm{Var}(S_n)=\frac{1}{t^2}\sum_{i=1}^{n}\mathbb{E}[X_i^2],\quad t>0.
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  abc
+\end{proof}
+
+% Foundations of Machine Learning, Mehryar Mohri, Afshin Rostamizadeh, and Ameet Talwalkar, MIT Press, Second Edition, 2018.
+\begin{theorem}[Maximal Inequality]
+  Let $X_1,\dots,X_n$ be real-valued random variables such that for all $j=1,\dots,n$ and $t>0$, $\mathbb{E}[e^{tX_j}]\leqslant e^{\frac{t^2r^2}{2}}$ for some $r>0$. Then
+  \begin{equation}
+    \mathbb{E}\left[\max_{j\in\{1,\dots,n\}}X_j\right]\leqslant r\sqrt{2\log n}.
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  abc
+\end{proof}
+
+\begin{corollary}[Maximal inequality]
+  Let $X_1,\dots,X_n$ be real-valued random variables such that for all $j=1,\dots,n$, $X_j=\sum_{i=1}^{m}Y_{ij}$ where, for each fixed $j$, $Y_{ij}$ are independent zero mean random variables taking values in $[-r_i, +r_i]$, for some $r_i>0$. Then
+  \begin{equation}
+    \mathbb{E}\left[\max_{j\in\{1,\dots,n\}}X_j\right]\leqslant r\sqrt{2\log n},
+  \end{equation}
+  where $r=\sqrt{\sum_{i=1}^{m}r_i^2}$.
+\end{corollary}
 
 \begin{proof}
   abc
@@ -3399,19 +3476,19 @@ Then
 \section{Laws of Large Numbers (LLN's)}
 
 \begin{definition}[Converge in Probability]
-Let $X,X_{1},\ X_{2},\cdots$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. We say that $X_{n}$ converges to $X$ \textbf{in probability}, denoted
-\[X_{n}\xrightarrow{\ P\ }X,\]
+Let $X,X_{1}, X_{2},\cdots$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. We say that $X_{n}$ converges to $X$ \textbf{in probability}, denoted
+\[X_{n}\xrightarrow{ P }X,\]
 if
-\[\lim_{n \to \infty}{\mathbb{P}(\left| X_{n} - X \right| < \epsilon)} = 1,\ \forall\epsilon > 0,\]
+\[\lim_{n \to \infty}{\mathbb{P}(\left| X_{n} - X \right| < \epsilon)} = 1, \forall\epsilon > 0,\]
 or
-\[\lim_{n \to \infty}{\mathbb{P}(\left| X_{n} - X \right| > \epsilon)} = 0,\ \forall\epsilon > 0.\]
+\[\lim_{n \to \infty}{\mathbb{P}(\left| X_{n} - X \right| > \epsilon)} = 0, \forall\epsilon > 0.\]
 \end{definition}
 
 \begin{theorem}[Weak Law of Large Numbers (WLLN)]
-Suppose $X_{1},\ X_{2},\ \cdots$ are i.i.d. r.v.'s with mean $\mu$ and variance $\sigma^{2} < \infty$. Then
-\[\overline{X_{n}} = \frac{1}{n}\sum_{i = 1}^{n}X_{i}\xrightarrow{\ P\ }\mu,\]
+Suppose $X_{1}, X_{2}, \cdots$ are i.i.d. r.v.'s with mean $\mu$ and variance $\sigma^{2} < \infty$. Then
+\[\overline{X_{n}} = \frac{1}{n}\sum_{i = 1}^{n}X_{i}\xrightarrow{ P }\mu,\]
 i.e.,
-\[ \lim_{n \to \infty}{\mathbb{P}\left( \left| \overline{X_{n}} - \mu \right| > \epsilon \right)} = 0,\ \forall\epsilon > 0.\]
+\[ \lim_{n \to \infty}{\mathbb{P}\left( \left| \overline{X_{n}} - \mu \right| > \epsilon \right)} = 0, \forall\epsilon > 0.\]
 \end{theorem}
 
 \begin{proof}
@@ -3424,28 +3501,28 @@ number of times an event $A$ occurs in the first $n$ repetitions of
 the experiment. Let
 
 \[X_{i} = \left\{ \begin{aligned}
-&1,~\mathrm{\text{if}}\ A \mathrm{\text{\ occurs\ on\ the}}\ i^{th}\ \mathrm{\text{repetition}}, \\
-&0,~\mathrm{\text{o.w.}} \\
+&1,~\text{if} A \text{ occurs on the} i^{th} ~\text{repetition}~, \\
+&0,~\text{o.w.}~ \\
 \end{aligned} \right.\]
 Then
 \[\begin{aligned}
- &n(A) = \sum_{i = 1}^{n}X_{i}\text{\ \ }\mathrm{\text{and}}\text{\ \ }\mathbb{E}[X_{i}]= 1 \cdot \mathbb{P}(A) + 0 \cdot \mathbb{P}(A^{c}) = \mathbb{P}(A).\\
+ &n(A) = \sum_{i = 1}^{n}X_{i}~\text{and}~\mathbb{E}[X_{i}]= 1 \cdot \mathbb{P}(A) + 0 \cdot \mathbb{P}(A^{c}) = \mathbb{P}(A).\\
 \to& \lim_{n \to \infty}{\mathbb{P}\left( \left| \frac{n(A)}{n} - \mathbb{P}(A) \right| > \epsilon \right)} = \lim_{n \to \infty}{\mathbb{P}\left( \left| \frac{1}{n}\sum_{i = 1}^{n}X_{i} - \mathbb{P}(A) \right| > \epsilon \right)} = 0.
 \end{aligned}\]
 Therefore, the relative frequency $\frac{n(A)}{n}$ of occurrence of $A$ is very likely close to $\mathbb{P}(A)$ if $n$ is sufficiently large.
 \end{remark}
 
 \begin{definition}[Converge Almost Surely]
-Let $X,X_{1},\ X_{2},\cdots$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. We say that $X_{n}$ converges to $X$ \textbf{almost surely} (a.s.),
+Let $X,X_{1}, X_{2},\cdots$ be r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. We say that $X_{n}$ converges to $X$ \textbf{almost surely} (a.s.),
 denoted
-\[X_{n}\xrightarrow{\ \text{a.s.}\ }X,\]
+\[X_{n}\xrightarrow{ \text{a.s.} }X,\]
 if \[\mathbb{P}\left( \lim_{n \to \infty}X_{n} = X \right) = 1.\]
 \end{definition}
 
 \begin{theorem}[Strong Law of Large Numbers (SLLN)]
-Suppose $X_{1},\ X_{2},\ \cdots$ are i.i.d. r.v.'s with mean $\mu$. Then
+Suppose $X_{1}, X_{2}, \cdots$ are i.i.d. r.v.'s with mean $\mu$. Then
 
-\[\overline{X_{n}} = \frac{1}{n}\sum_{i = 1}^{n}X_{i}\xrightarrow{\ \text{a.s.}\ }\mu\]
+\[\overline{X_{n}} = \frac{1}{n}\sum_{i = 1}^{n}X_{i}\xrightarrow{ \text{a.s.} }\mu\]
 i.e.,
 \[\mathbb{P}\left( \lim_{n \to \infty}\overline{X_{n}} = \mu \right) = 1.\]
 \end{theorem}
@@ -3455,11 +3532,11 @@ i.e.,
 \end{proof}
 
 \begin{remark}[Relative Frequency Converges Almost Surely]
-\[\mathbb{P}\left( \lim_{n \to \infty}\frac{n( A )}{n} = \mathbb{P}(A) \right) = 1\  \to \ \lim_{n \to \infty}\frac{n( A )}{n} = \mathbb{P}( A )\ \mathrm{\text{with\ probability}}\ 1.\]
+\[\mathbb{P}\left( \lim_{n \to \infty}\frac{n( A )}{n} = \mathbb{P}(A) \right) = 1  \to  \lim_{n \to \infty}\frac{n( A )}{n} = \mathbb{P}( A ) ~\text{with probability}~ 1.\]
 \end{remark}
 
 \begin{theorem}[Converge Almost Surely Implies Convergence in Probability]
-\[\mathrm{\text{If}}\mathrm{\ }\ X_{n}\xrightarrow{\ \text{a.s.}\ }X,\mathrm{\ }\mathrm{\ }\mathrm{\text{then}}\mathrm{\ }\ X_{n}\xrightarrow{\ P\ }X.\]
+\[\text{If}~X_{n}\xrightarrow{\text{a.s.}}X,~\text{then}~X_{n}\xrightarrow{ P }X.\]
 \end{theorem}
 
 \begin{proof}
@@ -3469,10 +3546,13 @@ i.e.,
 \section{Central Limit Theorem (CLT)}
 
 \begin{theorem}[Levy Continuity Theorem]
-Suppose $X,X_{1},\ X_{2},\ \cdots$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. 
+Suppose $X,X_{1}, X_{2}, \cdots$ are r.v.'s of a probability space $(\Omega,\ma,\mathbb{P})$. 
 
-$\mathrm{\text{If}}\ \ \exists\delta > 0\  \to \ \lim_{n \to \infty}{M_{X_{n}}(t)} = M_{X}(t),\ \forall t \in \left( - \delta,\delta \right),$ $ \mathrm{\text{then}}$\[ \lim_{n \to \infty}F_{n}(x) = F(x)\]
-$\mathrm{\text{if }}F(x)\text{\ }\mathrm{\text{is\ continuous\ at}}\ X.$
+If $\exists\delta > 0  \to  \lim_{n \to \infty}{M_{X_{n}}(t)} = M_{X}(t), \forall t \in \left( - \delta,\delta \right)$, then
+\[ 
+  \lim_{n \to \infty}F_{n}(x) = F(x),
+\]
+if $F(x)$ is continuous at $X$.
 \end{theorem}
 
 \begin{proof}
@@ -3480,8 +3560,7 @@ $\mathrm{\text{if }}F(x)\text{\ }\mathrm{\text{is\ continuous\ at}}\ X.$
 \end{proof}
 
 \begin{theorem}[Central Limit Theorem (CLT)]
-Suppose $X_{1},\ X_{2},\ \cdots,X_{n}$ are i.i.d. r.v.'s with mean $\mu$ and variance $\sigma^{2}$. Let
-
+Suppose $X_{1}, X_{2}, \cdots,X_{n}$ are i.i.d. r.v.'s with mean $\mu$ and variance $\sigma^{2}$. Let
 \[S_{n}^{*} = \frac{X_{1} + X_{2} + \cdots + X_{n} - \mathbb{E}[S_{n}]}{\sigma_{S_{n}}} = \frac{X_{1} + X_{2} + \cdots + X_{n} - n\mu}{\sigma\sqrt{n}}.\]
 Then
 \[\lim_{n \to \infty}{F_{S_{n}^{*}}(X) = \Phi(x)},\]
@@ -3504,7 +3583,7 @@ Equivalently,
 
 %\chapter{Templates}
 %
-%$X_1,\ X_2,\ \cdots,X_n$
+%$X_1, X_2, \cdots,X_n$
 %$(\Omega,\ma,\mathbb{P})$
 %
 %\begin{definition}[]
